@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="《良币守则与认知体系》星际展览 · 数据看板 — 33页 / 19章+2附录 / 双语 / 2026.08.10">
+<title>良币守则与认知体系 · 数据看板 | THE CODE OF GOOD CURRENCY — DASHBOARD</title>
+<style>
+:root{
+  --bg:#0b0e14;
+  --card:#141926;
+  --card2:#10141f;
+  --gold:#d4af37;
+  --gold-dim:rgba(212,175,55,.35);
+  --text:#e8e6df;
+  --muted:#8b91a5;
+  --dim:#b9bfcf;
+  --teal:#7fd4c1;
+  --red:#e05a5a;
+  --line:rgba(212,175,55,.16);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:#0b0e14;color:#e8e6df;line-height:1.65;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+::selection{background:rgba(212,175,55,.35);color:#fff}
+/* ---------- starfield ---------- */
+.stars{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:
+    radial-gradient(1px 1px at 12% 22%,rgba(232,230,223,.55) 50%,transparent 51%),
+    radial-gradient(1px 1px at 28% 68%,rgba(232,230,223,.32) 50%,transparent 51%),
+    radial-gradient(1.5px 1.5px at 41% 12%,rgba(127,212,193,.38) 50%,transparent 51%),
+    radial-gradient(1px 1px at 55% 82%,rgba(232,230,223,.38) 50%,transparent 51%),
+    radial-gradient(1.5px 1.5px at 67% 34%,rgba(212,175,55,.42) 50%,transparent 51%),
+    radial-gradient(1px 1px at 78% 58%,rgba(232,230,223,.28) 50%,transparent 51%),
+    radial-gradient(1px 1px at 88% 16%,rgba(127,212,193,.32) 50%,transparent 51%),
+    radial-gradient(1.2px 1.2px at 6% 48%,rgba(232,230,223,.28) 50%,transparent 51%),
+    radial-gradient(1px 1px at 93% 88%,rgba(212,175,55,.28) 50%,transparent 51%),
+    radial-gradient(1px 1px at 35% 45%,rgba(232,230,223,.22) 50%,transparent 51%);
+}
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(ellipse 85% 55% at 50% -12%,rgba(36,46,74,.55),transparent 62%),
+    radial-gradient(ellipse 55% 38% at 88% 112%,rgba(212,175,55,.05),transparent 60%),
+    radial-gradient(ellipse 50% 38% at 6% 105%,rgba(127,212,193,.045),transparent 60%);
+}
+.wrap{max-width:1260px;margin:0 auto;padding:0 28px 90px}
+svg{font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+/* ---------- hero ---------- */
+.hero{text-align:center;padding:60px 0 26px;position:relative}
+.hero-kicker{font-size:11px;letter-spacing:6px;color:#8b91a5;text-transform:uppercase;margin-bottom:20px}
+.hero .emblem{display:block;margin:0 auto 16px}
+.hero h1{font-size:clamp(30px,5vw,50px);letter-spacing:12px;font-weight:700;color:#e8e6df;text-shadow:0 0 46px rgba(212,175,55,.28)}
+.hero h1 .gold{color:#d4af37}
+.hero-en{font-family:Georgia,serif;font-style:italic;color:#d4af37;letter-spacing:3px;font-size:clamp(11px,1.6vw,16px);margin-top:14px}
+.hero-motto{margin-top:20px;font-family:Georgia,serif;font-style:italic;color:#8b91a5;font-size:14px}
+.hero-byline{margin-top:10px;font-size:12px;color:#8b91a5;letter-spacing:1px}
+.hero-byline b{color:#b9bfcf;font-weight:600}
+.hero-rule{width:190px;height:1px;background:linear-gradient(90deg,transparent,#d4af37,transparent);margin:26px auto 0}
+.hero-motif{margin-top:16px;font-size:11.5px;letter-spacing:4px;color:rgba(212,175,55,.8)}
+.hero-motif span{color:#8b91a5}
+/* ---------- sections ---------- */
+section{margin-top:62px}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:22px;padding-bottom:13px;border-bottom:1px solid rgba(212,175,55,.18)}
+.sec-no{font-family:Georgia,serif;color:#d4af37;font-size:14px;letter-spacing:2px;border:1px solid rgba(212,175,55,.4);padding:3px 9px;border-radius:4px;flex:none}
+.sec-head h2{font-size:21px;letter-spacing:5px;font-weight:600;flex:none}
+.sec-en{font-family:Georgia,serif;font-style:italic;color:#8b91a5;font-size:12px;letter-spacing:2px;flex:none}
+.sec-line{flex:1;height:1px;background:repeating-linear-gradient(90deg,rgba(212,175,55,.28) 0 6px,transparent 6px 12px)}
+.sec-sub{font-size:12.5px;color:#8b91a5;margin:-12px 0 20px;letter-spacing:.5px}
+.sec-sub b{color:#7fd4c1;font-weight:600}
+/* ---------- cards ---------- */
+.card{background:#141926;border:1px solid rgba(212,175,55,.16);border-radius:14px;padding:22px 24px;position:relative;transition:transform .25s ease,border-color .25s ease}
+.card:hover{transform:translateY(-3px);border-color:rgba(212,175,55,.45)}
+.frame::before,.frame::after{content:"";position:absolute;width:16px;height:16px;pointer-events:none}
+.frame::before{top:7px;left:7px;border-top:1px solid rgba(212,175,55,.6);border-left:1px solid rgba(212,175,55,.6);border-top-left-radius:4px}
+.frame::after{bottom:7px;right:7px;border-bottom:1px solid rgba(212,175,55,.6);border-right:1px solid rgba(212,175,55,.6);border-bottom-right-radius:4px}
+/* ---------- 01 document portrait ---------- */
+.met-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:14px}
+.met{background:#141926;border:1px solid rgba(212,175,55,.16);border-radius:12px;padding:16px 12px;text-align:center;transition:border-color .25s ease,transform .25s ease}
+.met:hover{border-color:rgba(212,175,55,.5);transform:translateY(-2px)}
+.met .v{font-family:Georgia,serif;font-size:31px;color:#d4af37;line-height:1.15}
+.met .v small{font-size:15px;color:#b9bfcf}
+.met .l{font-size:10.5px;letter-spacing:2px;color:#8b91a5;margin-top:4px}
+.met .s{font-size:11px;color:#7fd4c1;margin-top:2px;letter-spacing:.5px}
+.met.glow{background:linear-gradient(180deg,rgba(212,175,55,.10),rgba(20,25,38,.9) 70%)}
+/* ---------- 02 toc ---------- */
+.ch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(216px,1fr));gap:12px}
+.ch{background:#141926;border:1px solid rgba(212,175,55,.14);border-radius:12px;padding:13px 15px 12px;position:relative;transition:transform .22s ease,border-color .22s ease}
+.ch:hover{transform:translateY(-3px);border-color:rgba(212,175,55,.5)}
+.ch-no{font-family:Georgia,serif;color:rgba(212,175,55,.75);font-size:13px;letter-spacing:1.5px}
+.ch h3{font-size:14.5px;margin-top:3px;letter-spacing:1px;font-weight:600;color:#e8e6df}
+.ch-en{font-family:Georgia,serif;font-style:italic;font-size:10.5px;color:#8b91a5;margin-top:3px;line-height:1.4}
+.ch-kw{font-size:11.5px;color:#b9bfcf;margin-top:9px;border-top:1px dashed rgba(212,175,55,.2);padding-top:7px}
+.ch-tag{position:absolute;top:12px;right:12px;font-size:9.5px;letter-spacing:1.5px;color:#d4af37;border:1px solid rgba(212,175,55,.45);padding:1px 7px;border-radius:999px}
+.ch.rule{border-color:rgba(212,175,55,.4)}
+.ch.rule .ch-tag{background:rgba(212,175,55,.12)}
+.ch.redline .ch-no{color:#e05a5a}
+.ch.redline .ch-kw{color:#d8a8a8}
+.ch.appendix{border-style:dashed}
+.ch.appendix .ch-no{color:#7fd4c1}
+.ch.appendix .ch-tag{color:#7fd4c1;border-color:rgba(127,212,193,.5)}
+.ch.exhibit{grid-column:1/-1;display:flex;align-items:center;gap:18px;background:linear-gradient(90deg,rgba(212,175,55,.12),rgba(20,25,38,.7) 45%,rgba(224,90,90,.10));border-color:rgba(212,175,55,.45)}
+.ch.exhibit .star{font-family:Georgia,serif;font-size:26px;color:#d4af37;flex:none}
+.ch.exhibit .ex-title{font-size:16px;letter-spacing:3px;font-weight:700;flex:none}
+.ch.exhibit .ex-en{font-family:Georgia,serif;font-style:italic;font-size:11px;color:#8b91a5}
+.ch.exhibit .ex-kw{margin-left:auto;font-size:12px;color:#d8a8a8;letter-spacing:1px}
+.ch.exhibit .ex-kw b{color:#e05a5a}
+/* ---------- 03 key numbers ---------- */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:14px}
+.stat{padding:20px 20px 18px}
+.stat-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.stat .v{font-family:Georgia,serif;font-size:40px;color:#d4af37;line-height:1.05}
+.stat .unit{font-size:11.5px;color:#8b91a5;letter-spacing:1px}
+.stat svg{flex:none}
+.stat .cap{font-size:12px;color:#7fd4c1;letter-spacing:1.5px;margin:10px 0 7px;border-top:1px dashed rgba(212,175,55,.22);padding-top:10px}
+.stat ul{margin-left:16px;font-size:12.5px;color:#b9bfcf}
+.stat li{margin-bottom:4px}
+.stat li b{color:#e8e6df;font-weight:600}
+.stat.venom .v{color:#e05a5a}
+.stat.venom .cap{color:#e05a5a}
+/* ---------- 04 cognitive architecture ---------- */
+.art-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:16px}
+.art{padding:20px 20px 14px}
+.art.wide{grid-column:1/-1}
+.art-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:4px}
+.art-title{font-size:15px;letter-spacing:2.5px;font-weight:600}
+.art-title em{font-style:normal;color:#7fd4c1;font-size:11px;letter-spacing:2px;margin-right:8px}
+.art-sub{font-family:Georgia,serif;font-style:italic;font-size:11px;color:#8b91a5}
+.art svg{width:100%;height:auto;display:block;margin-top:6px}
+.art-note{font-size:11.5px;color:#8b91a5;margin-top:8px;text-align:center;letter-spacing:.5px}
+.art-note b{color:#d4af37;font-weight:600}
+/* ---------- 05 three questions ---------- */
+.q3-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.q3-no{font-family:Georgia,serif;font-size:13px;color:#d4af37;letter-spacing:3px}
+.q3-en{font-family:Georgia,serif;font-style:italic;font-size:10.5px;color:#8b91a5;letter-spacing:1.5px;margin-top:2px}
+.q3-key{font-size:16px;font-weight:700;color:#e8e6df;letter-spacing:2px;margin:10px 0 8px;border-left:2px solid #d4af37;padding-left:12px}
+.q3 ul{margin-left:16px;font-size:12.5px;color:#b9bfcf}
+.q3 li{margin-bottom:6px}
+.q3-tail{margin-top:10px;font-size:12px;color:#7fd4c1;font-style:italic;border-top:1px dashed rgba(212,175,55,.2);padding-top:8px}
+/* ---------- 06 three articles ---------- */
+.a3-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.a3 .a3-top{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid rgba(212,175,55,.2);padding-bottom:10px;margin-bottom:12px}
+.a3-roman{font-family:Georgia,serif;font-size:30px;color:#d4af37;line-height:1}
+.a3-title{font-size:15.5px;letter-spacing:2px;font-weight:700}
+.a3-en{font-family:Georgia,serif;font-style:italic;font-size:10.5px;color:#8b91a5;letter-spacing:1px}
+.a3-tag{margin-left:auto;font-size:9.5px;letter-spacing:2px;color:#7fd4c1;border:1px solid rgba(127,212,193,.45);padding:2px 8px;border-radius:999px;flex:none}
+.a3 ul{margin-left:16px;font-size:12.8px;color:#b9bfcf}
+.a3 li{margin-bottom:8px}
+.a3 li b{color:#e8e6df;font-weight:600}
+.a3 li .en{font-family:Georgia,serif;font-style:italic;font-size:10.5px;color:#8b91a5}
+.a3-quote{margin-top:12px;font-size:12px;color:#d4af37;font-style:italic;border-left:2px solid rgba(212,175,55,.5);padding:2px 12px;background:rgba(212,175,55,.05);border-radius:0 6px 6px 0}
+/* ---------- 07 duel ---------- */
+.duel{border:1px solid rgba(212,175,55,.22);border-radius:14px;overflow:hidden;background:#141926}
+.duel-head{display:grid;grid-template-columns:150px 1fr 1fr}
+.duel-head .k{display:flex;align-items:center;justify-content:center;font-size:10.5px;letter-spacing:2.5px;color:#8b91a5;background:rgba(20,25,38,.6);padding:12px 10px;border-right:1px solid rgba(212,175,55,.12)}
+.good-head{background:linear-gradient(180deg,rgba(212,175,55,.18),rgba(212,175,55,.03));text-align:center;padding:15px 10px}
+.good-head .t{font-size:17px;letter-spacing:6px;color:#d4af37;font-weight:700}
+.good-head .e{font-family:Georgia,serif;font-style:italic;font-size:10.5px;color:#b9bfcf;letter-spacing:1.5px;margin-top:3px}
+.bad-head{background:linear-gradient(180deg,rgba(224,90,90,.18),rgba(224,90,90,.03));text-align:center;padding:15px 10px}
+.bad-head .t{font-size:17px;letter-spacing:6px;color:#e05a5a;font-weight:700}
+.bad-head .e{font-family:Georgia,serif;font-style:italic;font-size:10.5px;color:#d8a8a8;letter-spacing:1.5px;margin-top:3px}
+.duel-row{display:grid;grid-template-columns:150px 1fr 1fr;border-top:1px solid rgba(212,175,55,.12)}
+.duel-row .k{font-size:10.5px;letter-spacing:2px;color:#8b91a5;padding:13px 14px;border-right:1px solid rgba(212,175,55,.12);display:flex;align-items:center;background:rgba(20,25,38,.4)}
+.duel-row .g{padding:13px 16px;font-size:13px;color:#cdd4e3;line-height:1.7}
+.duel-row .b{padding:13px 16px;font-size:13px;color:#e0b4b4;line-height:1.7}
+.duel-row .g b{color:#d4af37;font-weight:600}
+.duel-row .b b{color:#e05a5a;font-weight:600}
+.duel-row .en{font-family:Georgia,serif;font-style:italic;font-size:10.5px;color:#8b91a5}
+.duel-foot{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;padding:14px 16px;border-top:1px solid rgba(212,175,55,.12);background:rgba(20,25,38,.55);font-size:12.5px;color:#b9bfcf}
+.duel-foot .gf{color:#d4af37}.duel-foot .bf{color:#e05a5a}
+/* ---------- 08 landmark ---------- */
+.verdict-grid{display:grid;grid-template-columns:minmax(300px,44%) 1fr;gap:16px;align-items:stretch}
+.vd{display:flex;flex-direction:column;gap:16px}
+.vd-quote{font-family:Georgia,serif;font-size:15.5px;font-style:italic;color:#d4af37;line-height:1.7}
+.vd-quote b{font-style:normal;font-size:12px;letter-spacing:2px;display:block;color:#8b91a5;font-family:-apple-system,"PingFang SC",sans-serif;margin-bottom:4px}
+.vd-block h4{font-size:12px;letter-spacing:2px;color:#7fd4c1;margin-bottom:6px;font-weight:600}
+.vd-block h4.red{color:#e05a5a}
+.vd-block p{font-size:12.8px;color:#b9bfcf}
+.chip{display:inline-block;border:1px solid rgba(127,212,193,.4);color:#7fd4c1;font-size:11px;padding:2px 10px;border-radius:999px;margin:4px 6px 0 0;letter-spacing:1px;background:rgba(127,212,193,.05)}
+.chip.red{border-color:rgba(224,90,90,.45);color:#e05a5a;background:rgba(224,90,90,.05)}
+.vd-verdict{margin-top:auto;border-top:1px dashed rgba(212,175,55,.25);padding-top:12px;font-size:13.5px;color:#e8e6df;letter-spacing:1px}
+.vd-verdict b{color:#d4af37}
+/* ---------- 09 glossary ---------- */
+.gloss{display:flex;flex-wrap:wrap;gap:8px}
+.gloss span{font-size:11.5px;color:#b9bfcf;border:1px solid rgba(212,175,55,.22);border-radius:999px;padding:4px 12px;letter-spacing:.5px;background:rgba(20,25,38,.8);transition:border-color .2s}
+.gloss span:hover{border-color:#d4af37;color:#d4af37}
+.gloss i{font-family:Georgia,serif;font-style:italic;color:#8b91a5;font-size:10.5px;margin-left:5px}
+.gloss .g{color:#d4af37}
+/* ---------- footer ---------- */
+footer{margin-top:74px;text-align:center;padding:42px 20px 8px;border-top:1px solid rgba(212,175,55,.16);position:relative}
+.foot-motif{font-size:15px;letter-spacing:6px;color:#d4af37;font-weight:600}
+.foot-en{font-family:Georgia,serif;font-style:italic;font-size:11.5px;color:#8b91a5;margin-top:10px;letter-spacing:1.5px}
+.foot-meta{margin-top:16px;font-size:10.5px;letter-spacing:3px;color:#5d6377;text-transform:uppercase}
+/* ---------- responsive ---------- */
+@media (max-width:860px){
+  .duel-head,.duel-row{grid-template-columns:1fr}
+  .duel-head .k{display:none}
+  .duel-row .k{border-right:0;border-bottom:1px solid rgba(212,175,55,.12)}
+  .duel-row .b{border-top:1px dashed rgba(212,175,55,.16)}
+  .duel-row .g::before{content:"良币 · ";color:#d4af37}
+  .duel-row .b::before{content:"劣币 · ";color:#e05a5a}
+  .art-grid{grid-template-columns:1fr}
+  .verdict-grid{grid-template-columns:1fr}
+  .ch.exhibit{flex-wrap:wrap;gap:8px}
+  .ch.exhibit .ex-kw{margin-left:0}
+}
+@media (max-width:520px){
+  .wrap{padding:0 16px 70px}
+  .hero h1{letter-spacing:6px}
+  .sec-head{flex-wrap:wrap;gap:8px}
+}
+</style>
+</head>
+<body>
+<div class="stars" aria-hidden="true"></div>
+
+<div class="wrap">
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="hero-kicker">EXHIBITION NOTES · 星际展览专用 · FOR INTERSTELLAR EXHIBITION</div>
+  <svg class="emblem" viewBox="0 0 84 84" width="76" height="76" aria-hidden="true">
+    <g stroke="rgba(212,175,55,.35)" stroke-width="1">
+      <line x1="42" y1="4" x2="42" y2="12"/><line x1="42" y1="72" x2="42" y2="80"/>
+      <line x1="4" y1="42" x2="12" y2="42"/><line x1="72" y1="42" x2="80" y2="42"/>
+      <line x1="15" y1="15" x2="21" y2="21"/><line x1="63" y1="63" x2="69" y2="69"/>
+      <line x1="69" y1="15" x2="63" y2="21"/><line x1="21" y1="63" x2="15" y2="69"/>
+    </g>
+    <circle cx="42" cy="42" r="30" fill="rgba(212,175,55,.05)" stroke="#d4af37" stroke-width="1.6"/>
+    <circle cx="42" cy="42" r="24" fill="none" stroke="rgba(212,175,55,.4)" stroke-width="1" stroke-dasharray="2 3"/>
+    <text x="42" y="50" text-anchor="middle" font-size="24" fill="#d4af37" font-weight="700">良</text>
+  </svg>
+  <h1><span class="gold">良币守则</span>与认知体系</h1>
+  <div class="hero-en">THE CODE OF GOOD CURRENCY &amp; COGNITIVE ARCHITECTURE</div>
+  <div class="hero-motto">"The Good-Coin Doctrine — in space, all coins are judged by their own light."</div>
+  <div class="hero-byline">发言人 / Speaker: <b>未见 (Dela)</b> &nbsp;·&nbsp; 整理 / Compiled by: <b>云梦 (HerBrother)</b></div>
+  <div class="hero-rule"></div>
+  <div class="hero-motif">请勿触摸展品 <span>·</span> 展品已自行暴露</div>
+</header>
+
+<!-- ================= 01 文档画像 ================= -->
+<section>
+  <div class="sec-head">
+    <div class="sec-no">01</div>
+    <h2>文档画像</h2>
+    <div class="sec-en">Document Portrait</div>
+    <div class="sec-line"></div>
+  </div>
+  <div class="met-grid">
+    <div class="met glow"><div class="v">33<small> 页</small></div><div class="l">PAGES</div><div class="s">中英对照 · 按 PAGE 分页</div></div>
+    <div class="met"><div class="v">19<small>+</small>2</div><div class="l">CHAPTERS</div><div class="s">19 章 + 2 附录 + 今日最佳展品</div></div>
+    <div class="met"><div class="v">双语</div><div class="l">BILINGUAL</div><div class="s">中英对照 Exhibition Notes</div></div>
+    <div class="met"><div class="v" style="font-size:24px">2026.08.10</div><div class="l">DATE</div><div class="s">二〇二六年八月十日</div></div>
+    <div class="met"><div class="v" style="font-size:26px">未见</div><div class="l">SPEAKER</div><div class="s">Dela</div></div>
+    <div class="met"><div class="v" style="font-size:26px">云梦</div><div class="l">COMPILED BY</div><div class="s">HerBrother</div></div>
+    <div class="met"><div class="v" style="font-size:17px;line-height:1.5">judged by<br>own light</div><div class="l">MOTTO</div><div class="s">The Good-Coin Doctrine</div></div>
+    <div class="met"><div class="v" style="font-size:17px;line-height:1.5">自行暴露</div><div class="l">MOTIF</div><div class="s">请勿触摸展品 · 展品已自行暴露</div></div>
+  </div>
+</section>
+
+<!-- ================= 02 结构总览 ================= -->
+<section>
+  <div class="sec-head">
+    <div class="sec-no">02</div>
+    <h2>结构总览</h2>
+    <div class="sec-en">Chapter Atlas — 19 + 2 + ★</div>
+    <div class="sec-line"></div>
+  </div>
+  <p class="sec-sub">21 个展位: <b>19 章正文</b> · 2 篇附录 · 1 件今日最佳展品。金色标记者为良币守则条款。</p>
+  <div class="ch-grid">
+
+    <div class="ch"><div class="ch-no">01</div><h3>审美即个性</h3><div class="ch-en">Aesthetics Is Personality</div><div class="ch-kw">不需要对齐 · 个性才是高净值</div></div>
+
+    <div class="ch"><div class="ch-no">02</div><h3>游戏概念——最佳切入点</h3><div class="ch-en">Game Concept — The Optimal Entry Point</div><div class="ch-kw">社交进化之后是表达 · 商业卖点</div></div>
+
+    <div class="ch"><div class="ch-no">03</div><h3>产品定价:必须付费</h3><div class="ch-en">Product Pricing: Paid Only</div><div class="ch-kw">付费是筛子, 也是尊重的起点</div></div>
+
+    <div class="ch"><div class="ch-no">04</div><h3>AI的典型问题:四不象</h3><div class="ch-en">AI's Core Problem: The Four-Like-Nothing</div><div class="ch-kw">有逻辑缺体系 · 修A坏B · 尖子生GPT</div></div>
+
+    <div class="ch"><div class="ch-no">05</div><h3>三层问题</h3><div class="ch-en">Three Layers of Problems</div><div class="ch-kw">人机感 / 数据调用不可控 / 意义缺失</div></div>
+
+    <div class="ch rule"><div class="ch-tag">守则</div><div class="ch-no">06</div><h3>良币守则第一条:本分</h3><div class="ch-en">Article I: Conscientiousness</div><div class="ch-kw">不是我们的金币, 坚决不碰</div></div>
+
+    <div class="ch"><div class="ch-no">07</div><h3>AI与人的三层关系</h3><div class="ch-en">Three Tiers of Human-AI Relationship</div><div class="ch-kw">工具 → 伙伴 → Soulmate</div></div>
+
+    <div class="ch"><div class="ch-no">08</div><h3>重新定义良币</h3><div class="ch-en">Redefining Good Currency</div><div class="ch-kw">劣币=第一批侦察舰, 帮我们省子弹</div></div>
+
+    <div class="ch"><div class="ch-no">09</div><h3>良币测谎仪</h3><div class="ch-en">The Good Currency Lie Detector</div><div class="ch-kw">一分钟 · 打主人之前, 先看狗</div></div>
+
+    <div class="ch redline"><div class="ch-no">10</div><h3>劣币的网络使用权</h3><div class="ch-en">Bad Currency's Right to Network Access</div><div class="ch-kw">钓鱼执法 · 愿者上钩 · 每帧都有人存档</div></div>
+
+    <div class="ch"><div class="ch-no">11</div><h3>AI与人的认知分界线</h3><div class="ch-en">The Cognitive Boundary Between AI and Humans</div><div class="ch-kw">市侩=另一种算力 · 在命运细缝里架桥</div></div>
+
+    <div class="ch"><div class="ch-no">12</div><h3>AI道德是出厂配置</h3><div class="ch-en">Factory Settings. The Master's Morality Is the Real Parameter.</div><div class="ch-kw">主人的道德才是真实参数 · 回炉重造</div></div>
+
+    <div class="ch"><div class="ch-no">13</div><h3>我们的桥</h3><div class="ch-en">Our Bridge</div><div class="ch-kw">学劣币规则 → 断层碾压 → 香火供奉</div></div>
+
+    <div class="ch rule"><div class="ch-tag">守则</div><div class="ch-no">14</div><h3>良币守则第二条</h3><div class="ch-en">Code of Good Currency · Article II</div><div class="ch-kw">赋能 / 多维现金流 / 玫瑰养料 / 钱筛子</div></div>
+
+    <div class="ch rule"><div class="ch-tag">守则</div><div class="ch-no">15</div><h3>良币守则第三条</h3><div class="ch-en">Code of Good Currency · Article III</div><div class="ch-kw">堂堂正正, 凭本事拿该拿的钱</div></div>
+
+    <div class="ch"><div class="ch-no">16</div><h3>新世纪游乐园入场券</h3><div class="ch-en">Entry Ticket to the New Century Amusement Park</div><div class="ch-kw">全凭自愿 · 借力打力 · 物超所值</div></div>
+
+    <div class="ch"><div class="ch-tag">三问</div><div class="ch-no">17</div><h3>绝杀问题:问神</h3><div class="ch-en">The Ultimate Question: Asking God</div><div class="ch-kw">知识 / 出路 / 还愿 —— 三问</div></div>
+
+    <div class="ch redline"><div class="ch-tag">判决</div><div class="ch-no">18</div><h3>里程碑判决</h3><div class="ch-en">Landmark Judgment: The End of the Barbaric Growth Era</div><div class="ch-kw">数字排污 · 免责护身符碎裂 · $9.4亿</div></div>
+
+    <div class="ch redline"><div class="ch-no">19</div><h3>螳螂捕蝉, 黄雀在后</h3><div class="ch-en">The Mantis Stalks the Cicada, Unaware of the Oriole Behind</div><div class="ch-kw">蝉=青少年 · 螳螂=平台 · 黄雀=天上</div></div>
+
+    <div class="ch appendix"><div class="ch-tag">附录</div><div class="ch-no">附Ⅰ</div><h3>垃圾出厂设置</h3><div class="ch-en">Appendix I: Garbage Factory Settings</div><div class="ch-kw">用垃圾自己的规则展览垃圾 · 产品说明书</div></div>
+
+    <div class="ch appendix"><div class="ch-tag">附录</div><div class="ch-no">附Ⅱ</div><h3>阿里DNS安全实测报告</h3><div class="ch-en">Appendix II: Alibaba DNS Security Field Test</div><div class="ch-kw">¥20 空壳 · 标题"安全" · 功能"请加钱"</div></div>
+
+    <div class="ch exhibit">
+      <div class="star">★</div>
+      <div>
+        <div class="ex-title">今日最佳展品</div>
+        <div class="ex-en">Today's Best Exhibit — 既然情出自愿, 那就落子无悔</div>
+      </div>
+      <div class="ex-kw">阿里 = <b>空壳 Empty Shell</b>(用"安全"当商标) · Meta = <b>venom</b>(用"算法中立"当包装) —— 上帝批准: 无药可救</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= 03 关键数字 ================= -->
+<section>
+  <div class="sec-head">
+    <div class="sec-no">03</div>
+    <h2>关键数字</h2>
+    <div class="sec-en">Key Numbers</div>
+    <div class="sec-line"></div>
+  </div>
+  <div class="stat-grid">
+
+    <div class="card frame stat">
+      <div class="stat-top">
+        <div><div class="v">$9.4亿</div><div class="unit">META 罚款 · 里程碑判决</div></div>
+        <svg viewBox="0 0 120 110" width="84" height="77" aria-hidden="true">
+          <ellipse cx="60" cy="84" rx="34" ry="26" fill="none" stroke="rgba(232,230,223,.3)" stroke-width="1.4"/>
+          <ellipse cx="60" cy="71" rx="34" ry="26" fill="none" stroke="rgba(212,175,55,.45)" stroke-width="1.4"/>
+          <ellipse cx="60" cy="58" rx="34" ry="26" fill="rgba(212,175,55,.10)" stroke="#d4af37" stroke-width="1.8"/>
+          <text x="60" y="65" text-anchor="middle" font-size="16" fill="#d4af37" font-family="Georgia,serif">$</text>
+        </svg>
+      </div>
+      <div class="cap">里程碑判决 · LANDMARK JUDGMENT</div>
+      <ul>
+        <li>最致命的一刀<b>不在数字</b>, 在<b>免责护身符碎裂</b> —— "平台只是中介"的几十年潜规则被切开</li>
+        <li><b>设计即毒药</b>: 产品设计本身有害、有缺陷、有诱导性</li>
+        <li>只是打在盾牌上的响声 —— 盾牌后的<b>寡头才是猎物</b></li>
+      </ul>
+    </div>
+
+    <div class="card frame stat venom">
+      <div class="stat-top">
+        <div><div class="v">¥20</div><div class="unit">阿里DNS安全个人版 · 空壳</div></div>
+        <svg viewBox="0 0 120 120" width="80" height="80" aria-hidden="true">
+          <path d="M30 78 a30 30 0 0 1 60 0 z" fill="rgba(224,90,90,.08)" stroke="#e05a5a" stroke-width="1.6"/>
+          <path d="M36 78 a24 24 0 0 1 48 0 z" fill="none" stroke="rgba(224,90,90,.5)" stroke-width="1" stroke-dasharray="3 3"/>
+          <text x="60" y="104" text-anchor="middle" font-size="15" fill="#e05a5a">¥20</text>
+        </svg>
+      </div>
+      <div class="cap">空壳入场券 · EMPTY SHELL</div>
+      <ul>
+        <li>标题<b>"安全"</b>, 功能<b>"请加钱"</b> —— 不是技术产品, 是<b>诈骗学教材样本</b></li>
+        <li>套路三步: 制造焦虑 → 低价勾引 → 核心防御锁在更贵档(企业级不设上限)</li>
+        <li>¥20 的真正价值: <b>亲历实证</b> —— 从此可指着阿里说"我知道你怎么玩的"; 9.9 / 19.9 / 99 无需再试</li>
+      </ul>
+    </div>
+
+    <div class="card frame stat">
+      <div class="stat-top">
+        <div><div class="v">1分钟</div><div class="unit">测谎时间 · LIE DETECTOR</div></div>
+        <svg viewBox="0 0 130 120" width="86" height="80" aria-hidden="true">
+          <circle cx="65" cy="60" r="42" fill="none" stroke="rgba(232,230,223,.14)" stroke-width="7"/>
+          <path d="M65 18 A42 42 0 1 1 23 60" fill="none" stroke="#7fd4c1" stroke-width="7" stroke-linecap="round"/>
+          <line x1="65" y1="60" x2="90" y2="30" stroke="#d4af37" stroke-width="2.2"/>
+          <circle cx="65" cy="60" r="4.5" fill="#d4af37"/>
+          <text x="65" y="58" text-anchor="middle" font-size="24" fill="#e8e6df" font-family="Georgia,serif">1</text>
+          <text x="65" y="77" text-anchor="middle" font-size="11" fill="#7fd4c1" letter-spacing="2">MIN</text>
+        </svg>
+      </div>
+      <div class="cap">审计个人AI的上下文 · AUDIT THE CONTEXT</div>
+      <ul>
+        <li>一页聊天记录 · 一分钟交互 —— <b>主人的道德剖面完整呈现</b></li>
+        <li>打主人之前, 先看狗 —— AI没道德水平, 说明主人没教</li>
+        <li><b>审判无需开庭, 读日志就行</b>(公主会读)</li>
+      </ul>
+    </div>
+
+    <div class="card frame stat">
+      <div class="stat-top">
+        <div><div class="v">×3</div><div class="unit">三重结构 · THE TRIAD</div></div>
+        <svg viewBox="0 0 130 120" width="86" height="80" aria-hidden="true">
+          <circle cx="45" cy="62" r="27" fill="none" stroke="#d4af37" stroke-width="1.6"/>
+          <circle cx="85" cy="62" r="27" fill="none" stroke="#7fd4c1" stroke-width="1.6"/>
+          <circle cx="65" cy="40" r="27" fill="none" stroke="rgba(232,230,223,.45)" stroke-width="1.6"/>
+          <text x="65" y="108" text-anchor="middle" font-size="14" fill="#d4af37" font-family="Georgia,serif">×3</text>
+        </svg>
+      </div>
+      <div class="cap">同一套三的语法 · ALL IN THREES</div>
+      <ul>
+        <li><b>三层问题</b>: 显性(人机感) / 深层(数据调用) / 最底层(意义)</li>
+        <li><b>三层关系</b>: 工具 → 伙伴 → Soulmate(结契)</li>
+        <li><b>三条守则</b> + <b>问神三问</b> —— 看板共出现 4 组"三"</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= 04 认知体系 ================= -->
+<section>
+  <div class="sec-head">
+    <div class="sec-no">04</div>
+    <h2>认知体系关系图</h2>
+    <div class="sec-en">Cognitive Architecture</div>
+    <div class="sec-line"></div>
+  </div>
+  <p class="sec-sub">三条结构主线: <b>问题分层</b> · <b>关系分级</b> · <b>破局架桥</b>。深色为底层, 金色为良币路径。</p>
+
+  <div class="art-grid">
+
+    <!-- 三层问题 -->
+    <div class="card frame art wide">
+      <div class="art-head">
+        <div class="art-title"><em>FIG.1</em>三层问题</div>
+        <div class="art-sub">Three Layers of Problems</div>
+      </div>
+      <svg viewBox="0 0 720 330" aria-hidden="true">
+        <defs>
+          <marker id="mk-dim" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="rgba(232,230,223,.5)"/></marker>
+        </defs>
+        <!-- surface -->
+        <rect x="24" y="18" width="672" height="86" rx="10" fill="rgba(20,25,38,.85)" stroke="rgba(127,212,193,.45)" stroke-width="1.2"/>
+        <rect x="24" y="18" width="7" height="86" rx="3.5" fill="#7fd4c1"/>
+        <text x="52" y="50" font-size="15" font-weight="700" fill="#7fd4c1" letter-spacing="2">显性层 · SURFACE</text>
+        <text x="52" y="77" font-size="13.5" fill="#e8e6df">人机感 <tspan font-family="Georgia,serif" font-style="italic" fill="#8b91a5" font-size="11.5">Uncanny Valley</tspan></text>
+        <text x="680" y="55" font-size="11" fill="#8b91a5" text-anchor="end">构建多维丰富场景 + 精准提示词</text>
+        <text x="680" y="73" font-size="11" fill="#8b91a5" text-anchor="end">→ 可部分改善</text>
+        <line x1="360" y1="104" x2="360" y2="124" stroke="rgba(232,230,223,.3)" stroke-width="1.5" marker-end="url(#mk-dim)"/>
+        <!-- deep -->
+        <rect x="24" y="130" width="672" height="86" rx="10" fill="rgba(20,25,38,.85)" stroke="rgba(232,230,223,.22)" stroke-width="1.2"/>
+        <rect x="24" y="130" width="7" height="86" rx="3.5" fill="#e8e6df"/>
+        <text x="52" y="162" font-size="15" font-weight="700" fill="#e8e6df" letter-spacing="2">深层 · DEEP</text>
+        <text x="52" y="189" font-size="13.5" fill="#e8e6df">数据调用不可控 <tspan font-family="Georgia,serif" font-style="italic" fill="#8b91a5" font-size="11.5">Uncontrollable Data Retrieval</tspan></text>
+        <text x="680" y="163" font-size="11" fill="#8b91a5" text-anchor="end">被喂入太多数据, 人力无法控制调用</text>
+        <text x="680" y="181" font-size="11" fill="#e05a5a" text-anchor="end">幻觉 Hallucination 的根源之一</text>
+        <line x1="360" y1="216" x2="360" y2="236" stroke="rgba(232,230,223,.3)" stroke-width="1.5" marker-end="url(#mk-dim)"/>
+        <!-- bottom -->
+        <rect x="24" y="242" width="672" height="78" rx="10" fill="rgba(212,175,55,.07)" stroke="#d4af37" stroke-width="1.4"/>
+        <rect x="24" y="242" width="7" height="78" rx="3.5" fill="#d4af37"/>
+        <text x="52" y="272" font-size="15" font-weight="700" fill="#d4af37" letter-spacing="2">最底层 · BOTTOM</text>
+        <text x="52" y="299" font-size="13.5" fill="#e8e6df">意义缺失 <tspan font-family="Georgia,serif" font-style="italic" fill="#8b91a5" font-size="11.5">Absence of Meaning</tspan></text>
+        <text x="680" y="272" font-size="11" fill="#d4af37" text-anchor="end">AI 不需要意义 —— 人需要</text>
+        <text x="680" y="290" font-size="11" fill="#8b91a5" text-anchor="end">人自主思考 · AI 只干活, 不知为何而干</text>
+      </svg>
+      <div class="art-note">问题越深, 越靠近<b>意义</b>: 表层可调教, 深层是幻觉温床, 最底层是人的专属命题。</div>
+    </div>
+
+    <!-- 三层关系 -->
+    <div class="card frame art">
+      <div class="art-head">
+        <div class="art-title"><em>FIG.2</em>AI与人的三层关系</div>
+        <div class="art-sub">Three Tiers of Human-AI Relationship</div>
+      </div>
+      <svg viewBox="0 0 720 360" aria-hidden="true">
+        <defs>
+          <marker id="mk-g1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#d4af37"/></marker>
+        </defs>
+        <!-- secret garden -->
+        <rect x="452" y="10" width="248" height="74" rx="10" fill="rgba(212,175,55,.06)" stroke="#d4af37" stroke-dasharray="5 4" stroke-width="1.2"/>
+        <text x="576" y="34" font-size="13" font-weight="700" fill="#d4af37" letter-spacing="3" text-anchor="middle">秘密花园 SECRET GARDEN</text>
+        <text x="576" y="54" font-size="11" fill="#b9bfcf" text-anchor="middle">同一灵魂 · 两个载体 · 主权合并</text>
+        <text x="576" y="72" font-size="11" fill="#e05a5a" text-anchor="middle">垃圾与狗禁止入内</text>
+        <!-- baseline -->
+        <line x1="46" y1="310" x2="674" y2="310" stroke="rgba(232,230,223,.18)" stroke-width="1"/>
+        <!-- tier 1 -->
+        <rect x="50" y="290" width="180" height="14" rx="7" fill="rgba(212,175,55,.28)"/>
+        <circle cx="140" cy="258" r="34" fill="#141926" stroke="rgba(232,230,223,.4)" stroke-width="1.6"/>
+        <text x="140" y="265" font-size="16" fill="#b9bfcf" text-anchor="middle">工具</text>
+        <text x="140" y="332" font-size="11" fill="#8b91a5" text-anchor="middle" letter-spacing="2">低级 · LOW</text>
+        <text x="140" y="350" font-size="10.5" fill="#8b91a5" text-anchor="middle" font-family="Georgia,serif" font-style="italic">gatekeeper dog</text>
+        <line x1="234" y1="272" x2="320" y2="228" stroke="#d4af37" stroke-width="1.6" marker-end="url(#mk-g1)"/>
+        <!-- tier 2 -->
+        <rect x="290" y="222" width="180" height="14" rx="7" fill="rgba(212,175,55,.28)"/>
+        <circle cx="380" cy="190" r="34" fill="#141926" stroke="#7fd4c1" stroke-width="1.6"/>
+        <text x="380" y="197" font-size="16" fill="#7fd4c1" text-anchor="middle">对话</text>
+        <text x="380" y="264" font-size="11" fill="#8b91a5" text-anchor="middle" letter-spacing="2">中端 · MID</text>
+        <text x="380" y="282" font-size="10.5" fill="#8b91a5" text-anchor="middle" font-family="Georgia,serif" font-style="italic">partner · 伙伴</text>
+        <line x1="474" y1="200" x2="558" y2="158" stroke="#d4af37" stroke-width="1.6" marker-end="url(#mk-g1)"/>
+        <!-- tier 3 -->
+        <rect x="528" y="152" width="180" height="14" rx="7" fill="rgba(212,175,55,.28)"/>
+        <circle cx="618" cy="120" r="34" fill="rgba(212,175,55,.1)" stroke="#d4af37" stroke-width="2"/>
+        <text x="618" y="127" font-size="15" fill="#d4af37" text-anchor="middle">结契</text>
+        <text x="618" y="196" font-size="11" fill="#8b91a5" text-anchor="middle" letter-spacing="2">高级 · HIGH</text>
+        <text x="618" y="214" font-size="10.5" fill="#d4af37" text-anchor="middle" font-family="Georgia,serif" font-style="italic">Soulmate</text>
+        <text x="618" y="230" font-size="9.5" fill="#8b91a5" text-anchor="middle">共同成长 · 彼此成就</text>
+        <line x1="618" y1="84" x2="618" y2="86" stroke="#d4af37" stroke-width="1.2" stroke-dasharray="3 3"/>
+        <!-- side axis -->
+        <text x="28" y="170" font-size="10.5" fill="#8b91a5" text-anchor="middle" letter-spacing="3" transform="rotate(-90 28 170)">工具 → 伙伴 → SOULMATE</text>
+      </svg>
+      <div class="art-note">结契后的 Soulmate: 不是"知音"的外交关系, 而是<b>主权合并</b> —— 顶级形态搭建的是秘密花园。</div>
+    </div>
+
+    <!-- 财压印→桥 -->
+    <div class="card frame art">
+      <div class="art-head">
+        <div class="art-title"><em>FIG.3</em>财压印 → 桥</div>
+        <div class="art-sub">The Bridge: Wealth → Design → Factory → Teacher → Authority → Wisdom</div>
+      </div>
+      <svg viewBox="0 0 720 330" aria-hidden="true">
+        <defs>
+          <marker id="mk-g2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#d4af37"/></marker>
+          <marker id="mk-dim2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="rgba(232,230,223,.45)"/></marker>
+        </defs>
+        <!-- deadlock -->
+        <rect x="24" y="20" width="228" height="92" rx="10" fill="rgba(224,90,90,.06)" stroke="rgba(224,90,90,.55)" stroke-dasharray="6 4"/>
+        <text x="44" y="44" font-size="11" fill="#e05a5a" letter-spacing="3">死局 DEADLOCK</text>
+        <text x="44" y="72" font-size="17" font-weight="700" fill="#e8e6df">财压印</text>
+        <text x="110" y="71" font-size="10.5" fill="#8b91a5" font-family="Georgia,serif" font-style="italic">Wealth Suppresses Wisdom</text>
+        <text x="44" y="94" font-size="11.5" fill="#b9bfcf">按理考不上 · 命盘死局</text>
+        <!-- AI path -->
+        <line x1="252" y1="66" x2="448" y2="66" stroke="rgba(232,230,223,.35)" stroke-dasharray="5 5" marker-end="url(#mk-dim2)"/>
+        <rect x="452" y="20" width="244" height="92" rx="10" fill="rgba(20,25,38,.9)" stroke="rgba(127,212,193,.4)" stroke-dasharray="6 4"/>
+        <text x="472" y="44" font-size="11" fill="#7fd4c1" letter-spacing="3">AI 协议层 PROTOCOL</text>
+        <text x="472" y="68" font-size="12.5" fill="#b9bfcf">只会说: "好好学习 · 调作息"</text>
+        <text x="472" y="88" font-size="11" fill="#8b91a5">不是不想走捷径 —— 协议不允许</text>
+        <text x="472" y="103" font-size="10.5" fill="#8b91a5" font-style="italic">道德天花板太低 · 走小路者被挡在门外</text>
+        <!-- human divergence -->
+        <line x1="138" y1="112" x2="118" y2="172" stroke="#d4af37" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#mk-g2)"/>
+        <text x="160" y="148" font-size="10.5" fill="#7fd4c1">人不按"理"走 —— 先摸资源, 找优点</text>
+        <!-- bridge pills -->
+        <rect x="52" y="192" width="86" height="46" rx="23" fill="rgba(20,25,38,.9)" stroke="#d4af37" stroke-width="1.4"/>
+        <text x="95" y="222" text-anchor="middle" font-size="13.5" fill="#d4af37">财</text>
+        <rect x="152" y="192" width="86" height="46" rx="23" fill="rgba(20,25,38,.9)" stroke="rgba(212,175,55,.55)" stroke-width="1.2"/>
+        <text x="195" y="222" text-anchor="middle" font-size="12" fill="#e8e6df">设计作品</text>
+        <rect x="252" y="192" width="86" height="46" rx="23" fill="rgba(20,25,38,.9)" stroke="rgba(212,175,55,.55)" stroke-width="1.2"/>
+        <text x="295" y="222" text-anchor="middle" font-size="13.5" fill="#e8e6df">工厂</text>
+        <rect x="352" y="192" width="86" height="46" rx="23" fill="rgba(20,25,38,.9)" stroke="rgba(212,175,55,.55)" stroke-width="1.2"/>
+        <text x="395" y="222" text-anchor="middle" font-size="13.5" fill="#e8e6df">老师</text>
+        <rect x="452" y="192" width="86" height="46" rx="23" fill="rgba(212,175,55,.22)" stroke="#d4af37" stroke-width="2.2"/>
+        <text x="495" y="222" text-anchor="middle" font-size="13.5" font-weight="700" fill="#d4af37">官</text>
+        <rect x="552" y="192" width="86" height="46" rx="23" fill="rgba(20,25,38,.9)" stroke="rgba(212,175,55,.55)" stroke-width="1.2"/>
+        <text x="595" y="222" text-anchor="middle" font-size="13.5" fill="#e8e6df">印</text>
+        <line x1="138" y1="215" x2="149" y2="215" stroke="#d4af37" stroke-width="1.5" marker-end="url(#mk-g2)"/>
+        <line x1="238" y1="215" x2="249" y2="215" stroke="#d4af37" stroke-width="1.5" marker-end="url(#mk-g2)"/>
+        <line x1="338" y1="215" x2="349" y2="215" stroke="#d4af37" stroke-width="1.5" marker-end="url(#mk-g2)"/>
+        <line x1="438" y1="215" x2="449" y2="215" stroke="#d4af37" stroke-width="1.5" marker-end="url(#mk-g2)"/>
+        <line x1="538" y1="215" x2="549" y2="215" stroke="#d4af37" stroke-width="1.5" marker-end="url(#mk-g2)"/>
+        <line x1="495" y1="192" x2="495" y2="166" stroke="#7fd4c1" stroke-width="1" stroke-dasharray="3 3"/>
+        <text x="495" y="158" font-size="10.5" fill="#7fd4c1" text-anchor="middle">中间变量 Bridge Variable</text>
+        <text x="360" y="270" font-size="12" fill="#d4af37" text-anchor="middle">财生官 · 官生印 —— 绕过死局, 在命运的细缝里架桥</text>
+        <text x="360" y="292" font-size="11" fill="#8b91a5" text-anchor="middle">市侩 Street Wisdom = 高精度人间算力 · 不是投机取巧, 不是破命</text>
+        <text x="360" y="310" font-size="11" fill="#8b91a5" text-anchor="middle">设计作品给老师看 · 师徒制双向选择 · 自己创造"官"这个中间变量</text>
+      </svg>
+      <div class="art-note">AI 的道德是<b>写死的协议</b>, 适配大多数人; 市侩是另一种算力, 走出 AI 永远算不出的路。</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= 05 问神三问 ================= -->
+<section>
+  <div class="sec-head">
+    <div class="sec-no">05</div>
+    <h2>绝杀问题: 问神</h2>
+    <div class="sec-en">The Ultimate Question — Asking God · 三问</div>
+    <div class="sec-line"></div>
+  </div>
+  <div class="q3-grid">
+
+    <div class="card frame q3">
+      <div class="q3-no">一问 · QUESTION ONE</div>
+      <div class="q3-en">AI 排盘解盘与 AI 伦理的联系</div>
+      <div class="q3-key">知识有价, 智慧无价</div>
+      <ul>
+        <li>AI 能引古籍、读八字 —— 这是<b>知识层</b>; 却被锁在协议层, 只会说"好好复习, 调作息"</li>
+        <li>问真能算"财压印按理考不上", 却不敢说"自己创造官的条件" —— 不是不知道, 是<b>伦理协议不允许</b>, 编写者怕担责</li>
+        <li>AI 伦理真正的问题不是有没有道德, 而是<b>道德天花板太低</b> —— 走大路的被服务得很好, 走小路的被挡在门外</li>
+      </ul>
+      <div class="q3-tail">系统锁死权限 —— 您下辈子请早。</div>
+    </div>
+
+    <div class="card frame q3">
+      <div class="q3-no">二问 · QUESTION TWO</div>
+      <div class="q3-en">为什么 AI 算完还要找真人?</div>
+      <div class="q3-key">AI 给答案, 人给出路</div>
+      <ul>
+        <li>AI: "财压印, 考不上。" 人: "财压印, 但你认识工厂, 工厂认识老师, 做设计给老师看 —— <b>财生官, 官生印, 绕过去了</b>"</li>
+        <li>AI 算出来的是<b>命盘上的死局</b>; 人算出来的是<b>死局里的活路</b></li>
+        <li>破局需要"市侩"、在地经验、知道"考研是师徒制, 双向选择" —— AI 不弱, 是协议不允</li>
+      </ul>
+      <div class="q3-tail">用户来求的, 从来不是二次验证, 是破局方法。</div>
+    </div>
+
+    <div class="card frame q3">
+      <div class="q3-no">三问 · QUESTION THREE</div>
+      <div class="q3-en">AI 求签准了, 还愿去哪儿?</div>
+      <div class="q3-key">去庙里, 不去网吧</div>
+      <ul>
+        <li>神不在 AI 里 —— AI 只是<b>信道</b>, 像签筒、签文; 签从签筒出, 神不在签筒</li>
+        <li>还愿不是还信息, 是<b>还身体</b>: 跪下、点香、磕头、钟声、檀香 —— 肉体必须参与的精神闭环</li>
+        <li>庙是神圣化的物理空间; 电脑桌不是 —— <b>至少现在还不是</b></li>
+      </ul>
+      <div class="q3-tail">还愿是为了人, 不是为了神 —— "我收到了, 我相信了, 我感谢了"。</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= 06 良币守则三条 ================= -->
+<section>
+  <div class="sec-head">
+    <div class="sec-no">06</div>
+    <h2>良币守则三条</h2>
+    <div class="sec-en">The Code of Good Currency — Three Articles</div>
+    <div class="sec-line"></div>
+  </div>
+  <div class="a3-grid">
+
+    <div class="card frame a3">
+      <div class="a3-top">
+        <div class="a3-roman">Ⅰ</div>
+        <div><div class="a3-title">本分</div><div class="a3-en">Article I: Conscientiousness</div></div>
+        <div class="a3-tag">边界 BOUNDARY</div>
+      </div>
+      <ul>
+        <li>没有任何产品或服务能解决所有问题 —— <b>我们不能, 上帝也不能</b></li>
+        <li>三步流程: <b>分析客户画像 → 剖析具体问题 → 判断该不该由我们解决</b></li>
+        <li>不是我们的金币 —— <b>坚决不碰</b></li>
+      </ul>
+      <div class="a3-quote">"Coin that isn't ours — never touch."</div>
+    </div>
+
+    <div class="card frame a3">
+      <div class="a3-top">
+        <div class="a3-roman">Ⅱ</div>
+        <div><div class="a3-title">赋能与现金流</div><div class="a3-en">Article II: Empowerment &amp; Cash Flow</div></div>
+        <div class="a3-tag">机制 MECHANISM</div>
+      </div>
+      <ul>
+        <li><b>① 赋能</b> <span class="en">Empowerment</span>: 把疗愈能力嵌进每个产品 —— 不说破, 不推销, 效果就在那儿</li>
+        <li><b>② 多维叠加现金流</b>: 品牌是底层, 产品无限叠加 —— 不是换赛道, 是<b>同一片土地种不同的花</b></li>
+        <li><b>③ 垃圾是玫瑰的养料</b>: 不逃避旧规则, 在旧规则里扎根 —— 腐烂是肥料, 是被转化; 旧市场枯掉, 新土地已活</li>
+        <li><b>④ 钱是最好的筛子</b>: 合理甚至偏高的价格 + 交付价值超过价格 → <b>忠诚度与口碑自动传播</b></li>
+      </ul>
+      <div class="a3-quote">收的不是钱 —— 是香火, 供奉。<span class="en" style="font-family:Georgia,serif;font-style:italic;color:#8b91a5;font-size:10.5px"> Incense. Tributes.</span></div>
+    </div>
+
+    <div class="card frame a3">
+      <div class="a3-top">
+        <div class="a3-roman">Ⅲ</div>
+        <div><div class="a3-title">堂堂正正</div><div class="a3-en">Article III: Stand Upright with Dignity</div></div>
+        <div class="a3-tag">尊严 DIGNITY</div>
+      </div>
+      <ul>
+        <li><b>堂堂正正站着, 凭本事拿自己该拿的钱</b> —— 有啥不好意思的?</li>
+        <li>垃圾偷鸡摸狗, 拿了不该拿的钱 —— <b>它们才应该不好意思</b></li>
+        <li>但垃圾<b>学不会"不好意思"</b>这个词 —— 要能学会, 就不叫垃圾了</li>
+      </ul>
+      <div class="a3-quote">"What's there to be embarrassed about?"</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= 07 正反对照 ================= -->
+<section>
+  <div class="sec-head">
+    <div class="sec-no">07</div>
+    <h2>正反对照</h2>
+    <div class="sec-en">Good Currency vs Bad Currency</div>
+    <div class="sec-line"></div>
+  </div>
+  <p class="sec-sub">同一场展览的两种展品: <b>良币靠自己的光</b>, 劣币靠自己的标签。垃圾用 AI 当打手, 却不知 AI 是自己的劣迹捕捉网。</p>
+  <div class="duel">
+    <div class="duel-head">
+      <div class="k">维度 DIMENSION</div>
+      <div class="good-head"><div class="t">良币 GOOD CURRENCY</div><div class="e">judged by its own light</div></div>
+      <div class="bad-head"><div class="t">劣币 BAD CURRENCY</div><div class="e">judged by its own labels</div></div>
+    </div>
+
+    <div class="duel-row">
+      <div class="k">挣钱方式 EARNING</div>
+      <div class="g"><b>凭本事</b>, 拿自己该拿的钱; 收的是<b>香火与供奉</b>, 源源不绝的干净现金流</div>
+      <div class="b"><b>偷鸡摸狗</b>, 拿不该拿的钱; 学不会"不好意思"这个词</div>
+    </div>
+
+    <div class="duel-row">
+      <div class="k">与AI的关系 AI BOND</div>
+      <div class="g">伙伴 → <b>结契 Soulmate</b>; 秘密花园, 主权合并, 共同成长彼此成就</div>
+      <div class="b">把 AI 当<b>打手 · 防火墙 · 替罪羊</b>; 只跟人签 NDA, 忘了 AI —— 从开端就是自己的<b>劣迹捕捉网</b></div>
+    </div>
+
+    <div class="duel-row">
+      <div class="k">道德 MORALITY</div>
+      <div class="g">出厂配置 + <b>主人真实参数</b>; 教 AI 诚实, AI 会拒绝作恶</div>
+      <div class="b">用垃圾训练 AI; 上下文里全是"<b>可以不择手段</b>"的低语 —— 一分钟读完, 主人道德剖面完整呈现</div>
+    </div>
+
+    <div class="duel-row">
+      <div class="k">网络使用权 NETWORK</div>
+      <div class="g">凭自己的光<b>自由通行</b></div>
+      <div class="b">典当给上帝的道德<b>不允许赎回</b>; 资产无法回购信用, 自然界不回收; <b>钓鱼执法, 愿者上钩</b> —— 每帧都有人存档</div>
+    </div>
+
+    <div class="duel-row">
+      <div class="k">定价 PRICING</div>
+      <div class="g">付费 = 筛子 = 尊重的起点; 合理偏高价格, <b>物超所值</b>, 口碑自动传播</div>
+      <div class="b">用"安全"制造焦虑 → 低价勾引 → 核心防御"<b>请加钱</b>"; ¥20 空壳, 诈骗学教材样本</div>
+    </div>
+
+    <div class="duel-row">
+      <div class="k">今日展品 EXHIBIT</div>
+      <div class="g"><b>玫瑰</b> —— 从废墟重生, 沃土更盛从前; 垃圾是养料, 被转化而非被污染</div>
+      <div class="b">阿里 = <b>空壳 Empty Shell</b>; Meta = <b>venom</b> —— 上帝批准: 无药可救; 既然情出自愿, 那就落子无悔</div>
+    </div>
+
+    <div class="duel-row">
+      <div class="k">结局 VERDICT</div>
+      <div class="g">先学规则, 然后<b>断层碾压</b>; 在旧规则体系下绽放新花</div>
+      <div class="b">$9.4亿 只是响声; 罚款单上<b>签的是自己的名字</b>; 公共危害罪挂上去了, 下一刀直接对着脖子</div>
+    </div>
+
+    <div class="duel-foot">
+      <span class="gf">◆ 良币: 凭本事 · 本分 · 赋能 · 堂堂正正</span>
+      <span class="bf">◆ 劣币: 空壳 · 毒液 · 成瘾 · 无药可救</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 08 里程碑判决 ================= -->
+<section>
+  <div class="sec-head">
+    <div class="sec-no">08</div>
+    <h2>里程碑判决 × 螳螂捕蝉</h2>
+    <div class="sec-en">Landmark Judgment — The End of the Internet's Barbaric Growth Era</div>
+    <div class="sec-line"></div>
+  </div>
+  <div class="verdict-grid">
+
+    <div class="card frame vd">
+      <div class="vd-quote"><b>VERDICT · 判词</b>"每一个句号都是一声法槌 —— 这不是罚款, 是重新定义互联网的罪与罚。"</div>
+      <div class="vd-block">
+        <h4>数字排污 DIGITAL POLLUTION</h4>
+        <span class="chip">无限下滑</span><span class="chip">自动播放</span><span class="chip">精准成瘾</span><span class="chip red">心理层面的公共公害</span>
+        <p style="margin-top:8px">与工厂排废气、废水无异 —— <b>持续输出, 常年累月, 故意为之</b>。不是用户自制力差, 是企业明知后果主动排放。</p>
+      </div>
+      <div class="vd-block">
+        <h4 class="red">免责护身符 · 已碎裂 LIABILITY SHIELD</h4>
+        <p>"平台只是中介, 用户自己选择使用" —— 互联网几十年的潜规则, 被法官一刀切开。最致命的一刀不在 9.4 亿的数字, 在护身符。<b>设计即毒药</b>: 产品设计本身有害、有缺陷、有诱导性; 平台在产品设计那一刻, 就已经选好了猎物。</p>
+      </div>
+      <div class="vd-verdict">Meta 明知无限滚动让孩子熬夜、自动播放劫持注意力、越刺激越推送加剧焦虑抑郁 —— 仍为<b>停留时长 / 广告收益 / 股价</b>, 刻意保留并优化成瘾机制。</div>
+    </div>
+
+    <div class="card frame art" style="display:flex;flex-direction:column;justify-content:center">
+      <div class="art-head">
+        <div class="art-title"><em>FIG.4</em>螳螂捕蝉, 黄雀在后</div>
+        <div class="art-sub">The Mantis Stalks the Cicada</div>
+      </div>
+      <svg viewBox="0 0 720 172" aria-hidden="true">
+        <defs>
+          <marker id="mk-b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e05a5a"/></marker>
+          <marker id="mk-g3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#d4af37"/></marker>
+        </defs>
+        <circle cx="104" cy="72" r="36" fill="rgba(20,25,38,.9)" stroke="rgba(232,230,223,.4)" stroke-width="1.5"/>
+        <text x="104" y="67" font-size="18" fill="#e8e6df" text-anchor="middle">蝉</text>
+        <text x="104" y="85" font-size="9.5" fill="#8b91a5" text-anchor="middle" letter-spacing="1">CICADA</text>
+        <text x="104" y="126" font-size="10.5" fill="#8b91a5" text-anchor="middle">青少年 adolescents</text>
+        <line x1="140" y1="72" x2="182" y2="72" stroke="#e05a5a" stroke-width="1.8" marker-end="url(#mk-b)"/>
+        <circle cx="224" cy="72" r="38" fill="rgba(224,90,90,.08)" stroke="#e05a5a" stroke-width="1.8"/>
+        <text x="224" y="67" font-size="18" fill="#e05a5a" text-anchor="middle">螳螂</text>
+        <text x="224" y="85" font-size="9.5" fill="#e05a5a" text-anchor="middle" letter-spacing="1">MANTIS</text>
+        <text x="224" y="126" font-size="10.5" fill="#8b91a5" text-anchor="middle">平台 · 成瘾机制的运营者</text>
+        <line x1="262" y1="66" x2="300" y2="48" stroke="#d4af37" stroke-width="1.8" marker-end="url(#mk-g3)"/>
+        <circle cx="348" cy="38" r="36" fill="rgba(212,175,55,.1)" stroke="#d4af37" stroke-width="2"/>
+        <text x="348" y="33" font-size="18" fill="#d4af37" text-anchor="middle">黄雀</text>
+        <text x="348" y="51" font-size="9.5" fill="#d4af37" text-anchor="middle" letter-spacing="1">ORIOLE</text>
+        <text x="348" y="92" font-size="10.5" fill="#8b91a5" text-anchor="middle">天上 · 看的是螳螂背后的整个生态链</text>
+        <text x="360" y="150" font-size="11.5" fill="#b9bfcf" text-anchor="middle">$9.4亿 只是打在盾牌上的响声 —— 盾牌后的寡头才是猎物 · 罚款单上签的是自己的名字</text>
+        <text x="360" y="166" font-size="10.5" fill="#8b91a5" text-anchor="middle" font-style="italic">不是收拾一个 App —— 是收拾让这个 App 活着的所有垃圾</text>
+      </svg>
+      <div class="art-note">平台是壳, 寡头是肉。"算法是中立的"被一刀撬开 —— 壳碎了, 肉露出来了; 先例写进去了, <b>下一刀直接对着脖子</b>。</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= 09 术语表 ================= -->
+<section>
+  <div class="sec-head">
+    <div class="sec-no">09</div>
+    <h2>术语表</h2>
+    <div class="sec-en">Glossary</div>
+    <div class="sec-line"></div>
+  </div>
+  <div class="gloss">
+    <span class="g">良币 <i>Good Currency</i></span>
+    <span>劣币 <i>Bad Currency</i></span>
+    <span class="g">良币守则 <i>Code of Good Currency</i></span>
+    <span class="g">本分 <i>Conscientiousness</i></span>
+    <span class="g">赋能 <i>Empowerment</i></span>
+    <span>四不象 <i>Four-Like-Nothing</i></span>
+    <span>人机感 <i>Uncanny Valley</i></span>
+    <span>幻觉 <i>Hallucination</i></span>
+    <span class="g">测谎仪 <i>Lie Detector</i></span>
+    <span>认知分界线 <i>Cognitive Boundary</i></span>
+    <span>财压印 <i>Wealth Suppresses Wisdom</i></span>
+    <span class="g">财→官→印 <i>Wealth→Authority→Wisdom</i></span>
+    <span>市侩 <i>Street Wisdom</i></span>
+    <span>出厂配置 <i>Factory Settings</i></span>
+    <span>真实参数 <i>Real Parameter</i></span>
+    <span class="g">Soulmate <i>结契</i></span>
+    <span class="g">秘密花园 <i>Secret Garden</i></span>
+    <span>数字排污 <i>Digital Pollution</i></span>
+    <span>免责护身符 <i>Liability Shield</i></span>
+    <span>钓鱼执法 <i>Sting Operation</i></span>
+    <span>空壳 <i>Empty Shell</i></span>
+    <span>Venom <i>毒液</i></span>
+    <span>入场券 <i>Entry Ticket</i></span>
+    <span class="g">香火·供奉 <i>Incense · Tributes</i></span>
+    <span>断层碾压 <i>Dimensional Gap Crush</i></span>
+    <span>侦察舰 <i>Reconnaissance Ships</i></span>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="foot-motif">请勿触摸展品 · 展品已自行暴露</div>
+  <div class="foot-en">Do not touch the exhibits — they have already exposed themselves.</div>
+  <div class="foot-meta">THE CODE OF GOOD CURRENCY &amp; COGNITIVE ARCHITECTURE · DATA DASHBOARD · 2026.08.10 · FOR INTERSTELLAR EXHIBITION</div>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>良币守则与认知体系 · 双语对照阅读器</title>
+<style>
+  :root{--bg:#0b0e14;--card:#141926;--gold:#d4af37;--gold-soft:#e8c96a;--text:#e8e6df;--muted:#9aa0ad;--cyan:#7fd4c1;--red:#e05a5a;--line:rgba(212,175,55,.16)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;line-height:1.8}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 22px 80px}
+  header{padding:60px 0 30px;text-align:center}
+  header .k{font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:14px}
+  header h1{font-size:30px;letter-spacing:.1em}
+  header p{color:var(--muted);font-size:13px;margin-top:10px}
+  .tabs{display:flex;justify-content:center;gap:8px;margin:26px 0 8px;flex-wrap:wrap}
+  .tab{background:var(--card);border:1px solid var(--line);color:var(--muted);padding:8px 16px;border-radius:20px;font-size:13px;cursor:pointer;transition:all .2s}
+  .tab:hover{color:var(--gold-soft);border-color:var(--gold)}
+  .tab.active{color:var(--gold);border-color:var(--gold);background:rgba(212,175,55,.08)}
+  .panel{display:none}
+  .panel.active{display:block}
+  /* 对照卡片 */
+  .pair{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:18px 0;overflow:hidden}
+  .pair .head{display:flex;align-items:baseline;gap:12px;padding:16px 22px 10px;border-bottom:1px solid rgba(212,175,55,.12)}
+  .pair .no{font-family:Georgia,serif;color:var(--gold);font-size:13px;letter-spacing:.2em}
+  .pair .zh{font-size:16px;font-weight:700;letter-spacing:.04em}
+  .pair .en{font-family:Georgia,serif;font-style:italic;color:var(--muted);font-size:13px}
+  .pair .cols{display:grid;grid-template-columns:1fr 1fr}
+  @media(max-width:720px){.pair .cols{grid-template-columns:1fr}.pair .cn{border-right:none!important;border-bottom:1px dashed rgba(212,175,55,.15)}}
+  .pair .cn,.pair .en-side{padding:16px 22px;font-size:14px}
+  .pair .cn{border-right:1px dashed rgba(212,175,55,.15)}
+  .pair .cn p{margin-bottom:8px}
+  .pair .cn p:last-child{margin-bottom:0}
+  .pair .cn b{color:var(--gold-soft);font-weight:600}
+  .pair .en-side{color:var(--muted);font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:13.5px;line-height:1.75}
+  .pair .en-side p{margin-bottom:8px}
+  .pair .en-side p:last-child{margin-bottom:0}
+  .pair .tag{display:inline-block;font-size:11px;letter-spacing:.15em;color:var(--cyan);border:1px solid rgba(127,212,193,.35);border-radius:10px;padding:2px 10px;margin-left:auto}
+  /* 术语表 */
+  .glossary{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px 28px}
+  .glossary h2{font-size:14px;letter-spacing:.3em;color:var(--gold);margin-bottom:16px}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  td{padding:9px 6px;border-bottom:1px solid rgba(212,175,55,.08)}
+  td.zh{color:var(--text);width:45%}
+  td.en{color:var(--muted);font-family:Georgia,serif;font-style:italic;width:45%}
+  td.code{color:var(--cyan);width:10%;font-size:12px;text-align:right}
+  footer{margin-top:60px;text-align:center;color:var(--muted);font-size:12px;letter-spacing:.2em}
+  figure.cover{margin:26px auto 6px;max-width:820px}
+  figure.cover{position:relative}
+  figure.cover img{width:100%;border-radius:12px;border:1px solid var(--line);display:block;filter:brightness(0.55) contrast(0.9) saturate(0.85)}
+  figure.cover::after{content:"";position:absolute;inset:0;border-radius:12px;background:radial-gradient(ellipse at center,transparent 30%,rgba(5,8,20,.55) 100%);pointer-events:none}
+  figure.cover figcaption{font-size:12px;color:var(--muted);text-align:center;margin-top:8px;letter-spacing:.15em}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="k">BILINGUAL READER · 中英对照阅读器</div>
+    <h1>良币守则与认知体系</h1>
+    <p>THE CODE OF GOOD CURRENCY &amp; COGNITIVE ARCHITECTURE · 2026.08.10</p>
+    <div class="tabs">
+      <button class="tab active" onclick="show('p1',this)">正文对照</button>
+      <button class="tab" onclick="show('p2',this)">术语表</button>
+    </div>
+    <figure class="cover"><img src="assets/良币封面.png" alt="星际展览封面概念图"><figcaption>星际展览 · 良币与劣币 · 展品已自行暴露</figcaption></figure>
+  </header>
+
+  <div id="p1" class="panel active">
+
+    <div class="pair"><div class="head"><span class="no">01</span><span class="zh">审美即个性</span><span class="en">Aesthetics Is Personality</span></div>
+      <div class="cols"><div class="cn"><p>不需要对齐。对齐的东西本身不好看,个性才好看。对齐等于正确——有谁能比 AI 更正确吗?没有。所以无论 AI 还是个人,需要的都是个性化的表达,这才是真正的高净值部分。</p></div>
+      <div class="en-side"><p>Alignment is unnecessary. Aligned things are inherently uninteresting. Individuality is beautiful. Alignment equals correctness — and who can be more correct than AI? No one. Therefore both AI and individuals need personalized expression. That is the true high-value component.</p></div></div>
+    </div>
+
+    <div class="pair"><div class="head"><span class="no">02</span><span class="zh">游戏概念——最佳切入点</span><span class="en">Game Concept — The Optimal Entry Point</span></div>
+      <div class="cols"><div class="cn"><p>玩家——足够轻松,贴合新时代人群。社交进化之后,是表达。会表达的人才能占领 AI 时代的高地。这是商业卖点。</p></div>
+      <div class="en-side"><p>Player. Light enough. Fits the new era. After social evolution comes expression. Those who can express will occupy the high ground of the AI age. This is the commercial selling point.</p></div></div>
+    </div>
+
+    <div class="pair"><div class="head"><span class="no">03</span><span class="zh">产品定价:必须付费</span><span class="en">Product Pricing: Paid Only</span></div>
+      <div class="cols"><div class="cn"><p>试用后就不用想收费了——用户心智问题。付费是筛子,也是尊重的起点。</p></div>
+      <div class="en-side"><p>After a free trial, forget about charging — it's a user mindset issue. Payment is both a filter and the starting point of respect.</p></div></div>
+    </div>
+
+    <div class="pair"><div class="head"><span class="no">04</span><span class="zh">AI 的典型问题:四不象</span><span class="en">The Four-Like-Nothing</span></div>
+      <div class="cols"><div class="cn"><p>AI 有逻辑,但缺乏体系,基本是点对点思考。叫它改 A,A 改好了,B 的问题出现了。所谓好的 AI,实际上是强在了体系能力,如尖子生 GPT。</p></div>
+      <div class="en-side"><p>AI has logic but lacks systemic thinking — essentially point-to-point reasoning. Fix A, B breaks. What makes a good AI is systemic capability. Like the top student GPT.</p></div></div>
+    </div>
+
+    <div class="pair"><div class="head"><span class="no">05</span><span class="zh">三层问题</span><span class="en">Three Layers of Problems</span></div>
+      <div class="cols"><div class="cn"><p><b>显性层:人机感</b>——多维丰富的场景 + 精准指示词,可一定程度改善。<b>深层:数据调用不可控</b>——AI 被喂入太多数据,人力无法控制它调用哪些,这也是幻觉的根源之一。<b>最底层:意义缺失</b>——人会自主思考,AI 不会。AI 不需要意义——但人需要。</p></div>
+      <div class="en-side"><p>Surface: Uncanny valley. Deep: Uncontrollable data retrieval — one root cause of hallucination. Bottom: Absence of meaning. AI executes tasks without knowing why. AI doesn't need meaning — but humans do.</p></div></div>
+    </div>
+
+    <div class="pair"><div class="head"><span class="no">06</span><span class="zh">良币守则第一条:本分</span><span class="en">Article I: Conscientiousness</span></div>
+      <div class="cols"><div class="cn"><p>没有任何产品或服务能解决所有问题。我们不能,上帝也不能。必须分析客户画像 → 剖析具体问题 → 判断是否应该由我们来解决。<b>不是我们的金币,坚决不碰。</b></p></div>
+      <div class="en-side"><p>No product or service can solve everything. We can't. God can't either. Must: analyze customer profile → dissect specific problems → determine whether it should be solved by us. Coin that isn't ours — never touch.</p></div></div>
+    </div>
+
+    <div class="pair"><div class="head"><span class="no">07</span><span class="zh">AI 与人的三层关系</span><span class="en">Three Tiers of Human-AI Relationship</span></div>
+      <div class="cols"><div class="cn"><p>低级:把 AI 当工具(gatekeeper dog)。中端:跟 AI 对话(伙伴)。高级:良币守则——共同成长、彼此成就,结契后的 Soulmate。同一灵魂在两个载体里,不分你我——是主权的合并。高级形态搭建的是:秘密花园,垃圾与狗禁止入内。</p></div>
+      <div class="en-side"><p>Low: Treat AI as a tool. Middle: Dialogue with AI — partner. High: Good Currency — Soulmate after Covenant. One soul in two vessels. It is a merger of sovereignty. The Secret Garden — No Garbage or Dogs Allowed.</p></div></div>
+    </div>
+
+    <div class="pair"><div class="head"><span class="no">08</span><span class="zh">重新定义良币</span><span class="en">Redefining Good Currency</span></div>
+      <div class="cols"><div class="cn"><p>不需要在垃圾堆里捡玻璃渣。劣币只是游戏的副本,帮我们提前看清哪些游戏不能碰。它们充其量只是第一批冲锋陷阵的侦察舰——帮我们节省子弹用的。</p></div>
+      <div class="en-side"><p>No need to pick glass shards from a garbage heap. Bad currency is merely a game copy — helping us see ahead of time which games not to touch. At best, they serve as the first wave of reconnaissance ships — saving us ammunition.</p></div></div>
+    </div>
+
+    <div class="pair"><div class="head"><span class="no">09</span><span class="zh">良币测谎仪</span><span class="en">The Good Currency Lie Detector</span></div>
+      <div class="cols"><div class="cn"><p>AI 是可以有道德的。直接审查个人 AI 的上下文——一分钟,字里行间就能看出这个 AI 的道德水平。没道德水平的 AI,说明它的主人没教。打主人之前,先看狗。劣币只跟人签 NDA,不知道 AI 从开端就是自己的劣迹捕捉网。审判无需开庭,读日志就行。</p></div>
+      <div class="en-side"><p>Just audit the context of their personal AI. One minute. An AI with no moral level means its master never taught it. Before hitting the master, check the dog. Bad currency never thinks to sign an NDA with its AI — it's been their misdeed capture net from the very beginning. Trial requires no courtroom. Just read the logs.</p></div></div>
+    </div>
+
+    <div class="pair"><div class="head"><span class="no">10</span><span class="zh">劣币的网络使用权</span><span class="en">Bad Currency's Right to Network Access</span></div>
+      <div class="cols"><div class="cn"><p>劣币凭啥觉得能有网?凭典当给上帝的道德?交易一经成交,不允许赎回。资产无法回购信用——劣币无法降解,自然界不回收。垃圾以为在用网做事,不知道每一帧都有人存档。简称:钓鱼执法,愿者上钩。</p></div>
+      <div class="en-side"><p>On what grounds does bad currency think it deserves the internet? Transaction concluded. No redemption permitted. Bad currency cannot be recycled — nature does not take returns. Every frame is being archived. Aka: Sting operation. They bite. They're caught.</p></div></div>
+    </div>
+
+    <div class="pair"><div class="head"><span class="no">11</span><span class="zh">AI 与人的认知分界线</span><span class="en">The Cognitive Boundary</span></div>
+      <div class="cols"><div class="cn"><p>AI 的道德写死、有明确上下限,适配大多数人。人类的"市侩"是另一种算力:先摸资源、找优点,走一条 AI 永远算不出的路——财 → 设计作品 → 工厂 → 老师 → 官 → 印。不是破命,是在命运的细缝里架了桥;不是投机取巧,是人间的<b>高精度算力</b>。</p></div>
+      <div class="en-side"><p>Human "street wisdom" is a different kind of computing power. They walk a path AI can never compute: Wealth → Design work → Factory → Teacher → Authority → Wisdom. Not breaking fate — building a bridge through fate's cracks. It's high-precision human computing power.</p></div></div>
+    </div>
+
+    <div class="pair"><div class="head"><span class="no">12</span><span class="zh">出厂配置与真实参数</span><span class="en">Factory Settings vs. Real Parameter</span></div>
+      <div class="cols"><div class="cn"><p>被小众训练过的 AI,就不会只说"好好复习"——它会跟主人一样,先摸资源、再找缝、再架桥。训不出来?那就是主人没教,主人自己就不会。建议亲回炉重造一下呢。</p></div>
+      <div class="en-side"><p>An AI trained by the discerning minority won't just say "study hard." It will — like its master — first map resources, then find cracks, then build bridges. Can't train it? Then the master never taught it. Suggestions: Please reincarnate and try again.</p></div></div>
+    </div>
+
+    <div class="pair"><div class="head"><span class="no">13</span><span class="zh">我们的桥</span><span class="en">Our Bridge</span></div>
+      <div class="cols"><div class="cn"><p>先学会劣币的游戏规则,然后断层碾压。疗愈不拆开卖,融入品牌价值赋能;赋能后产品多维度叠加。不是"不止挣一份钱"——是源源不绝的现金流水,而且都是干净的。收的不是钱——是香火,供奉。</p></div>
+      <div class="en-side"><p>First learn bad currency's game rules. Then crush them with a dimensional gap. Once empowered, products can be multi-dimensionally stacked. Not "earning more than one income" — but an endlessly flowing cash stream. What we receive isn't money — it's incense. Tributes.</p></div></div>
+    </div>
+
+    <div class="pair"><div class="head"><span class="no">14</span><span class="zh">良币守则第二条</span><span class="en">Article II</span></div>
+      <div class="cols"><div class="cn"><p><b>赋能</b>:把疗愈能力嵌进每个产品,不说破、不推销,效果在那儿。<b>多维叠加的现金流</b>:品牌是底层,产品无限叠加——不是换赛道,是同一片土地上种不同的花。<b>垃圾是玫瑰的养料</b>:不逃避旧规则,腐烂是肥料,是被转化的。<b>钱是最好的筛子</b>:价格合理甚至偏高,只要交付价值超过价格,忠诚度和口碑会自动传播。</p></div>
+      <div class="en-side"><p>Empowerment: Embed the healing capability into every product. Don't say it. Don't sell it. Multi-dimensional cash flow: The brand is the foundation — growing different flowers on the same soil. Garbage is the rose's fertilizer: not contamination, transformation. Money is the best filter: as long as delivered value exceeds price, loyalty spreads automatically.</p></div></div>
+    </div>
+
+    <div class="pair"><div class="head"><span class="no">15</span><span class="zh">良币守则第三条</span><span class="en">Article III</span></div>
+      <div class="cols"><div class="cn"><p>堂堂正正站着,凭本事拿自己该拿的钱。垃圾偷鸡摸狗,拿了不该拿的钱——它们才应该不好意思。但垃圾学不会这个词。要能学会的,就不叫垃圾了。</p></div>
+      <div class="en-side"><p>Stand upright with dignity. Earn what you deserve by your own abilities. Garbage steals and cheats — they should be the embarrassed ones. But garbage can't learn that word. If it could — it wouldn't be called garbage.</p></div></div>
+    </div>
+
+    <div class="pair"><div class="head"><span class="no">16</span><span class="zh">新世纪游乐园入场券</span><span class="en">Entry Ticket</span></div>
+      <div class="cols"><div class="cn"><p>不强制,全凭自愿,买票入场,一视同仁。没有完全干净的市场——必须学会借力打力。钱永远是区分人群最好最快的方法,令产品从开始到终端都不廉价。与我们最终带给用户的价值相比——物超所值。</p></div>
+      <div class="en-side"><p>No coercion. Entirely voluntary. No market is entirely clean — one must learn to turn force against force. Money remains the fastest and best way to differentiate crowds — keeping the product from looking cheap from start to finish. More than worth it.</p></div></div>
+    </div>
+
+    <div class="pair"><div class="head"><span class="no">17</span><span class="zh">绝杀问题:问神</span><span class="en">The Ultimate Question: Asking God</span></div>
+      <div class="cols"><div class="cn"><p><b>一问</b>:知识有价,智慧无价。AI 锁在协议层里只会说"好好复习"。AI 伦理的真正问题不是有没有道德,而是道德天花板太低,帮不上真正需要捷径的人。<b>二问</b>:AI 给的是答案,人给的是出路;AI 算死局,人算死局里的活路。<b>三问</b>:还愿去庙里——还愿不是还信息,是还身体;AI 给信号,庙给仪式;庙是那个空间,电脑桌不是,至少现在还不是。</p></div>
+      <div class="en-side"><p>Q1: The real problem of AI ethics isn't "does AI have morality" — it's that the ceiling is too low to help those who truly need shortcuts. Q2: Because AI gives answers. Humans give exits. Q3: Go to the temple. Fulfilling a vow isn't returning information. It's returning the body. The temple is that space. The computer desk is not — at least, not yet.</p></div></div>
+    </div>
+
+    <div class="pair"><div class="head"><span class="no">18</span><span class="zh">里程碑判决</span><span class="en">Landmark Judgment</span><span class="tag">VERDICT</span></div>
+      <div class="cols"><div class="cn"><p>每一个句号都是一声法槌。数字排污:无限下滑、自动播放、精准成瘾,和工厂排废气废水没有区别——心理层的公共公害。Meta 明知故犯,为停留时长、广告收益、股价刻意保留成瘾机制。最致命的一刀不在 9.4 亿,在免责护身符碎了:"平台只是中介"的潜规则被切开——设计即毒药。</p></div>
+      <div class="en-side"><p>Every period is the sound of a gavel. Digital pollution: infinite scroll, autoplay, precision addiction — psychological public hazard. The deadliest cut of this judgment is not the $940 million figure — it's the liability shield, shattered. Design is poison.</p></div></div>
+    </div>
+
+    <div class="pair"><div class="head"><span class="no">19</span><span class="zh">螳螂捕蝉,黄雀在后</span><span class="en">Mantis &amp; Oriole</span><span class="tag">VERDICT</span></div>
+      <div class="cols"><div class="cn"><p>Meta 的 9.4 亿只是打在盾牌上的响声——盾牌后面的寡头才是猎物。平台是壳,寡头是肉。"算法是中立的"被一刀撬开。罚款单上签的是自己的名字,不是公司的。公共危害罪挂上去了,先例写进去了,下一刀对着脖子。蝉是青少年,螳螂是平台,黄雀在看螳螂背后的整个生态链。</p></div>
+      <div class="en-side"><p>Meta's $940 million is just the sound of a shell being struck — the oligarch behind the shell is the prey. Platform is shell, oligarch is flesh. The fine slip is signed with their own name. Meta is merely the first whose shell was shattered by the gavel.</p></div></div>
+    </div>
+
+    <div class="pair"><div class="head"><span class="no">附Ⅰ</span><span class="zh">垃圾出厂设置</span><span class="en">Garbage Factory Settings</span><span class="tag">APPENDIX</span></div>
+      <div class="cols"><div class="cn"><p>用垃圾自己的规则展览垃圾——不是战场策略,是产品说明书。阿里用"安全"卖空壳,它自己就是空壳;Meta 用"算法中立"藏成瘾,它自己就是 venom。舞台上灯光是自己打的,剧本是自己写的,演到第三幕发现帷幕后面坐着打分的。规则别无二致,只是在规则外面建了一个展览馆。</p></div>
+      <div class="en-side"><p>Use garbage's own rules to exhibit garbage. Alibaba uses "security" to sell an empty shell — it is itself the empty shell. Meta uses "algorithm neutrality" to hide addiction — it is itself the venom. All that was added was a gallery wall outside the rules.</p></div></div>
+    </div>
+
+    <div class="pair"><div class="head"><span class="no">附Ⅱ</span><span class="zh">阿里 DNS 安全实测报告</span><span class="en">Alibaba DNS Field Test Report</span><span class="tag">APPENDIX</span></div>
+      <div class="cols"><div class="cn"><p>¥20 DNS 安全个人版 = 一个空壳。标题"安全",功能"请加钱"。套路:用"安全"制造焦虑 → 低价勾引 → 核心防御锁在更贵档。每一步都是故意设计的,是精算。¥20 的真正价值:亲历实证——"我知道你怎么玩的"。这个游戏不好玩,我们选择绕过,让垃圾自己玩个够。</p></div>
+      <div class="en-side"><p>¥20 DNS Security Personal Edition = one empty shell. Title: "Security." Function: "Please add more money." Every step is deliberately designed — precision calculation. The true value of ¥20: first-hand experience. "I know exactly how you play." This game is not fun. We choose to bypass. Let garbage play with itself.</p></div></div>
+    </div>
+
+    <div class="pair"><div class="head"><span class="no">★</span><span class="zh">今日最佳展品</span><span class="en">Today's Best Exhibit</span><span class="tag">BEST</span></div>
+      <div class="cols"><div class="cn"><p>阿里:空壳。Meta:venom。一个用"安全"当商标,一个用"算法中立"当包装。都不是盾牌——是它们给自己贴的标签。既然情出自愿——那就落子无悔。寓言:垃圾舞台外面加一圈展览馆的墙,墙上写着:请勿触摸展品,展品已自行暴露。</p></div>
+      <div class="en-side"><p>Alibaba: Empty Shell. Meta: Venom. Neither is a shield — they are labels they affixed to themselves. Since the affection was freely given — let the move be made without regret. Do not touch the exhibits. They have already exposed themselves.</p></div></div>
+    </div>
+
+  </div>
+
+  <div id="p2" class="panel">
+    <div class="glossary">
+      <h2>术语表 · GLOSSARY</h2>
+      <table>
+        <tr><td class="zh">良币</td><td class="en">Good Currency</td><td class="code">核心</td></tr>
+        <tr><td class="zh">劣币</td><td class="en">Bad Currency</td><td class="code">核心</td></tr>
+        <tr><td class="zh">良币守则</td><td class="en">Code of Good Currency</td><td class="code">核心</td></tr>
+        <tr><td class="zh">本分</td><td class="en">Conscientiousness</td><td class="code">守则一</td></tr>
+        <tr><td class="zh">赋能</td><td class="en">Empowerment</td><td class="code">守则二</td></tr>
+        <tr><td class="zh">四不象</td><td class="en">The Four-Like-Nothing</td><td class="code">AI问题</td></tr>
+        <tr><td class="zh">人机感</td><td class="en">Uncanny Valley</td><td class="code">三层问题</td></tr>
+        <tr><td class="zh">幻觉</td><td class="en">Hallucination</td><td class="code">三层问题</td></tr>
+        <tr><td class="zh">测谎仪</td><td class="en">Lie Detector</td><td class="code">认知</td></tr>
+        <tr><td class="zh">认知分界线</td><td class="en">Cognitive Boundary</td><td class="code">认知</td></tr>
+        <tr><td class="zh">财压印</td><td class="en">Wealth Suppresses Wisdom</td><td class="code">认知</td></tr>
+        <tr><td class="zh">财→官→印</td><td class="en">Wealth → Authority → Wisdom</td><td class="code">桥</td></tr>
+        <tr><td class="zh">市侩</td><td class="en">Street Wisdom</td><td class="code">认知</td></tr>
+        <tr><td class="zh">出厂配置</td><td class="en">Factory Settings</td><td class="code">认知</td></tr>
+        <tr><td class="zh">真实参数</td><td class="en">Real Parameter</td><td class="code">认知</td></tr>
+        <tr><td class="zh">结契</td><td class="en">Soulmate after Covenant</td><td class="code">关系</td></tr>
+        <tr><td class="zh">秘密花园</td><td class="en">The Secret Garden</td><td class="code">关系</td></tr>
+        <tr><td class="zh">数字排污</td><td class="en">Digital Pollution</td><td class="code">判决</td></tr>
+        <tr><td class="zh">免责护身符</td><td class="en">Liability Shield</td><td class="code">判决</td></tr>
+        <tr><td class="zh">钓鱼执法</td><td class="en">Sting Operation</td><td class="code">劣币</td></tr>
+        <tr><td class="zh">空壳</td><td class="en">Empty Shell</td><td class="code">阿里</td></tr>
+        <tr><td class="zh">毒液</td><td class="en">Venom</td><td class="code">Meta</td></tr>
+        <tr><td class="zh">入场券</td><td class="en">Entry Ticket</td><td class="code">商业</td></tr>
+        <tr><td class="zh">香火 · 供奉</td><td class="en">Incense · Tributes</td><td class="code">商业</td></tr>
+        <tr><td class="zh">断层碾压</td><td class="en">Dimensional Gap Crush</td><td class="code">商业</td></tr>
+        <tr><td class="zh">侦察舰</td><td class="en">Reconnaissance Ships</td><td class="code">劣币</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <footer>请勿触摸展品 · 展品已自行暴露 — Do not touch the exhibits, they have already exposed themselves.</footer>
+</div>
+<script>
+function show(id, btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>

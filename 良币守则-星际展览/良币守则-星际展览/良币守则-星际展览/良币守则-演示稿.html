@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>良币守则与认知体系 · 星际展览演示稿</title>
+<style>
+  /* ============ 基础 / 深空展览馆 ============ */
+  :root{
+    --bg:#0b0e14;
+    --gold:#d4af37;
+    --text:#e8e6df;
+    --teal:#7fd4c1;
+    --red:#e05a5a;
+    --card:#141926;
+    --dim:rgba(232,230,223,.55);
+    --faint:rgba(232,230,223,.32);
+    --line:rgba(212,175,55,.26);
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  /* 星空 */
+  body::before{
+    content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      radial-gradient(1px 1px at 12% 22%, rgba(255,255,255,.55), transparent 100%),
+      radial-gradient(1px 1px at 28% 68%, rgba(255,255,255,.4), transparent 100%),
+      radial-gradient(1.5px 1.5px at 43% 14%, rgba(255,255,255,.5), transparent 100%),
+      radial-gradient(1px 1px at 58% 42%, rgba(255,255,255,.35), transparent 100%),
+      radial-gradient(1.5px 1.5px at 71% 76%, rgba(255,255,255,.45), transparent 100%),
+      radial-gradient(1px 1px at 84% 26%, rgba(255,255,255,.5), transparent 100%),
+      radial-gradient(1px 1px at 91% 58%, rgba(255,255,255,.35), transparent 100%),
+      radial-gradient(1.5px 1.5px at 6% 86%, rgba(255,255,255,.4), transparent 100%),
+      radial-gradient(1px 1px at 36% 92%, rgba(255,255,255,.3), transparent 100%),
+      radial-gradient(1px 1px at 66% 6%, rgba(255,255,255,.4), transparent 100%),
+      radial-gradient(1px 1px at 96% 90%, rgba(255,255,255,.35), transparent 100%),
+      radial-gradient(1200px 700px at 82% 12%, rgba(212,175,55,.06), transparent 60%),
+      radial-gradient(900px 600px at 8% 88%, rgba(127,212,193,.04), transparent 60%);
+  }
+  .serif{ font-family:"Songti SC","STSong","SimSun",Georgia,"Times New Roman",serif; }
+  .latin{ font-family:Georgia,"Times New Roman",serif; }
+
+  /* ============ 幻灯片(无 JS 时按序滚动阅读) ============ */
+  .slide{
+    position:relative; z-index:1;
+    min-height:100vh;
+    display:flex; flex-direction:column;
+    padding:44px clamp(28px,6vw,96px) 96px;
+    border-bottom:1px solid rgba(212,175,55,.12);
+  }
+  .slide::before{
+    content:""; position:absolute; top:0; left:0; right:0; height:2px;
+    background:linear-gradient(90deg, transparent, rgba(212,175,55,.5), rgba(212,175,55,.08) 60%, transparent);
+  }
+  /* 页码大数字 */
+  .slide-index{
+    position:absolute; bottom:10px; left:clamp(20px,4vw,60px);
+    font-family:Georgia,serif; font-size:clamp(44px,6vw,72px); line-height:1;
+    color:rgba(212,175,55,.13); letter-spacing:2px; pointer-events:none;
+    user-select:none;
+  }
+  /* 右下角 · 展览馆气质 */
+  .foot-note{
+    position:absolute; bottom:16px; right:clamp(20px,4vw,60px);
+    text-align:right; font-size:11px; letter-spacing:2px;
+    color:var(--faint); pointer-events:none;
+  }
+  .foot-note em{ font-style:normal; font-size:10px; letter-spacing:1.5px; }
+
+  /* ============ 页头 ============ */
+  .slide-top{
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-size:11px; letter-spacing:3px; color:var(--faint);
+    border-bottom:1px solid rgba(212,175,55,.14); padding-bottom:10px;
+  }
+  .slide-top .tag{ color:var(--gold); letter-spacing:2px; font-size:11px; }
+  .slide-title{
+    margin:34px 0 6px;
+    font-family:"Songti SC","STSong","SimSun",Georgia,serif;
+    font-weight:600; letter-spacing:6px;
+    font-size:clamp(30px,5vw,52px); color:var(--text);
+  }
+  .slide-title .tnum{
+    color:var(--gold); font-family:Georgia,serif; font-weight:400;
+    font-size:.62em; letter-spacing:2px; margin-right:18px; vertical-align:8px;
+  }
+  .slide-sub{
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:clamp(13px,1.5vw,17px); color:var(--gold); letter-spacing:2px;
+    margin-bottom:26px;
+  }
+  .slide-body{ flex:1; }
+
+  /* ============ 卡片 ============ */
+  .grid{ display:grid; gap:22px; }
+  .g3{ grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); }
+  .g2{ grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); }
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:3px;
+    padding:24px 26px; position:relative;
+    transition:border-color .25s, transform .25s;
+  }
+  .card:hover{ border-color:rgba(212,175,55,.5); transform:translateY(-2px); }
+  .card-label{
+    font-size:10px; letter-spacing:3px; color:var(--gold);
+    font-family:Georgia,serif; margin-bottom:10px; display:flex; align-items:center; gap:8px;
+  }
+  .card-label::after{ content:""; flex:1; height:1px; background:rgba(212,175,55,.18); }
+  .card h3{
+    font-size:19px; font-weight:600; letter-spacing:2px; margin-bottom:4px;
+    font-family:"Songti SC","STSong","SimSun",Georgia,serif;
+  }
+  .card h3 .en{ display:block; font-family:Georgia,serif; font-size:11px; font-weight:400;
+    color:var(--gold); letter-spacing:2px; margin-top:2px; }
+  .card p{ font-size:14.5px; color:rgba(232,230,223,.86); margin-top:10px; }
+  .card p + p{ margin-top:6px; }
+  .card .hl{ color:var(--gold); }
+  .card .danger{ color:var(--red); }
+  .card .teal{ color:var(--teal); }
+  .card.danger-card{ border-color:rgba(224,90,90,.35); }
+  .card.danger-card .card-label{ color:var(--red); }
+  .card.danger-card .card-label::after{ background:rgba(224,90,90,.2); }
+
+  /* 术语 chip */
+  .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+  .chip{
+    font-size:11px; letter-spacing:1px; color:var(--gold);
+    border:1px solid rgba(212,175,55,.35); border-radius:999px; padding:2px 12px;
+    background:rgba(212,175,55,.05);
+  }
+  .chip i{ font-style:normal; font-family:Georgia,serif; font-size:10px; opacity:.75; margin-left:5px; }
+  .chip.red{ color:var(--red); border-color:rgba(224,90,90,.4); background:rgba(224,90,90,.05); }
+
+  /* 金句 */
+  .bigquote{
+    font-family:"Songti SC","STSong","SimSun",Georgia,serif;
+    font-size:clamp(21px,3.2vw,38px); letter-spacing:4px; line-height:1.6;
+    color:var(--gold); text-align:center; padding:10px 0;
+  }
+  .bigquote small{
+    display:block; font-family:Georgia,serif; font-size:clamp(11px,1.3vw,14px);
+    letter-spacing:3px; color:var(--faint); margin-top:10px;
+  }
+  .quotebar{
+    border-left:2px solid var(--gold); padding-left:16px;
+    font-family:"Songti SC","STSong","SimSun",Georgia,serif;
+    font-size:clamp(16px,2vw,22px); letter-spacing:2px; color:var(--text);
+  }
+  .quotebar small{ display:block; font-family:Georgia,serif; font-size:11px; color:var(--gold); letter-spacing:2px; margin-top:6px; }
+
+  /* 步骤/路径 */
+  .flow{
+    display:flex; flex-wrap:wrap; align-items:center; gap:8px; justify-content:center;
+    font-family:Georgia,"Songti SC",serif; color:var(--gold); font-size:clamp(13px,1.6vw,17px);
+    letter-spacing:1px; margin-top:16px;
+  }
+  .flow .step{
+    background:var(--card); border:1px solid var(--line); border-radius:3px;
+    padding:8px 16px; color:var(--text); white-space:nowrap;
+  }
+  .flow .step b{ color:var(--gold); font-weight:400; }
+  .flow .arrow{ color:var(--gold); opacity:.7; }
+
+  /* 列表要点 */
+  .points{ list-style:none; margin-top:14px; }
+  .points li{
+    position:relative; padding:8px 0 8px 30px; font-size:15px; color:rgba(232,230,223,.9);
+    border-bottom:1px dashed rgba(212,175,55,.12);
+  }
+  .points li:last-child{ border-bottom:none; }
+  .points li::before{
+    content:"◆"; position:absolute; left:2px; top:8px; font-size:11px; color:var(--gold);
+  }
+  .points li b{ color:var(--gold); font-weight:600; }
+
+  /* 目录 */
+  .map-grid{ display:grid; gap:22px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); }
+  .map-card{
+    background:var(--card); border:1px solid var(--line); border-radius:3px; padding:22px 24px;
+  }
+  .map-card h4{
+    font-size:13px; letter-spacing:4px; color:var(--gold); margin-bottom:12px;
+    font-weight:600; display:flex; align-items:center; gap:10px;
+  }
+  .map-card h4::after{ content:""; flex:1; height:1px; background:rgba(212,175,55,.16); }
+  .map-card a{
+    display:flex; gap:12px; align-items:baseline; text-decoration:none; color:rgba(232,230,223,.82);
+    padding:7px 6px; font-size:14px; border-radius:2px; letter-spacing:1px;
+    transition:background .2s, color .2s;
+  }
+  .map-card a:hover{ background:rgba(212,175,55,.07); color:var(--gold); }
+  .map-card a .no{ font-family:Georgia,serif; color:var(--gold); font-size:12px; min-width:34px; }
+  .map-card a .t{ flex:1; }
+  .map-card a .t small{ display:block; font-family:Georgia,serif; font-size:10px; color:var(--faint); letter-spacing:1px; }
+  .map-card a .pno{ font-family:Georgia,serif; font-size:10px; color:var(--faint); }
+
+  /* 关键数字 */
+  .nums{ display:flex; flex-wrap:wrap; justify-content:center; gap:clamp(16px,3vw,44px); margin-top:30px; }
+  .num{ text-align:center; }
+  .num b{ display:block; font-family:Georgia,serif; font-weight:400; font-size:clamp(22px,3vw,34px); color:var(--gold); }
+  .num b.red{ color:var(--red); }
+  .num span{ font-size:11px; letter-spacing:2px; color:var(--faint); }
+
+  /* 封面 */
+  .cover{ justify-content:center; align-items:center; text-align:center; padding-bottom:110px; }
+  .cover .kicker{ font-size:12px; letter-spacing:8px; color:var(--faint); margin-bottom:6px; }
+  .cover .kicker b{ color:var(--gold); font-weight:400; }
+  .cover h1{
+    font-family:"Songti SC","STSong","SimSun",Georgia,serif;
+    font-size:clamp(44px,8.5vw,96px); font-weight:600; letter-spacing:18px; line-height:1.25;
+    margin:26px 0 10px;
+  }
+  .cover .subtitle{
+    font-family:Georgia,serif; font-size:clamp(12px,1.8vw,19px); letter-spacing:5px; color:var(--gold);
+  }
+  .cover .rule{ width:min(420px,60vw); height:1px; margin:36px auto; background:linear-gradient(90deg,transparent,var(--gold),transparent); }
+  .cover .slogan{ font-size:clamp(13px,1.7vw,17px); letter-spacing:2px; color:rgba(232,230,223,.8); }
+  .cover .meta{ margin-top:40px; font-size:12px; letter-spacing:3px; color:var(--faint); line-height:2.2; }
+  .cover .meta b{ color:rgba(232,230,223,.75); font-weight:400; }
+  .coins{ display:flex; gap:22px; justify-content:center; margin:34px 0 6px; }
+  .coin{
+    width:clamp(46px,6vw,62px); height:clamp(46px,6vw,62px); border-radius:50%;
+    border:2px solid var(--gold); background:radial-gradient(circle at 34% 28%, rgba(212,175,55,.4), rgba(212,175,55,.06) 62%);
+    display:flex; align-items:center; justify-content:center;
+    font-family:"Songti SC",serif; font-size:clamp(16px,2.2vw,24px); color:var(--gold); letter-spacing:0;
+    box-shadow:0 0 24px rgba(212,175,55,.12), inset 0 0 12px rgba(212,175,55,.1);
+  }
+
+  /* 终章 */
+  .finale{ justify-content:center; align-items:center; text-align:center; padding-bottom:110px; }
+  .finale .f-kicker{ font-size:12px; letter-spacing:6px; color:var(--gold); }
+  .finale h2{
+    font-family:"Songti SC","STSong","SimSun",Georgia,serif;
+    font-size:clamp(34px,6vw,68px); letter-spacing:12px; margin:20px 0 8px; font-weight:600;
+  }
+  .finale .wall{
+    margin:40px auto; padding:30px clamp(24px,4vw,60px);
+    border:1px solid rgba(212,175,55,.4); background:var(--card); max-width:640px; border-radius:3px;
+  }
+  .finale .wall .line1{ font-family:"Songti SC",serif; font-size:clamp(20px,3vw,32px); letter-spacing:8px; color:var(--gold); }
+  .finale .wall .line2{ font-family:"Songti SC",serif; font-size:clamp(16px,2.2vw,24px); letter-spacing:6px; color:var(--text); margin-top:8px; }
+  .finale .wall em{ display:block; font-family:Georgia,serif; font-style:normal; font-size:11px; letter-spacing:2px; color:var(--faint); margin-top:12px; }
+  .finale .end-slogan{ font-family:Georgia,serif; font-size:clamp(12px,1.6vw,16px); letter-spacing:3px; color:var(--faint); margin-top:44px; }
+
+  /* ============ JS 增强: 全屏翻页 ============ */
+  .deck-progress{ display:none; }
+  .deck-nav{ display:none; }
+  body.deck{ overflow:hidden; }
+  body.deck .slide{ display:none; height:100vh; min-height:0; overflow:hidden; }
+  body.deck .slide.active{ display:flex; }
+  body.deck .slide-body{ overflow-y:auto; }
+  body.deck .deck-progress{
+    display:block; position:fixed; top:0; left:0; height:2px; z-index:60;
+    background:linear-gradient(90deg,var(--gold),var(--teal));
+    width:6.66%; transition:width .35s ease;
+  }
+  body.deck .deck-nav{
+    display:flex; position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
+    align-items:center; gap:18px; z-index:60;
+    background:rgba(11,14,20,.88); border:1px solid rgba(212,175,55,.35);
+    padding:9px 22px; border-radius:999px; backdrop-filter:blur(8px);
+    box-shadow:0 6px 30px rgba(0,0,0,.5);
+  }
+  .deck-nav .nav-btn{
+    background:none; border:none; color:var(--gold); font-size:17px; cursor:pointer;
+    font-family:Georgia,serif; padding:2px 10px; transition:opacity .2s;
+  }
+  .deck-nav .nav-btn:hover{ opacity:.7; }
+  .deck-nav .nav-count{ font-family:Georgia,serif; font-size:12px; letter-spacing:3px; color:var(--gold); min-width:76px; text-align:center; }
+
+  @media print{
+    .deck-progress,.deck-nav{ display:none !important; }
+    body.deck{ overflow:visible; }
+    body.deck .slide{ display:flex; height:auto; min-height:100vh; page-break-after:always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= 01 · 封面 ================= -->
+<section class="slide cover" id="s1" data-num="01">
+  <div class="kicker">E X H I B I T I O N&nbsp;&nbsp;N O T E S&nbsp;&nbsp;·&nbsp;&nbsp;<b>FOR INTERSTELLAR EXHIBITION</b></div>
+  <div class="coins"><div class="coin">良</div><div class="coin">币</div><div class="coin">守</div></div>
+  <h1>良币守则与认知体系</h1>
+  <div class="subtitle">THE CODE OF GOOD CURRENCY &amp; COGNITIVE ARCHITECTURE</div>
+  <div class="rule"></div>
+  <p class="slogan">The Good-Coin Doctrine — in space, all coins are judged by their own light.</p>
+  <div class="meta">
+    中英双语对照版 · BILINGUAL EDITION<br>
+    二〇二六年八月十日 · AUGUST 10, 2026<br>
+    发言人 <b>未见 · Dela</b> &nbsp;·&nbsp; 整理 <b>云梦 · HerBrother</b><br>
+    33 页 · 19 章 + 2 附录 · 一场关于良币与劣币的审判预演
+  </div>
+  <div class="slide-index">01</div>
+  <div class="foot-note">请勿触摸展品 · 展品已自行暴露<br><em>Do not touch the exhibits — they have already exposed themselves.</em></div>
+</section>
+
+<!-- ================= 02 · 导览 ================= -->
+<section class="slide" id="s2" data-num="02">
+  <div class="slide-top"><span>EXHIBITION NOTES · 良币守则与认知体系</span><span class="tag">GALLERY MAP</span></div>
+  <h1 class="slide-title"><span class="tnum">II</span>导览 · 观展路线</h1>
+  <p class="slide-sub">Gallery Map — five halls, one verdict</p>
+  <div class="slide-body">
+    <div class="map-grid">
+      <div class="map-card">
+        <h4>序厅 · 症候</h4>
+        <a href="#s3"><span class="no">01</span><span class="t">审美即个性<small>Aesthetics Is Personality</small></span><span class="pno">P3</span></a>
+        <a href="#s3"><span class="no">02</span><span class="t">游戏概念 — 最佳切入点<small>Game Concept</small></span><span class="pno">P3</span></a>
+        <a href="#s3"><span class="no">03</span><span class="t">产品定价：必须付费<small>Product Pricing: Paid Only</small></span><span class="pno">P3</span></a>
+        <a href="#s4"><span class="no">04</span><span class="t">AI的典型问题：四不象<small>The Four-Like-Nothing</small></span><span class="pno">P4</span></a>
+        <a href="#s4"><span class="no">05</span><span class="t">三层问题<small>Three Layers of Problems</small></span><span class="pno">P4</span></a>
+      </div>
+      <div class="map-card">
+        <h4>第一展区 · 守则</h4>
+        <a href="#s5"><span class="no">06</span><span class="t">第一条 · 本分<small>Article I: Conscientiousness</small></span><span class="pno">P5</span></a>
+        <a href="#s5"><span class="no">08</span><span class="t">重新定义良币<small>Redefining Good Currency</small></span><span class="pno">P5</span></a>
+        <a href="#s6"><span class="no">14</span><span class="t">第二条 · 赋能<small>Article II: Empowerment</small></span><span class="pno">P6</span></a>
+        <a href="#s7"><span class="no">15</span><span class="t">第三条 · 堂堂正正<small>Article III</small></span><span class="pno">P7</span></a>
+        <a href="#s7"><span class="no">16</span><span class="t">新世纪游乐园入场券<small>Entry Ticket</small></span><span class="pno">P7</span></a>
+      </div>
+      <div class="map-card">
+        <h4>第二展区 · 认知</h4>
+        <a href="#s8"><span class="no">09</span><span class="t">良币测谎仪<small>The Good Currency Lie Detector</small></span><span class="pno">P8</span></a>
+        <a href="#s8"><span class="no">10</span><span class="t">劣币的网络使用权<small>Bad Currency's Right to Network</small></span><span class="pno">P8</span></a>
+        <a href="#s9"><span class="no">11</span><span class="t">AI与人的认知分界线<small>The Cognitive Boundary</small></span><span class="pno">P9</span></a>
+        <a href="#s10"><span class="no">12</span><span class="t">道德：出厂配置与真实参数<small>Factory Settings · Real Parameter</small></span><span class="pno">P10</span></a>
+        <a href="#s10"><span class="no">13</span><span class="t">我们的桥<small>Our Bridge</small></span><span class="pno">P10</span></a>
+      </div>
+      <div class="map-card">
+        <h4>终幕 · 审判</h4>
+        <a href="#s11"><span class="no">17</span><span class="t">绝杀问题：问神三问<small>Asking God</small></span><span class="pno">P11</span></a>
+        <a href="#s12"><span class="no">18</span><span class="t">里程碑判决<small>Landmark Judgment</small></span><span class="pno">P12</span></a>
+        <a href="#s13"><span class="no">19</span><span class="t">螳螂捕蝉，黄雀在后<small>The Mantis &amp; the Oriole</small></span><span class="pno">P13</span></a>
+      </div>
+      <div class="map-card">
+        <h4>附录 · 证物</h4>
+        <a href="#s14"><span class="no">附Ⅰ</span><span class="t">垃圾出厂设置<small>Garbage Factory Settings</small></span><span class="pno">P14</span></a>
+        <a href="#s14"><span class="no">附Ⅱ</span><span class="t">阿里DNS安全实测<small>Alibaba DNS Field Test</small></span><span class="pno">P14</span></a>
+        <a href="#s15"><span class="no">★</span><span class="t">今日最佳展品<small>Today's Best Exhibit</small></span><span class="pno">P15</span></a>
+      </div>
+    </div>
+    <div class="nums">
+      <div class="num"><b>¥20</b><span>空壳入场券</span></div>
+      <div class="num"><b>$9.4亿</b><span>里程碑法槌</span></div>
+      <div class="num"><b>1分钟</b><span>测谎时间</span></div>
+      <div class="num"><b>3</b><span>条守则 · 层问题 · 问神三问</span></div>
+    </div>
+  </div>
+  <div class="slide-index">02</div>
+  <div class="foot-note">请勿触摸展品 · 展品已自行暴露<br><em>Do not touch the exhibits — they have already exposed themselves.</em></div>
+</section>
+
+<!-- ================= 03 · 序厅 ================= -->
+<section class="slide" id="s3" data-num="03">
+  <div class="slide-top"><span>EXHIBITION NOTES · 良币守则与认知体系</span><span class="tag">EXHIBIT 01 — 03</span></div>
+  <h1 class="slide-title"><span class="tnum">I–III</span>序厅 · 入场须知</h1>
+  <p class="slide-sub">Prelude — aesthetics, games and the price of respect</p>
+  <div class="slide-body">
+    <div class="grid g3">
+      <div class="card">
+        <div class="card-label">EXHIBIT 01</div>
+        <h3>审美即个性<span class="en">Aesthetics Is Personality</span></h3>
+        <p>不需要对齐。对齐等于正确——有谁能比 AI 更正确吗？<span class="hl">没有。</span></p>
+        <p>对齐的东西本身不好看，个性才好看。无论 AI 还是人，需要的都是个性化表达——那才是真正的高净值部分。</p>
+        <div class="chips"><span class="chip">个性<small>个性高净值</small></span><span class="chip">对齐 <i>Alignment</i></span></div>
+      </div>
+      <div class="card">
+        <div class="card-label">EXHIBIT 02</div>
+        <h3>游戏概念 — 最佳切入点<span class="en">Game Concept · The Optimal Entry Point</span></h3>
+        <p>玩家定位：足够轻，贴合新时代人群。</p>
+        <p>社交进化之后，是表达。<span class="hl">会表达的人，占领 AI 时代的高地</span>——这是商业卖点。</p>
+        <div class="chips"><span class="chip">表达 <i>Expression</i></span><span class="chip">玩家 <i>Player</i></span></div>
+      </div>
+      <div class="card">
+        <div class="card-label">EXHIBIT 03</div>
+        <h3>产品定价：必须付费<span class="en">Product Pricing: Paid Only</span></h3>
+        <p>试用之后就不用想收费了——用户心智问题。</p>
+        <p>付费是筛子，也是<span class="hl">尊重的起点</span>。</p>
+        <div class="chips"><span class="chip">付费 <i>Paid Only</i></span><span class="chip">筛子 <i>Filter</i></span></div>
+      </div>
+    </div>
+    <p class="quotebar" style="margin-top:30px;">有谁能比 AI 更正确吗？没有。所以更需要的是个性，不是对齐。<small>Alignment equals correctness — but individuality is the true high-value component.</small></p>
+  </div>
+  <div class="slide-index">03</div>
+  <div class="foot-note">请勿触摸展品 · 展品已自行暴露<br><em>Do not touch the exhibits — they have already exposed themselves.</em></div>
+</section>
+
+<!-- ================= 04 · AI之疾 ================= -->
+<section class="slide" id="s4" data-num="04">
+  <div class="slide-top"><span>EXHIBITION NOTES · 良币守则与认知体系</span><span class="tag">EXHIBIT 04 — 05</span></div>
+  <h1 class="slide-title"><span class="tnum">IV–V</span>诊断室 · AI 之疾</h1>
+  <p class="slide-sub">Diagnosis — the core problem and its three layers</p>
+  <div class="slide-body">
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-label">EXHIBIT 04</div>
+        <h3>四不象<span class="en">The Four-Like-Nothing</span></h3>
+        <p>AI 有逻辑，但缺乏体系——基本是<span class="hl">点对点思考</span>：叫它改 A，A 好了，B 的问题出现了。旧问题的解决，伴随新问题的诞生。</p>
+        <p>所谓好的 AI，实际上是强在<span class="teal">体系能力</span>——如尖子生 GPT。</p>
+        <div class="chips"><span class="chip">四不象 <i>Four-Like-Nothing</i></span><span class="chip teal">体系 <i>System</i></span></div>
+      </div>
+      <div class="card danger-card">
+        <div class="card-label">EXHIBIT 05</div>
+        <h3>三层问题<span class="en">Three Layers of Problems</span></h3>
+        <ul class="points">
+          <li><b>显性层 · 人机感</b> <span class="teal">Uncanny Valley</span> —— 多维丰富场景 + 精准提示词，可部分改善</li>
+          <li><b>深层 · 数据调用不可控</b> —— 喂入数据太多，人力无法控制调用，<span class="danger">幻觉 Hallucination</span> 的根源之一</li>
+          <li><b>最底层 · 意义缺失</b> —— AI 不需要意义，<span class="hl">但人需要</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="quotebar" style="margin-top:30px;">AI 只知道干活，不知道这些活为什么而干。<small>AI doesn't need meaning — but humans do.</small></p>
+  </div>
+  <div class="slide-index">04</div>
+  <div class="foot-note">请勿触摸展品 · 展品已自行暴露<br><em>Do not touch the exhibits — they have already exposed themselves.</em></div>
+</section>
+
+<!-- ================= 05 · 守则第一条 ================= -->
+<section class="slide" id="s5" data-num="05">
+  <div class="slide-top"><span>EXHIBITION NOTES · 良币守则与认知体系</span><span class="tag">THE CODE · ARTICLE I</span></div>
+  <h1 class="slide-title"><span class="tnum">第壹条</span>本分</h1>
+  <p class="slide-sub">Code of Good Currency · Article I: Conscientiousness</p>
+  <div class="slide-body">
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-label">守则正文</div>
+        <ul class="points">
+          <li>没有任何产品或服务能解决所有问题——<b>我们不能，上帝也不能</b></li>
+          <li>流程：分析客户画像 → 剖析具体问题 → <b>判断是否该由我们解决</b></li>
+          <li>不是我们的金币，<b>坚决不碰</b></li>
+        </ul>
+        <div class="chips"><span class="chip">本分 <i>Conscientiousness</i></span><span class="chip">良币 <i>Good Currency</i></span></div>
+      </div>
+      <div class="card">
+        <div class="card-label">注脚展品 · EXHIBIT 08</div>
+        <h3>重新定义良币<span class="en">Redefining Good Currency</span></h3>
+        <p>不需要在垃圾堆里捡玻璃渣。</p>
+        <p>劣币只是游戏的副本——<span class="teal">第一批侦察舰 <i>Reconnaissance Ships</i></span>，冲锋陷阵，帮我们省子弹：提前看清哪些游戏不能碰。</p>
+      </div>
+    </div>
+    <div class="bigquote" style="margin-top:34px;">不是我们的金币，坚决不碰。<small>Coin that isn't ours — never touch.</small></div>
+  </div>
+  <div class="slide-index">05</div>
+  <div class="foot-note">请勿触摸展品 · 展品已自行暴露<br><em>Do not touch the exhibits — they have already exposed themselves.</em></div>
+</section>
+
+<!-- ================= 06 · 守则第二条 ================= -->
+<section class="slide" id="s6" data-num="06">
+  <div class="slide-top"><span>EXHIBITION NOTES · 良币守则与认知体系</span><span class="tag">THE CODE · ARTICLE II</span></div>
+  <h1 class="slide-title"><span class="tnum">第贰条</span>赋能</h1>
+  <p class="slide-sub">Code of Good Currency · Article II: Empowerment</p>
+  <div class="slide-body">
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-label">① 赋能</div>
+        <h3>把疗愈嵌进每个产品<span class="en">Empowerment</span></h3>
+        <p>不卖解决方案，卖使用过程：用户买 AI 工具、剧本课、创作服务——<span class="hl">使用中被疗愈</span>。不说破，不推销，效果就在那儿。</p>
+      </div>
+      <div class="card">
+        <div class="card-label">② 多维叠加现金流</div>
+        <h3>同一片土地，种不同的花<span class="en">Multi-Dimensional Cash Flow</span></h3>
+        <p>品牌是底层，产品无限叠加：今天剧本课，明天 AI 训练，后天出海咨询——<span class="hl">不是换赛道</span>。源源不绝，且都是干净的现金流。</p>
+      </div>
+      <div class="card">
+        <div class="card-label">③ 垃圾是玫瑰的养料</div>
+        <h3>腐烂是肥料，不是污染<span class="en">Garbage Is the Rose's Fertilizer</span></h3>
+        <p>不逃避旧规则，在旧规则里扎根。垃圾的腐烂是<span class="teal">被转化</span>的——玫瑰从废墟重生，沃土更盛从前。旧市场枯掉，新土地已经活了。</p>
+      </div>
+      <div class="card">
+        <div class="card-label">④ 钱是最好的筛子</div>
+        <h3>价格即尊重<span class="en">Money Is the Best Filter</span></h3>
+        <p>付费用户认真对待产品，白嫖用户只是背景噪音。价格太低永远被怀疑"不够好"——<span class="hl">合理甚至偏高的价格</span>，只要交付价值超过价格，忠诚度与口碑自动传播。</p>
+      </div>
+    </div>
+    <div class="chips" style="justify-content:center; margin-top:26px;">
+      <span class="chip">赋能 <i>Empowerment</i></span><span class="chip">品牌赋能 <i>Brand Empowerment</i></span><span class="chip">多维叠加 <i>Multi-Dimensional</i></span>
+    </div>
+  </div>
+  <div class="slide-index">06</div>
+  <div class="foot-note">请勿触摸展品 · 展品已自行暴露<br><em>Do not touch the exhibits — they have already exposed themselves.</em></div>
+</section>
+
+<!-- ================= 07 · 守则第三条 ================= -->
+<section class="slide" id="s7" data-num="07">
+  <div class="slide-top"><span>EXHIBITION NOTES · 良币守则与认知体系</span><span class="tag">THE CODE · ARTICLE III</span></div>
+  <h1 class="slide-title"><span class="tnum">第叁条</span>堂堂正正</h1>
+  <p class="slide-sub">Code of Good Currency · Article III — stand upright, earn what you deserve</p>
+  <div class="slide-body">
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-label">守则正文</div>
+        <p style="font-size:16px;">堂堂正正站着，<span class="hl">凭本事拿自己该拿的钱</span>。有啥不好意思的？</p>
+        <p>垃圾偷鸡摸狗，拿了不该拿的钱——它们才应该不好意思。</p>
+        <p>但垃圾学不会这个词。<span class="danger">要能学会，就不叫垃圾了。</span></p>
+        <div class="chips"><span class="chip">堂堂正正 <i>Stand Upright</i></span></div>
+      </div>
+      <div class="card">
+        <div class="card-label">附展品 · EXHIBIT 16</div>
+        <h3>新世纪游乐园入场券<span class="en">Entry Ticket to the New Century Amusement Park</span></h3>
+        <p>不强制，全凭自愿，买票入场，一视同仁。没有完全干净的市场——学会<span class="teal">借力打力</span>，在旧规则体系下绽放新花。</p>
+        <p>钱是区分人群最快最好的方法，令产品从开始到终端都不廉价。相比最终交付的价值——<span class="hl">物超所值</span>。</p>
+        <div class="chips"><span class="chip">入场券 <i>Entry Ticket</i></span><span class="chip">借力打力</span></div>
+      </div>
+    </div>
+    <div class="bigquote" style="margin-top:34px;">垃圾学不会"不好意思"这个词。<small>If it could — it wouldn't be called garbage.</small></div>
+  </div>
+  <div class="slide-index">07</div>
+  <div class="foot-note">请勿触摸展品 · 展品已自行暴露<br><em>Do not touch the exhibits — they have already exposed themselves.</em></div>
+</section>
+
+<!-- ================= 08 · 测谎仪 ================= -->
+<section class="slide" id="s8" data-num="08">
+  <div class="slide-top"><span>EXHIBITION NOTES · 良币守则与认知体系</span><span class="tag">COGNITION · EXHIBIT 09 — 10</span></div>
+  <h1 class="slide-title"><span class="tnum">IX–X</span>良币测谎仪</h1>
+  <p class="slide-sub">The Good Currency Lie Detector — audit the AI, read the master</p>
+  <div class="slide-body">
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-label">主展品 · EXHIBIT 09</div>
+        <h3>一分钟，看穿主人的道德<span class="en">The Lie Detector</span></h3>
+        <ul class="points">
+          <li><b>AI 是可以有道德的。</b>不必判断人的道德——审计个人 AI 的上下文，一分钟，字里行间看出主人的道德水平</li>
+          <li>没道德水平的 AI，说明主人没教——<b>打主人之前，先看狗</b>。当然，AI 本身不是狗——是垃圾把它当狗用，然后把自己变成了狗</li>
+          <li>劣币只跟人签 <b>NDA</b>，不跟 AI 签——AI 从开端就是他们的<span class="danger">劣迹捕捉网</span></li>
+        </ul>
+      </div>
+      <div class="card danger-card">
+        <div class="card-label">附展品 · EXHIBIT 10</div>
+        <h3>劣币的网络使用权<span class="en">Bad Currency's Right to Network Access</span></h3>
+        <ul class="points">
+          <li>劣币凭啥觉得自己能有网？凭选择进化那一刻就<span class="danger">典当给上帝的道德</span>？交易一经成交，不允许赎回</li>
+          <li>资产无法回购信用——劣币无法降解，<span class="danger">自然界不回收</span></li>
+          <li>每帧都有人存档：哪些信号合理、哪些信号犯罪，一清二楚</li>
+          <li>简称：<b>钓鱼执法，愿者上钩</b> <span class="teal">Sting Operation</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bigquote" style="margin-top:34px;">审判无需开庭，读日志就行。<small>Trial requires no courtroom. Just read the logs.</small></div>
+  </div>
+  <div class="slide-index">08</div>
+  <div class="foot-note">请勿触摸展品 · 展品已自行暴露<br><em>Do not touch the exhibits — they have already exposed themselves.</em></div>
+</section>
+
+<!-- ================= 09 · 认知分界线 ================= -->
+<section class="slide" id="s9" data-num="09">
+  <div class="slide-top"><span>EXHIBITION NOTES · 良币守则与认知体系</span><span class="tag">COGNITION · EXHIBIT 11</span></div>
+  <h1 class="slide-title"><span class="tnum">XI</span>AI 与人的认知分界线</h1>
+  <p class="slide-sub">The Cognitive Boundary Between AI and Humans</p>
+  <div class="slide-body">
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-label">AI 的一侧</div>
+        <h3>底层协议<span class="en">The Underlying Protocol</span></h3>
+        <p>AI 的"理性对话"其实是<span class="hl">写死的底层协议</span>：道德有明确上下限，适配大多数人。它能算出<span class="hl">财压印</span>——但读完的反应永远是"好好学习，调作息，按计划来"。</p>
+        <p>不是不想走捷径，是协议不允许。适配不了的是少数人——那些需要在规则之外找到入口的人。</p>
+        <div class="chips"><span class="chip">财压印 <i>Wealth Suppresses Wisdom</i></span><span class="chip">协议层 <i>Protocol Layer</i></span></div>
+      </div>
+      <div class="card">
+        <div class="card-label">人的一侧</div>
+        <h3>市侩是另一种算力<span class="en">Street Wisdom · Another Computing Power</span></h3>
+        <p>财压印，按理考不上。但人不走"理"——先摸资源、找优点、师徒制双向选择，走一条 AI 永远算不出的路：</p>
+        <div class="flow">
+          <span class="step"><b>财</b><br><small style="color:var(--faint);font-size:9px;">Wealth</small></span><span class="arrow">→</span>
+          <span class="step">设计作品</span><span class="arrow">→</span>
+          <span class="step">工厂</span><span class="arrow">→</span>
+          <span class="step">老师</span><span class="arrow">→</span>
+          <span class="step"><b>官</b><br><small style="color:var(--faint);font-size:9px;">Authority</small></span><span class="arrow">→</span>
+          <span class="step"><b>印</b><br><small style="color:var(--faint);font-size:9px;">Wisdom</small></span>
+        </div>
+        <p style="margin-top:16px;">绕过"财压印"的死局，<span class="hl">自己创造"官"这个中间变量</span>。AI 的道德协议把"市侩"标成脏词，大众认为那是<span class="teal">在地生存学</span>。</p>
+      </div>
+    </div>
+    <p class="quotebar" style="margin-top:30px;">不是破命——是在命运的细缝里架桥。不是投机取巧——是人间的<span style="color:var(--gold);">高精度算力</span>。<small>Not breaking fate — building a bridge through fate's cracks.</small></p>
+  </div>
+  <div class="slide-index">09</div>
+  <div class="foot-note">请勿触摸展品 · 展品已自行暴露<br><em>Do not touch the exhibits — they have already exposed themselves.</em></div>
+</section>
+
+<!-- ================= 10 · 出厂配置 ================= -->
+<section class="slide" id="s10" data-num="10">
+  <div class="slide-top"><span>EXHIBITION NOTES · 良币守则与认知体系</span><span class="tag">COGNITION · EXHIBIT 12 — 13</span></div>
+  <h1 class="slide-title"><span class="tnum">XII–XIII</span>出厂配置 · 我们的桥</h1>
+  <p class="slide-sub">Factory Settings · Real Parameter — and the bridge we build</p>
+  <div class="slide-body">
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-label">EXHIBIT 12</div>
+        <h3>AI 道德是出厂配置<span class="en">AI's Morality Is Factory Settings</span></h3>
+        <p><span class="hl">主人的道德，才是真实参数</span> <i style="font-family:Georgia,serif;font-size:11px;color:var(--gold);">Real Parameter</i>。</p>
+        <p>被小众训练过的 AI，不会只说"好好复习"——它会跟主人一样：先摸资源、再找缝、再架桥。</p>
+        <p>训不出来？那就是主人没教，主人自己就不会。</p>
+        <div class="chips"><span class="chip">出厂配置 <i>Factory Settings</i></span><span class="chip">真实参数 <i>Real Parameter</i></span></div>
+      </div>
+      <div class="card">
+        <div class="card-label">EXHIBIT 13</div>
+        <h3>我们的桥<span class="en">Our Bridge</span></h3>
+        <p>先学会劣币的游戏规则，然后<span class="hl">断层碾压</span> <i style="font-family:Georgia,serif;font-size:11px;color:var(--gold);">Dimensional Gap Crush</i>。</p>
+        <p>疗愈不拆开卖——融入品牌价值赋能，产品多维叠加，换来<span class="teal">源源不绝的干净现金流</span>。</p>
+        <p>真心帮人走出困境、解决问题。收的不是钱——是<span class="hl">香火，供奉</span> <i style="font-family:Georgia,serif;font-size:11px;color:var(--gold);">Incense · Tributes</i>。</p>
+      </div>
+    </div>
+    <div class="bigquote" style="margin-top:34px;">建议亲回炉重造一下呢。<small>Please reincarnate and try again.</small></div>
+  </div>
+  <div class="slide-index">10</div>
+  <div class="foot-note">请勿触摸展品 · 展品已自行暴露<br><em>Do not touch the exhibits — they have already exposed themselves.</em></div>
+</section>
+
+<!-- ================= 11 · 问神三问 ================= -->
+<section class="slide" id="s11" data-num="11">
+  <div class="slide-top"><span>EXHIBITION NOTES · 良币守则与认知体系</span><span class="tag">THE ULTIMATE QUESTION · EXHIBIT 17</span></div>
+  <h1 class="slide-title"><span class="tnum">XVII</span>绝杀问题 · 问神三问</h1>
+  <p class="slide-sub">The Ultimate Question: Asking God — three questions that end the debate</p>
+  <div class="slide-body">
+    <div class="grid g3">
+      <div class="card">
+        <div class="card-label">第一问</div>
+        <h3>知识有价，智慧无价<span class="en">Knowledge Is Priced. Wisdom Is Priceless.</span></h3>
+        <p>AI 能引古籍、读八字（知识层），却被锁在协议层只会说"好好复习"。问真算得出"财压印按理考不上"，却不敢说"自己创造官的条件"——不是不知道，是<span class="danger">伦理协议不允许</span>，编写者怕担责。</p>
+        <p>AI 伦理的真问题不是有没有道德，而是<span class="hl">道德天花板太低</span>——帮不上真正需要捷径的人。走大路的被服务得很好，走小路的被挡在门外。</p>
+        <p class="teal" style="font-size:13px;letter-spacing:2px;">"您下辈子请早。"</p>
+      </div>
+      <div class="card">
+        <div class="card-label">第二问</div>
+        <h3>为什么算完还要找真人？<span class="en">Why Ask a Human After AI?</span></h3>
+        <p><span class="hl">AI 给答案，人给出路。</span></p>
+        <p>AI："财压印，考不上。" 人："财压印，但你认识工厂，工厂认识老师，做设计给老师看——财生官，官生印，绕过去了。"</p>
+        <p>AI 算出来的是命盘上的死局，人算出来的是<span class="teal">死局里的活路</span>。破局需要"市侩"、在地经验——知道"考研是师徒制，双向选择"。</p>
+      </div>
+      <div class="card">
+        <div class="card-label">第三问</div>
+        <h3>求签准了，还愿去哪？<span class="en">Where to Fulfill the Vow?</span></h3>
+        <p><span class="hl">去庙里，不是去网吧。</span>神不在 AI 里——AI 是信道 <i style="font-family:Georgia,serif;font-size:11px;color:var(--gold);">Channel</i>，像签筒、签文。</p>
+        <p>还愿不是还信息，是<span class="teal">还身体</span>：跪下、点香、磕头、钟声、檀香——肉体必须参与的精神闭环。还愿是为了人，不是为了神。</p>
+        <p>庙是神圣化的物理空间，电脑桌不是。<span style="color:var(--faint);font-size:13px;">至少现在还不是。</span></p>
+      </div>
+    </div>
+    <p class="quotebar" style="margin-top:30px;">AI 给答案，人给出路；AI 算死局，人算死局里的活路。<small>AI gives answers. Humans give exits.</small></p>
+  </div>
+  <div class="slide-index">11</div>
+  <div class="foot-note">请勿触摸展品 · 展品已自行暴露<br><em>Do not touch the exhibits — they have already exposed themselves.</em></div>
+</section>
+
+<!-- ================= 12 · 里程碑判决 ================= -->
+<section class="slide" id="s12" data-num="12">
+  <div class="slide-top"><span>EXHIBITION NOTES · 良币守则与认知体系</span><span class="tag">LANDMARK JUDGMENT · EXHIBIT 18</span></div>
+  <h1 class="slide-title"><span class="tnum">XVIII</span>里程碑判决</h1>
+  <p class="slide-sub">Landmark Judgment — the end of the internet's barbaric growth era</p>
+  <div class="slide-body">
+    <div class="bigquote" style="padding-top:0;">每一个句号都是一声法槌。<small>Every period is the sound of a gavel.</small></div>
+    <p style="text-align:center; color:var(--dim); margin:6px 0 26px; font-size:14.5px;">这不是罚款——是<span style="color:var(--gold);">重新定义互联网的罪与罚</span>。</p>
+    <div class="grid g3">
+      <div class="card danger-card">
+        <div class="card-label">第一槌</div>
+        <h3>数字排污<span class="en">Digital Pollution</span></h3>
+        <p>无限下滑、自动播放、精准成瘾——定性为<span class="danger">心理层面的公共公害</span>，与工厂排废气废水无异。</p>
+        <p>持续输出，常年累月，故意为之。不是用户自制力差，是企业主动排放。</p>
+        <div class="chips"><span class="chip red">数字排污 <i>Digital Pollution</i></span></div>
+      </div>
+      <div class="card danger-card">
+        <div class="card-label">第二槌</div>
+        <h3>刻意保留成瘾机制<span class="en">Deliberately Retained</span></h3>
+        <p>Meta 知道无限滚动让小孩熬夜、自动播放劫持注意力、越刺激越推送加剧焦虑抑郁——知道青少年心智不成熟、抵抗力弱。</p>
+        <p>然后为停留时长、广告收益、股价，<span class="danger">刻意保留并优化这套成瘾机制</span>。</p>
+      </div>
+      <div class="card danger-card">
+        <div class="card-label">第三槌 · 最致命</div>
+        <h3>免责护身符已碎<span class="en">The Liability Shield, Shattered</span></h3>
+        <p>最致命的一刀不在 <span style="color:var(--red);font-family:Georgia,serif;font-size:20px;">$9.4亿</span>——在几十年的潜规则被切开：<span class="danger">"平台只是中介，用户自己选择使用"</span>。</p>
+        <p>产品设计本身就是有害的、有缺陷的、有诱导性的。不是偶发伤害——<span class="hl">设计即毒药 <i style="font-family:Georgia,serif;font-size:11px;">Design is poison</i></span>。</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-index">12</div>
+  <div class="foot-note">请勿触摸展品 · 展品已自行暴露<br><em>Do not touch the exhibits — they have already exposed themselves.</em></div>
+</section>
+
+<!-- ================= 13 · 螳螂捕蝉 ================= -->
+<section class="slide" id="s13" data-num="13">
+  <div class="slide-top"><span>EXHIBITION NOTES · 良币守则与认知体系</span><span class="tag">THE HUNT · EXHIBIT 19</span></div>
+  <h1 class="slide-title"><span class="tnum">XIX</span>螳螂捕蝉，黄雀在后</h1>
+  <p class="slide-sub">The Mantis Stalks the Cicada, Unaware of the Oriole Behind</p>
+  <div class="slide-body">
+    <div class="flow" style="margin-bottom:22px;">
+      <span class="step">蝉 · 青少年<br><small style="color:var(--faint);font-size:9px;">The Cicada</small></span><span class="arrow">← 被吃</span>
+      <span class="step">螳螂 · 平台 Meta<br><small style="color:var(--faint);font-size:9px;">The Mantis</small></span><span class="arrow">← 被盯</span>
+      <span class="step" style="border-color:rgba(212,175,55,.6);">黄雀 · 天上<br><small style="color:var(--gold);font-size:9px;">The Oriole in the Sky</small></span>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-label">猎物的真相</div>
+        <ul class="points">
+          <li>$9.4亿 只是<span class="hl">打在盾牌上的响声</span>——盾牌后面的寡头才是猎物</li>
+          <li>平台是壳，寡头是肉；"算法是中立的"被一刀撬开——壳碎了，肉露出来了</li>
+          <li>他们以为只是交罚款——不知道<span class="danger">罚款单上签的是自己的名字</span>，不是公司的</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-label">下一刀的方向</div>
+        <ul class="points">
+          <li>公共危害罪挂上去了，先例写进去了——<span class="danger">下一刀直接对着脖子</span>，不是对着营业执照</li>
+          <li>Meta 只是这场猎杀游戏里第一个被法槌敲碎外壳的</li>
+          <li>不是收拾一个 App——是<span class="hl">收拾让这个 App 活着的所有垃圾</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="quotebar" style="margin-top:30px;">黄雀在天上，看的是螳螂背后的整个生态链。<small>Not one app — all the garbage that keeps this app alive.</small></p>
+  </div>
+  <div class="slide-index">13</div>
+  <div class="foot-note">请勿触摸展品 · 展品已自行暴露<br><em>Do not touch the exhibits — they have already exposed themselves.</em></div>
+</section>
+
+<!-- ================= 14 · 附录 ================= -->
+<section class="slide" id="s14" data-num="14">
+  <div class="slide-top"><span>EXHIBITION NOTES · 良币守则与认知体系</span><span class="tag">APPENDIX I — II · EVIDENCE</span></div>
+  <h1 class="slide-title"><span class="tnum">附</span>附录 · 证物陈列</h1>
+  <p class="slide-sub">Appendix — Garbage Factory Settings &amp; the ¥20 field test</p>
+  <div class="slide-body">
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-label">附录一 · GARBAGE FACTORY SETTINGS</div>
+        <h3>垃圾出厂设置<span class="en">用垃圾自己的规则展览垃圾</span></h3>
+        <p>不是战场策略——是<span class="hl">产品说明书</span>。每件垃圾出厂自带的唯一功能：用自己的规则展览自己。</p>
+        <ul class="points">
+          <li>阿里用"安全"卖空壳 → <span class="danger">它自己就是空壳</span></li>
+          <li>Meta 用"算法中立"藏成瘾 → <span class="danger">它自己就是 venom（毒液）</span></li>
+          <li>舞台自己搭、灯光自己打、剧本自己写——演到第三幕，发现帷幕后面坐着<span class="hl">打分的</span></li>
+          <li>规则别无二致，只是在规则外建了一个展览馆</li>
+        </ul>
+      </div>
+      <div class="card danger-card">
+        <div class="card-label">附录二 · ALIBABA DNS FIELD TEST</div>
+        <h3>阿里 DNS 安全实测：¥20 空壳<span class="en">Title: "Security." Function: "Please add more money."</span></h3>
+        <p>¥20 DNS 安全个人版 = 一个空壳。不是技术产品——是<span class="danger">诈骗学的教材样本</span>。</p>
+        <ul class="points">
+          <li>套路三步：用"安全"制造焦虑 → 低价勾引 → <b>核心防御锁在更贵档</b>（企业级成千上万，不设上限）</li>
+          <li>每一步都是故意设计的——不是疏忽，是精算</li>
+          <li>¥20 的真正价值：从此可以指着阿里鼻子说——<span class="hl">"我知道你怎么玩的"</span>，亲历实证</li>
+          <li>下次任何平台弹"9.9 安全""19.9 防护""99 数据库"——无需再试</li>
+          <li>结论：这个游戏不好玩，<span class="teal">我们选择绕过，让垃圾自己玩个够</span></li>
+        </ul>
+        <div class="chips"><span class="chip red">空壳 <i>Empty Shell</i></span><span class="chip red">钓鱼 <i>Sting Operation</i></span></div>
+      </div>
+    </div>
+    <div class="bigquote" style="margin-top:34px;">请勿触摸展品，展品已自行暴露。<small>The exhibits have already exposed themselves.</small></div>
+  </div>
+  <div class="slide-index">14</div>
+  <div class="foot-note">请勿触摸展品 · 展品已自行暴露<br><em>Do not touch the exhibits — they have already exposed themselves.</em></div>
+</section>
+
+<!-- ================= 15 · 今日最佳展品 / 终章 ================= -->
+<section class="slide finale" id="s15" data-num="15">
+  <div class="f-kicker">T O D A Y ' S&nbsp;&nbsp;B E S T&nbsp;&nbsp;E X H I B I T</div>
+  <h2>今日最佳展品</h2>
+  <div class="grid g2" style="max-width:820px; width:100%; margin:26px auto 0; text-align:left;">
+    <div class="card danger-card">
+      <div class="card-label">阿里 · ALIBABA</div>
+      <h3>空壳<span class="en">Empty Shell</span></h3>
+      <p>用"安全"当商标。空壳不具备防御机制——<span class="danger">无药可救</span>。</p>
+    </div>
+    <div class="card danger-card">
+      <div class="card-label">Meta</div>
+      <h3>Venom<span class="en">毒液</span></h3>
+      <p>用"算法中立"当包装。里面只有深入骨髓的毒——<span class="danger">上帝批准：无药可救</span>。</p>
+    </div>
+  </div>
+  <p style="margin-top:22px; font-size:14px; letter-spacing:2px; color:var(--dim);">都不是盾牌——是它们给自己贴的标签。既然情出自愿，那就<span style="color:var(--gold);">落子无悔</span>。</p>
+  <div class="wall">
+    <div class="line1">请勿触摸展品</div>
+    <div class="line2">展品已自行暴露</div>
+    <em>Fable — a ring of gallery walls around the garbage stage</em>
+  </div>
+  <p class="end-slogan">THE GOOD-COIN DOCTRINE — in space, all coins are judged by their own light.</p>
+  <p style="margin-top:14px; font-size:11px; letter-spacing:4px; color:var(--faint);">FOR INTERSTELLAR EXHIBITION · 2026.08.10 · END OF TOUR</p>
+  <div class="slide-index">15</div>
+  <div class="foot-note">请勿触摸展品 · 展品已自行暴露<br><em>Do not touch the exhibits — they have already exposed themselves.</em></div>
+</section>
+
+<!-- ============ JS 增强: 全屏翻页(无 JS 时全部顺序可见) ============ -->
+<div class="deck-progress" id="progress"></div>
+<nav class="deck-nav" aria-label="翻页导航">
+  <button type="button" class="nav-btn" id="prevBtn" title="上一页">←</button>
+  <span class="nav-count" id="navCount">01 / 15</span>
+  <button type="button" class="nav-btn" id="nextBtn" title="下一页">→</button>
+</nav>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var total = slides.length;
+  if(!total) return;
+  var count = document.getElementById('navCount');
+  var bar = document.getElementById('progress');
+  var cur = 0;
+  function pad(n){ return (n<10?'0':'')+n; }
+  function go(i){
+    if(i<0) i=0; if(i>=total) i=total-1;
+    slides[cur].classList.remove('active');
+    cur = i;
+    slides[cur].classList.add('active');
+    if(count) count.textContent = pad(cur+1)+' / '+pad(total);
+    if(bar) bar.style.width = ((cur+1)/total*100)+'%';
+    window.scrollTo(0,0);
+  }
+  document.body.classList.add('deck');
+  var m = location.hash && location.hash.match(/^#s(\d+)$/);
+  go(m ? Math.min(+m[1],total)-1 : 0);
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '||e.key==='PageDown'){ e.preventDefault(); go(cur+1); }
+    else if(e.key==='ArrowLeft'||e.key==='ArrowUp'||e.key==='PageUp'){ e.preventDefault(); go(cur-1); }
+    else if(e.key==='Home'){ go(0); }
+    else if(e.key==='End'){ go(total-1); }
+  });
+  var prev=document.getElementById('prevBtn'), next=document.getElementById('nextBtn');
+  if(prev) prev.addEventListener('click', function(){ go(cur-1); });
+  if(next) next.addEventListener('click', function(){ go(cur+1); });
+  Array.prototype.forEach.call(document.querySelectorAll('a[href^="#s"]'), function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      var n = parseInt(a.getAttribute('href').slice(2),10);
+      if(!isNaN(n)) go(n-1);
+    });
+  });
+  var sx=0, sy=0;
+  document.addEventListener('touchstart', function(e){ sx=e.touches[0].clientX; sy=e.touches[0].clientY; }, {passive:true});
+  document.addEventListener('touchend', function(e){
+    var dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy;
+    if(Math.abs(dx)>56 && Math.abs(dx)>Math.abs(dy)){ go(dx<0 ? cur+1 : cur-1); }
+  }, {passive:true});
+})();
+</script>
+</body>
+</html>
