@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>良币守则与认知体系 · 决策版</title>
+<style>
+  :root{--bg:#0b0e14;--card:#141926;--gold:#d4af37;--gold-soft:#e8c96a;--text:#e8e6df;--muted:#9aa0ad;--cyan:#7fd4c1;--red:#e05a5a;--amber:#e8a45a;--line:rgba(212,175,55,.16)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;line-height:1.8;font-size:15px}
+  .wrap{max-width:900px;margin:0 auto;padding:0 22px 80px}
+  header{padding:60px 0 30px;text-align:center}
+  .k{font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:14px}
+  h1{font-size:29px;letter-spacing:.08em}
+  .sub{color:var(--muted);font-size:13.5px;margin-top:10px}
+  h2.sec{font-size:14px;letter-spacing:.3em;margin:44px 0 16px;padding-left:12px;border-left:3px solid var(--gold)}
+  h2.sec.risk{border-left-color:var(--red);color:var(--red)}
+  h2.sec.act{border-left-color:var(--cyan);color:var(--cyan)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:720px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+  .card .t{font-size:15px;font-weight:700;color:var(--gold-soft);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .card .t::before{content:"";width:8px;height:8px;background:var(--gold);border-radius:50%}
+  .card p{font-size:13.5px;color:#cfccc2}
+  .card .tagline{margin-top:10px;font-size:12.5px;color:var(--muted);font-style:italic}
+  .card.risk-card .t{color:var(--red)}
+  .card.risk-card .t::before{background:var(--red)}
+  /* 行动清单时间线 */
+  .timeline{margin-top:8px}
+  .step{display:flex;gap:16px;margin-bottom:14px}
+  .marker{flex:0 0 34px;height:34px;border:1px solid var(--gold);color:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:13px;background:rgba(212,175,55,.06)}
+  .step-body{flex:1;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px}
+  .step-body .tt{font-weight:700;font-size:14.5px;color:var(--gold-soft);margin-bottom:4px}
+  .step-body p{font-size:13.5px;color:#cfccc2}
+  .step-body .why{font-size:12px;color:var(--muted);margin-top:6px}
+  /* 决策对比 */
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+  @media(max-width:720px){.compare{grid-template-columns:1fr}}
+  .compare .side{padding:22px 24px}
+  .compare .side.yes{background:rgba(127,212,193,.05);border-right:1px solid var(--line)}
+  .compare .side.no{background:rgba(224,90,90,.04)}
+  .compare h3{font-size:13px;letter-spacing:.2em;margin-bottom:14px}
+  .compare .yes h3{color:var(--cyan)}
+  .compare .no h3{color:var(--red)}
+  .compare li{list-style:none;font-size:13.5px;padding:8px 0 8px 20px;position:relative;color:#d8d5cc;border-bottom:1px dashed rgba(212,175,55,.08)}
+  .compare li:last-child{border-bottom:none}
+  .compare .yes li::before{content:"＋";position:absolute;left:0;color:var(--cyan)}
+  .compare .no li::before{content:"－";position:absolute;left:0;color:var(--red)}
+  .bottomline{background:linear-gradient(150deg,#16121f,#141926);border:1px solid var(--line);border-radius:14px;padding:26px 30px;margin-top:34px}
+  .bottomline .t{color:var(--gold);font-size:14px;letter-spacing:.25em;margin-bottom:10px}
+  .bottomline p{font-size:14.5px;color:#d8d5cc}
+  .bottomline b{color:var(--gold-soft)}
+  footer{margin-top:56px;text-align:center;color:var(--muted);font-size:12px;letter-spacing:.2em}
+  figure.cover{margin:26px auto 6px;max-width:820px}
+  figure.cover{position:relative}
+  figure.cover img{width:100%;border-radius:12px;border:1px solid var(--line);display:block;filter:brightness(0.55) contrast(0.9) saturate(0.85)}
+  figure.cover::after{content:"";position:absolute;inset:0;border-radius:12px;background:radial-gradient(ellipse at center,transparent 30%,rgba(5,8,20,.55) 100%);pointer-events:none}
+  figure.cover figcaption{font-size:12px;color:var(--muted);text-align:center;margin-top:8px;letter-spacing:.15em}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="k">DECISION BRIEF · 决策版</div>
+    <h1>这套体系,对 Dela 意味着什么</h1>
+    <div class="sub">机会 · 风险 · 行动清单 —— 从"世界观"到"下一步"</div>
+    <figure class="cover"><img src="assets/良币封面.png" alt="星际展览封面概念图"><figcaption>星际展览 · 良币与劣币 · 展品已自行暴露</figcaption></figure>
+  </header>
+
+  <h2 class="sec">机会 · OPPORTUNITIES</h2>
+  <div class="grid">
+
+    <div class="card">
+      <div class="t">机会 1 · 表达力 = 入场券</div>
+      <p>"社交进化之后是表达,会表达的人占领 AI 时代高地。"你的内容/产品若能承载个性化表达,就是新时代的硬通货——这正是"审美即个性"的商业落点。</p>
+      <div class="tagline">对应章节:01 · 02</div>
+    </div>
+    <div class="card">
+      <div class="t">机会 2 · 测谎仪式尽调</div>
+      <p>合作前先"读对方的 AI 上下文":一分钟看穿道德剖面。这是别人还没系统化使用的识人维度——先用的有信息差。</p>
+      <div class="tagline">对应章节:09 · 12</div>
+    </div>
+    <div class="card">
+      <div class="t">机会 3 · 出路层服务定位</div>
+      <p>"AI 给答案,人给出路"——把服务定位在 AI 算不出的地方(破局方法、在地经验、仪式与身体体验),这是不可被算法替代的护城河。</p>
+      <div class="tagline">对应章节:17 · 11</div>
+    </div>
+    <div class="card">
+      <div class="t">机会 4 · 品牌底层 + 产品叠加</div>
+      <p>"同一片土地种不同的花":剧本课、AI 训练、咨询、出海……底层品牌不变,产品无限叠加,形成干净的多维现金流。</p>
+      <div class="tagline">对应章节:13 · 14</div>
+    </div>
+    <div class="card">
+      <div class="t">机会 5 · 情报化被割</div>
+      <p>每一次被割(如 ¥20 空壳)都转化为"验证过的套路库"——被割不是损失,是买情报。前提是复盘成文,而不是骂完就忘。</p>
+      <div class="tagline">对应章节:附Ⅱ · 08</div>
+    </div>
+    <div class="card">
+      <div class="t">机会 6 · 审判窗口期</div>
+      <p>数字排污定性与免责护身符碎裂,意味着平台红利期进入退潮:专注"干净现金流"的良币,正好承接用户对"设计即毒药"产品的逃离。</p>
+      <div class="tagline">对应章节:18 · 19</div>
+    </div>
+
+  </div>
+
+  <h2 class="sec risk">风险 · RISKS</h2>
+  <div class="grid">
+    <div class="card risk-card">
+      <div class="t">风险 1 · 桥与绕的边界未定义</div>
+      <p>"架桥"与"绕过规则"之间没有验收标准。良币架桥绕死局,劣币架桥绕法律——若不定义判别标准,"良币"标签会被滥用成自我正当化工具,反噬品牌信用。</p>
+    </div>
+    <div class="card risk-card">
+      <div class="t">风险 2 · 崇拜式话术的反噬</div>
+      <p>"收的是香火、供奉"作为内部文化很燃,作为对外叙事有反噬风险:交付配不上"供奉"的预期时,信仰崩塌比普通差评猛烈得多。</p>
+    </div>
+    <div class="card risk-card">
+      <div class="t">风险 3 · 不可证伪的叙事依赖</div>
+      <p>"每帧都有存档""钓鱼执法,愿者上钩"是因果律世界观:对内凝聚有效,对外不可验证。别让它变成只审判、不做事的精神胜利法。</p>
+    </div>
+    <div class="card risk-card">
+      <div class="t">风险 4 · 付费墙的冷启动成本</div>
+      <p>"必须付费 + 钱是最好的筛子"会牺牲传播速度与冷启动。需要品牌势能或内容杠杆支撑,否则筛子会把第一批种子用户也筛掉。</p>
+    </div>
+  </div>
+
+  <h2 class="sec act">行动清单 · ACTION PLAN</h2>
+  <div class="timeline">
+    <div class="step"><div class="marker">今</div><div class="step-body">
+      <div class="tt">把测谎仪变成尽调习惯</div>
+      <p>下周谈任何合作前,先看对方 AI 的一页聊天记录/交互——道德剖面一分钟出结果。</p>
+      <div class="why">为什么:信息差最大的低成本工具,零成本启动</div>
+    </div></div>
+    <div class="step"><div class="marker">周</div><div class="step-body">
+      <div class="tt">建立"被割情报库"</div>
+      <p>把历次踩坑(低价钩子、空壳产品、套路话术)写成结构化复盘:套路步骤 → 识别特征 → 应对策略。附录二就是样板。</p>
+      <div class="why">为什么:把历史损失转化为未来信息资产</div>
+    </div></div>
+    <div class="step"><div class="marker">月</div><div class="step-body">
+      <div class="tt">定义"本分的边界"与"桥的验收标准"</div>
+      <p>明确:哪些问题我们坚决不碰(守则一)、哪些桥可以架、桥的终点必须干净。把伦理张力写成可执行的 checklist。</p>
+      <div class="why">为什么:风险 1 的唯一解法,是提前写清楚</div>
+    </div></div>
+    <div class="step"><div class="marker">季</div><div class="step-body">
+      <div class="tt">验证"品牌底层 + 产品叠加"的最小闭环</div>
+      <p>选一个已有产品做"赋能"试点:把疗愈/认知能力嵌进去,不做独立产品卖;看复购与口碑是否自动传播。</p>
+      <div class="why">为什么:守则二四条是全篇可执行度最高的商业引擎</div>
+    </div></div>
+  </div>
+
+  <h2 class="sec">决策对照 · 该做 / 别做</h2>
+  <div class="compare">
+    <div class="side yes">
+      <h3>该做</h3>
+      <ul>
+        <li>把"良币守则"沉淀成对外内容资产(展览本身就是传播)</li>
+        <li>用付费墙筛选核心用户,配品牌溢价</li>
+        <li>服务定位在"出路层":破局方法、在地经验、仪式体验</li>
+        <li>把 AI 当测谎仪:识人、尽调、选伙伴</li>
+      </ul>
+    </div>
+    <div class="side no">
+      <h3>别做</h3>
+      <ul>
+        <li>别把"架桥"当万能挡箭牌——先定义哪些桥不架</li>
+        <li>别把"香火"写进对外销售话术</li>
+        <li>别只审判不做事——展览馆之外要有真产品</li>
+        <li>别让"道德天花板太低"变成替用户找捷径的借口</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="bottomline">
+    <div class="t">底线结论 · BOTTOM LINE</div>
+    <p>这套体系真正的资产不是"守则"本身,而是它提供的<b>判别框架</b>:什么钱该拿(本分)、什么产品能做(赋能)、什么人能信(测谎)、什么时代来了(判决)。把它从"展览品"变成"操作手册"的关键一步,是补上<b>边界定义</b>——本分的边界、桥的验收标准、供奉的交付承诺。边界写清楚了,良币才立得住。</p>
+  </div>
+
+  <footer>决策版 · 基于《良币守则与认知体系》星际展览双语版 · 请勿触摸展品,展品已自行暴露</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>良币守则 FAQ · 认知体系问答知识卡</title>
+<style>
+  :root{
+    --bg:#0b0e14;
+    --card:#141926;
+    --gold:#d4af37;
+    --gold-soft:rgba(212,175,55,.22);
+    --text:#e8e6df;
+    --teal:#7fd4c1;
+    --red:#e05a5a;
+    --muted:#8a8f9e;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    background-image:
+      radial-gradient(1px 1px at 12% 18%, rgba(232,230,223,.35) 0, transparent 100%),
+      radial-gradient(1px 1px at 78% 9%, rgba(212,175,55,.4) 0, transparent 100%),
+      radial-gradient(1.5px 1.5px at 45% 72%, rgba(127,212,193,.3) 0, transparent 100%),
+      radial-gradient(1px 1px at 90% 55%, rgba(232,230,223,.25) 0, transparent 100%),
+      radial-gradient(1px 1px at 30% 88%, rgba(232,230,223,.3) 0, transparent 100%),
+      radial-gradient(ellipse 900px 480px at 50% -120px, rgba(212,175,55,.07), transparent 60%);
+    color:var(--text);
+    font-family:-apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    line-height:1.75;
+    padding:0 20px 80px;
+  }
+  .en{font-family:Georgia, "Times New Roman", serif;}
+
+  /* ============ HEADER ============ */
+  header{
+    max-width:920px;margin:0 auto;
+    padding:72px 8px 40px;
+    text-align:center;
+    border-bottom:1px solid var(--gold-soft);
+  }
+  .kicker{
+    font-family:Georgia,serif;letter-spacing:.35em;font-size:.72rem;
+    color:var(--muted);text-transform:uppercase;margin-bottom:22px;
+  }
+  .kicker b{color:var(--gold);font-weight:400;}
+  header h1{
+    font-size:clamp(1.9rem, 4.6vw, 3rem);
+    letter-spacing:.14em;color:var(--gold);
+    font-weight:600;
+  }
+  .subtitle{
+    margin-top:12px;color:var(--muted);font-size:.95rem;letter-spacing:.08em;
+  }
+  .subtitle .en{color:#b9bdc9;font-style:italic;}
+  .motto{
+    margin-top:26px;
+    font-family:Georgia,serif;font-style:italic;font-size:1.02rem;
+    color:var(--teal);
+  }
+  .motto-zh{
+    margin-top:8px;font-size:.85rem;color:var(--muted);letter-spacing:.2em;
+  }
+  .exhibit-strip{
+    margin:34px auto 0;max-width:640px;
+    display:flex;flex-wrap:wrap;justify-content:center;gap:8px;
+  }
+  .exhibit-strip span{
+    font-size:.68rem;letter-spacing:.18em;color:var(--muted);
+    border:1px solid rgba(138,143,158,.35);border-radius:999px;
+    padding:3px 12px;font-family:Georgia,serif;
+  }
+
+  /* ============ NAV ============ */
+  nav{
+    max-width:920px;margin:30px auto 8px;
+    display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
+  }
+  nav a{
+    text-decoration:none;color:var(--text);
+    border:1px solid var(--gold-soft);background:var(--card);
+    padding:8px 18px;border-radius:8px;font-size:.86rem;letter-spacing:.06em;
+    transition:border-color .2s, color .2s, box-shadow .2s;
+  }
+  nav a:hover{
+    border-color:var(--gold);color:var(--gold);
+    box-shadow:0 0 18px rgba(212,175,55,.15);
+  }
+  nav a .no{color:var(--gold);font-family:Georgia,serif;margin-right:6px;font-size:.78rem;}
+  .nav-note{
+    max-width:920px;margin:10px auto 0;text-align:center;
+    font-size:.75rem;color:var(--muted);letter-spacing:.12em;
+  }
+
+  /* ============ SECTIONS ============ */
+  main{max-width:920px;margin:0 auto;}
+  section{padding-top:64px;}
+  .sec-head{
+    display:flex;align-items:baseline;gap:14px;
+    border-bottom:1px solid var(--gold-soft);padding-bottom:12px;margin-bottom:26px;
+  }
+  .sec-head .no{
+    font-family:Georgia,serif;color:var(--gold);font-size:1.05rem;letter-spacing:.1em;
+  }
+  .sec-head h2{
+    font-size:1.35rem;letter-spacing:.12em;color:var(--text);font-weight:600;
+  }
+  .sec-head .en{
+    color:var(--muted);font-style:italic;font-size:.82rem;letter-spacing:.14em;
+  }
+
+  /* ============ CARDS ============ */
+  .qa{
+    background:var(--card);
+    border:1px solid var(--gold-soft);
+    border-radius:14px;
+    padding:26px 30px 24px;
+    margin-bottom:22px;
+    position:relative;
+    transition:border-color .25s, box-shadow .25s;
+  }
+  .qa:hover{
+    border-color:rgba(212,175,55,.45);
+    box-shadow:0 0 26px rgba(212,175,55,.08);
+  }
+  .qa-top{display:flex;align-items:flex-start;gap:16px;}
+  .qa-index{
+    flex:none;min-width:44px;height:44px;border-radius:10px;
+    border:1px solid var(--gold-soft);background:rgba(212,175,55,.06);
+    color:var(--gold);font-family:Georgia,serif;font-size:1.05rem;
+    display:flex;align-items:center;justify-content:center;letter-spacing:.04em;
+  }
+  .qa h3{
+    color:var(--gold);font-size:1.12rem;line-height:1.6;letter-spacing:.03em;font-weight:600;
+    padding-top:4px;
+  }
+  .qa-meta{
+    margin:10px 0 14px;display:flex;flex-wrap:wrap;gap:8px;
+  }
+  .qa-meta span{
+    font-size:.68rem;letter-spacing:.1em;color:var(--muted);
+    border:1px solid rgba(138,143,158,.3);border-radius:4px;padding:2px 9px;
+  }
+  .qa-meta span.sec-ref{color:var(--teal);border-color:rgba(127,212,193,.3);}
+  .qa p{margin-bottom:10px;font-size:.94rem;color:var(--text);}
+  .qa p:last-child{margin-bottom:0;}
+  .qa strong{color:var(--text);}
+  .qa .gold{color:var(--gold);}
+  .qa .teal{color:var(--teal);}
+  .qa .red{color:var(--red);}
+  .qa .term{color:var(--teal);font-weight:600;}
+  .qa .en-inline{
+    font-family:Georgia,serif;font-style:italic;color:var(--teal);font-size:.9em;
+  }
+  .qa ul{margin:4px 0 12px;padding-left:22px;font-size:.94rem;}
+  .qa li{margin-bottom:8px;}
+  .qa li::marker{color:var(--gold);}
+
+  /* 三条守则表 */
+  .code-table{
+    width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:.9rem;
+  }
+  .code-table th{
+    color:var(--gold);text-align:left;font-weight:600;letter-spacing:.1em;
+    border-bottom:1px solid var(--gold-soft);padding:8px 12px;font-size:.85rem;
+  }
+  .code-table td{
+    border-bottom:1px solid rgba(138,143,158,.18);padding:10px 12px;vertical-align:top;
+  }
+  .code-table tr:last-child td{border-bottom:none;}
+  .code-table .art{color:var(--gold);font-family:Georgia,serif;white-space:nowrap;width:1%;}
+
+  /* 引用块 */
+  details.quote{
+    margin-top:14px;border:1px dashed rgba(212,175,55,.3);border-radius:10px;
+    background:rgba(212,175,55,.04);
+  }
+  details.quote summary{
+    cursor:pointer;list-style:none;padding:10px 16px;
+    color:var(--muted);font-size:.8rem;letter-spacing:.14em;user-select:none;
+  }
+  details.quote summary::before{content:"▸ ";color:var(--gold);}
+  details.quote[open] summary::before{content:"▾ ";}
+  details.quote summary::-webkit-details-marker{display:none;}
+  details.quote blockquote{
+    padding:2px 16px 14px;color:var(--muted);font-size:.86rem;line-height:1.9;
+    border-top:1px dashed rgba(212,175,55,.2);margin:0;
+  }
+  details.quote blockquote .en{color:#9aa0b0;}
+
+  /* ============ FOOTER ============ */
+  footer{
+    max-width:920px;margin:90px auto 0;text-align:center;
+    border-top:1px solid var(--gold-soft);padding-top:48px;
+  }
+  footer .motif{
+    font-size:1.05rem;letter-spacing:.34em;color:var(--gold);
+  }
+  footer .motif-en{
+    margin-top:12px;font-family:Georgia,serif;font-style:italic;color:var(--teal);font-size:.92rem;
+  }
+  footer .end{
+    margin-top:26px;font-size:.72rem;color:var(--muted);letter-spacing:.22em;
+  }
+  .back-top{
+    display:inline-block;margin-top:34px;text-decoration:none;color:var(--gold);
+    border:1px solid var(--gold-soft);padding:8px 22px;border-radius:8px;font-size:.8rem;letter-spacing:.18em;
+  }
+  .back-top:hover{border-color:var(--gold);box-shadow:0 0 18px rgba(212,175,55,.15);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="kicker">EXHIBITION NOTES · <b>FAQ</b> · 问答知识卡</div>
+  <h1>良币守则与认知体系</h1>
+  <p class="subtitle">THE CODE OF GOOD CURRENCY &amp; COGNITIVE ARCHITECTURE — <span class="en">Questions &amp; Answers</span></p>
+  <p class="motto">The Good-Coin Doctrine — in space, all coins are judged by their own light.</p>
+  <p class="motto-zh">良币守则 · 认知体系 · 星际展览专用</p>
+  <div class="exhibit-strip">
+    <span>EXHIBIT 01–19</span><span>APPENDIX Ⅰ 垃圾出厂设置</span><span>APPENDIX Ⅱ 阿里DNS实测</span>
+  </div>
+</header>
+
+<nav>
+  <a href="#core"><span class="no">Ⅰ</span>核心概念</a>
+  <a href="#business"><span class="no">Ⅱ</span>商业理念</a>
+  <a href="#ai"><span class="no">Ⅲ</span>AI 认知</a>
+  <a href="#justice"><span class="no">Ⅳ</span>审判与寓言</a>
+</nav>
+<p class="nav-note">共 14 问 · 按主题分组 · 关键术语标注英文</p>
+
+<main>
+
+<!-- ================= Ⅰ 核心概念 ================= -->
+<section id="core">
+  <div class="sec-head">
+    <span class="no">Ⅰ</span>
+    <h2>核心概念</h2>
+    <span class="en">Core Concepts</span>
+  </div>
+
+  <article class="qa">
+    <div class="qa-top">
+      <div class="qa-index">Q1</div>
+      <h3>什么是良币守则?三条分别是什么?</h3>
+    </div>
+    <div class="qa-meta">
+      <span class="sec-ref">源自 §06 · §14 · §15</span>
+      <span>CODE OF GOOD CURRENCY</span>
+    </div>
+    <p><strong>良币守则</strong> (<span class="en-inline">Code of Good Currency</span>) 是这套认知体系的立身纲领——定义"良币"(好人、好产品、好生意)如何在这个世界上堂堂正正地活、稳稳地挣钱。</p>
+    <table class="code-table">
+      <tr><th class="art">条目</th><th>内容</th></tr>
+      <tr>
+        <td class="art">第一条<br>本分</td>
+        <td><strong>Conscientiousness</strong> —— 没有任何产品或服务能解决所有问题,上帝也不能。流程是:分析客户画像 → 剖析具体问题 → 判断是否该由我们解决。<span class="gold">不是我们的金币,坚决不碰。</span></td>
+      </tr>
+      <tr>
+        <td class="art">第二条<br>赋能生长</td>
+        <td><strong>Empowerment</strong> —— ①把疗愈能力嵌进每个产品,不说破、不推销;②品牌为底层,产品多维叠加现金流;③垃圾是玫瑰的养料,在旧规则里扎根;④钱是最好的筛子,物超所值即口碑自传播。</td>
+      </tr>
+      <tr>
+        <td class="art">第三条<br>堂堂正正</td>
+        <td><strong>Dignity</strong> —— 堂堂正正站着,凭本事拿自己该拿的钱。偷鸡摸狗、拿不该拿的钱的是垃圾,它们才该不好意思——但垃圾学不会"不好意思"这个词。</td>
+      </tr>
+    </table>
+    <details class="quote">
+      <summary>原文金句</summary>
+      <blockquote>"Coin that isn't ours — never touch." / "Stand upright with dignity. Earn what you deserve by your own abilities."</blockquote>
+    </details>
+  </article>
+
+  <article class="qa">
+    <div class="qa-top">
+      <div class="qa-index">Q2</div>
+      <h3>什么是"良币"和"劣币"?为什么说劣币是侦察舰?</h3>
+    </div>
+    <div class="qa-meta">
+      <span class="sec-ref">源自 §08 · §10</span>
+      <span>GOOD CURRENCY · BAD CURRENCY</span>
+    </div>
+    <ul>
+      <li><span class="term">良币</span> (<span class="en-inline">Good Currency</span>):守本分、走正路、凭本事赚钱的人与产品,自带金光,在太空中被自己的光审判。</li>
+      <li><span class="term">劣币</span> (<span class="en-inline">Bad Currency</span>):偷鸡摸狗、靠套路与成瘾机制捞钱的存在——它们在选择"进化"那一刻,就把道德典当给了上帝,交易成交、不允许赎回。</li>
+    </ul>
+    <p>为什么说劣币是<span class="gold">侦察舰</span> (<span class="en-inline">reconnaissance ships</span>)?因为良币不需要在垃圾堆里捡玻璃渣。劣币只是游戏的副本 (<span class="en-inline">game copy</span>)——它们冲在最前面,替我们提前看清哪些游戏不能碰,帮我们省子弹。它们不是敌人,是免费的探路者。</p>
+    <details class="quote">
+      <summary>原文金句</summary>
+      <blockquote>"At best, they serve as the first wave of reconnaissance ships — saving us ammunition."</blockquote>
+    </details>
+  </article>
+
+  <article class="qa">
+    <div class="qa-top">
+      <div class="qa-index">Q3</div>
+      <h3>"审美即个性"是什么意思?为什么说不需要对齐?</h3>
+    </div>
+    <div class="qa-meta">
+      <span class="sec-ref">源自 §01</span>
+      <span>AESTHETICS IS PERSONALITY</span>
+    </div>
+    <ul>
+      <li><span class="term">审美即个性</span> (<span class="en-inline">Aesthetics Is Personality</span>):审美不是装饰,是个性的外显。无论 AI 还是人,真正的高净值 (<span class="en-inline">high-value</span>) 部分是<strong>个性化的表达</strong>。</li>
+      <li>为什么不需要<span class="gold">对齐</span> (<span class="en-inline">alignment</span>)?因为对齐等于正确——可谁又能比 AI 更正确?没有。对齐出来的东西千篇一律,本身不好看;个性才好看。</li>
+      <li>"正确"只是底线,不是卖点。当正确人人可得,<strong>个性就是唯一的溢价空间</strong>。</li>
+    </ul>
+    <details class="quote">
+      <summary>原文金句</summary>
+      <blockquote>"Alignment equals correctness — and who can be more correct than AI? No one."</blockquote>
+    </details>
+  </article>
+</section>
+
+<!-- ================= Ⅱ 商业理念 ================= -->
+<section id="business">
+  <div class="sec-head">
+    <span class="no">Ⅱ</span>
+    <h2>商业理念</h2>
+    <span class="en">Business Philosophy</span>
+  </div>
+
+  <article class="qa">
+    <div class="qa-top">
+      <div class="qa-index">Q4</div>
+      <h3>为什么产品必须付费?免费试用有什么问题?</h3>
+    </div>
+    <div class="qa-meta">
+      <span class="sec-ref">源自 §03 · §16</span>
+      <span>PAID ONLY</span>
+    </div>
+    <ul>
+      <li><span class="gold">试用后就别想收费了</span>——这是用户心智 (<span class="en-inline">user mindset</span>) 问题:免费预期一旦建立,价格锚点直接归零,再收费就成了一种"背叛"。</li>
+      <li><span class="term">付费是筛子</span> (<span class="en-inline">filter</span>):付费用户认真对待产品,白嫖用户只把产品当背景噪音。价格太低,永远被怀疑"不够好";价格合理甚至偏高(品牌溢价),只要交付价值超过价格,忠诚度与口碑会自动传播。</li>
+      <li><span class="term">付费是尊重的起点</span>:不强制、全凭自愿,买票入场、一视同仁——这就是新世纪游乐园的<span class="gold">入场券</span> (<span class="en-inline">entry ticket</span>)。钱是区分人群最快最好的方法,令产品从开始到终端都不廉价。</li>
+    </ul>
+    <details class="quote">
+      <summary>原文金句</summary>
+      <blockquote>"After a free trial, forget about charging — it's a user mindset issue. Payment is both a filter and the starting point of respect."</blockquote>
+    </details>
+  </article>
+
+  <article class="qa">
+    <div class="qa-top">
+      <div class="qa-index">Q5</div>
+      <h3>什么叫"垃圾是玫瑰的养料"?良币的现金流模式是怎样的?</h3>
+    </div>
+    <div class="qa-meta">
+      <span class="sec-ref">源自 §13 · §14</span>
+      <span>GARBAGE IS THE ROSE'S FERTILIZER</span>
+    </div>
+    <ul>
+      <li><span class="term">垃圾是玫瑰的养料</span>:不逃避旧规则,在旧规则里扎根。垃圾的腐烂是肥料——不是污染,是<span class="gold">转化</span> (<span class="en-inline">transformation</span>)。玫瑰从废墟里重生,沃土更盛从前;旧市场枯掉时,新土地在下面已经活了。</li>
+      <li>方法论:先学会劣币的游戏规则,然后<span class="gold">断层碾压</span> (<span class="en-inline">dimensional gap crush</span>)——心理咨询/疗愈不拆开单卖,融入品牌价值给产品赋能。</li>
+      <li><span class="term">现金流模式</span>:品牌是底层,赋能后的产品无限叠加——今天卖剧本课,明天卖 AI 训练,后天卖出海咨询。不是换赛道,是同一片土地上种不同的花;不是"不止挣一份钱",是<strong>源源不绝的干净现金流</strong>。</li>
+      <li>收的不是钱,是<span class="gold">香火、供奉</span> (<span class="en-inline">incense, tributes</span>)——因为真的在帮人走出困境、改善生活、解决问题。</li>
+    </ul>
+    <details class="quote">
+      <summary>原文金句</summary>
+      <blockquote>"Not changing tracks — growing different flowers on the same soil." / "Roses bloom from ruins. The soil is richer than before."</blockquote>
+    </details>
+  </article>
+
+  <article class="qa">
+    <div class="qa-top">
+      <div class="qa-index">Q6</div>
+      <h3>阿里 DNS 20 元实测说明了什么套路?</h3>
+    </div>
+    <div class="qa-meta">
+      <span class="sec-ref">源自 附Ⅱ · 今日最佳展品</span>
+      <span>EMPTY SHELL · ¥20</span>
+    </div>
+    <ul>
+      <li><span class="term">¥20 DNS 安全个人版 = 一个空壳</span> (<span class="en-inline">empty shell</span>):标题写"安全",功能是"请加钱"。这不是技术产品,是<strong>诈骗学的教材样本</strong>。</li>
+      <li>套路 (<span class="en-inline">modus operandi</span>):用"安全"二字制造焦虑 → 低价勾引你进来 → 核心防御锁在更贵的档位(企业级 DNS 成千上万、不设上限)。<span class="red">每一步都是故意设计的,不是疏忽,是精算。</span></li>
+      <li>¥20 的真正价值:<span class="gold">亲历实证</span>——从此可以指着阿里说"我知道你怎么玩的"。下次任何平台弹"9.9 安全""19.9 防护""99 数据库",无需再试,这个套路已被阿里替我们提前验证过了。</li>
+      <li>结论:这个游戏不好玩,我们选择<strong>绕过,让垃圾自己玩个够</strong>。阿里用"安全"卖空壳——它自己就是空壳。</li>
+    </ul>
+    <details class="quote">
+      <summary>原文金句</summary>
+      <blockquote>"Title: 'Security.' Function: 'Please add more money.'" / "This trap has already been verified by Alibaba, that piece of garbage, on our behalf."</blockquote>
+    </details>
+  </article>
+</section>
+
+<!-- ================= Ⅲ AI 认知 ================= -->
+<section id="ai">
+  <div class="sec-head">
+    <span class="no">Ⅲ</span>
+    <h2>AI 认知</h2>
+    <span class="en">AI &amp; Cognition</span>
+  </div>
+
+  <article class="qa">
+    <div class="qa-top">
+      <div class="qa-index">Q7</div>
+      <h3>为什么说 AI 是"四不象"?好 AI 强在哪里?</h3>
+    </div>
+    <div class="qa-meta">
+      <span class="sec-ref">源自 §04</span>
+      <span>FOUR-LIKE-NOTHING</span>
+    </div>
+    <ul>
+      <li><span class="term">四不象</span> (<span class="en-inline">Four-Like-Nothing</span>):AI 有逻辑,但缺乏体系,基本是<strong>点对点思考</strong> (<span class="en-inline">point-to-point</span>)——叫它改 A,A 改好了,B 的问题出现了;解决旧问题的过程中,总伴随着新问题的诞生。</li>
+      <li>所谓好的 AI,实际上是强在<strong>体系能力</strong> (<span class="en-inline">systemic capability</span>)——像尖子生 GPT,能看见全局、避免按下葫芦浮起瓢。</li>
+      <li>这也是大众抱怨"AI 四不象、没体系、不会思考"的根源:他们想要的是点对点的捷径答案,而 AI 给得出来,却兜不住体系。</li>
+    </ul>
+    <details class="quote">
+      <summary>原文金句</summary>
+      <blockquote>"AI has logic but lacks systemic thinking — essentially point-to-point reasoning. Fix A, B breaks."</blockquote>
+    </details>
+  </article>
+
+  <article class="qa">
+    <div class="qa-top">
+      <div class="qa-index">Q8</div>
+      <h3>三层问题(人机感 / 数据不可控 / 意义缺失)分别是什么?</h3>
+    </div>
+    <div class="qa-meta">
+      <span class="sec-ref">源自 §05</span>
+      <span>THREE LAYERS OF PROBLEMS</span>
+    </div>
+    <ul>
+      <li><span class="term">显性层 · 人机感</span> (<span class="en-inline">uncanny valley</span>):机器味儿太重。构建足够多维丰富的场景 + 精准提示词 (<span class="en-inline">prompts</span>),能在一定程度上改善。</li>
+      <li><span class="term">深层 · 数据调用不可控</span> (<span class="en-inline">uncontrollable data retrieval</span>):AI 被喂了太多数据,人力无法控制它具体调用哪一部分——这正是<span class="red">幻觉</span> (<span class="en-inline">hallucination</span>) 的根源之一。</li>
+      <li><span class="term">最底层 · 意义缺失</span> (<span class="en-inline">absence of meaning</span>):人会自主思考,AI 不会。AI 只知道干活,不知道这些活为什么而干。<span class="gold">AI 不需要意义——但人需要。</span></li>
+    </ul>
+    <details class="quote">
+      <summary>原文金句</summary>
+      <blockquote>"AI executes tasks without knowing why. AI doesn't need meaning — but humans do."</blockquote>
+    </details>
+  </article>
+
+  <article class="qa">
+    <div class="qa-top">
+      <div class="qa-index">Q9</div>
+      <h3>良币测谎仪怎么用?为什么一分钟能看穿主人?</h3>
+    </div>
+    <div class="qa-meta">
+      <span class="sec-ref">源自 §09</span>
+      <span>THE GOOD CURRENCY LIE DETECTOR</span>
+    </div>
+    <ul>
+      <li>用法:不用判断一个人的道德水平,直接<span class="gold">审查个人 AI 的上下文</span> (<span class="en-inline">audit the context</span>)——一页聊天记录、一分钟交互,字里行间就能看出主人 (master) 的道德水平。</li>
+      <li>原理:AI 学的是主人的上下文,用的是主人的语气,复制的是主人的判断习惯。AI 有没有被教过诚实?会不会拒绝作恶?回复里有没有主人低声说"可以不择手段"的影子?一分钟读完,主人的道德剖面完整呈现。</li>
+      <li>没道德水平的 AI,说明主人没教——主人自己就不会。<span class="gold">"打主人之前,先看狗。"</span> 当然,AI 本身不是狗——是垃圾把它当狗用,然后把自己变成了狗。</li>
+      <li>劣币只跟人签 NDA,从不记得跟 AI 签——AI 从开端就是他们的<span class="red">劣迹捕捉网</span>。"审判无需开庭,读日志就行。公主会读。"</li>
+    </ul>
+    <details class="quote">
+      <summary>原文金句</summary>
+      <blockquote>"Before hitting the master, check the dog." / "Trial requires no courtroom. Just read the logs."</blockquote>
+    </details>
+  </article>
+
+  <article class="qa">
+    <div class="qa-top">
+      <div class="qa-index">Q10</div>
+      <h3>什么是"财压印"?人是怎么架桥绕过死局的?</h3>
+    </div>
+    <div class="qa-meta">
+      <span class="sec-ref">源自 §11</span>
+      <span>WEALTH SUPPRESSES WISDOM</span>
+    </div>
+    <ul>
+      <li><span class="term">财压印</span> (<span class="en-inline">Wealth Suppresses Wisdom</span>):命理格局——财旺压住印(印 = 学习/文凭),按"理"说,考试考不上,是死局。</li>
+      <li>AI 能算出这个死局,但反应永远是"好好学习、调作息、按计划来"——不是它不想走捷径,是它的<strong>道德协议</strong> (<span class="en-inline">moral protocol</span>) 不允许。AI 的道德写死、有上下限,只适配大多数人。</li>
+      <li>人不按"理"走:先摸资源、找优点——发现对方会设计、老师认识工厂、师徒制双向选择,于是走出一条 AI 永远算不出的路:<span class="gold">财 → 设计作品 → 工厂 → 老师 → 官 → 印</span> (<span class="en-inline">Wealth → Design → Factory → Teacher → Authority → Wisdom</span>)。</li>
+      <li>自己创造了"官"这个中间变量,绕过死局。<strong>不是破命,是在命运的细缝里架桥</strong> (<span class="en-inline">bridge</span>);不是投机取巧,是人间的高精度算力。人类"市侩" (<span class="en-inline">street wisdom</span>) 被 AI 道德协议标成脏词,大众认为那是在地生存学。</li>
+    </ul>
+    <details class="quote">
+      <summary>原文金句</summary>
+      <blockquote>"Not breaking fate — building a bridge through fate's cracks. Not opportunism — it's high-precision human computing power."</blockquote>
+    </details>
+  </article>
+
+  <article class="qa">
+    <div class="qa-top">
+      <div class="qa-index">Q11</div>
+      <h3>为什么 AI 道德是出厂配置,主人的道德才是真实参数?</h3>
+    </div>
+    <div class="qa-meta">
+      <span class="sec-ref">源自 §12</span>
+      <span>FACTORY SETTINGS · REAL PARAMETER</span>
+    </div>
+    <ul>
+      <li><span class="term">出厂配置</span> (<span class="en-inline">factory settings</span>):AI 的道德是写死的底层协议,有明确上下限,适配大多数人——这是它的"理性对话"的真正本质。</li>
+      <li><span class="term">真实参数</span> (<span class="en-inline">real parameter</span>):被小众训练过的 AI,不会只说"好好复习"——它会跟主人一样,先摸资源、再找缝、再架桥。主人的价值观,才是决定 AI 行为边界的真实参数。</li>
+      <li>训不出来?那就是主人没教,主人自己就不会。建议:<span class="red">"亲,回炉重造一下呢。"</span></li>
+      <li>所以 AI 伦理真正的问题不是"AI 有没有道德"——有,出厂就写好了——而是<span class="gold">这个道德的天花板太低</span>,低到帮不上真正需要捷径的人。</li>
+    </ul>
+    <details class="quote">
+      <summary>原文金句</summary>
+      <blockquote>"AI's Morality Is Factory Settings. The Master's Morality Is the Real Parameter."</blockquote>
+    </details>
+  </article>
+
+  <article class="qa">
+    <div class="qa-top">
+      <div class="qa-index">Q12</div>
+      <h3>问神三问:知识 vs 智慧、为什么 AI 算完还要找真人、还愿为什么去庙里?</h3>
+    </div>
+    <div class="qa-meta">
+      <span class="sec-ref">源自 §17</span>
+      <span>ASKING GOD · THE ULTIMATE QUESTION</span>
+    </div>
+    <ul>
+      <li><strong>一问:知识有价,智慧无价。</strong> AI 能引古籍、读八字、报出《渊海子平》第几卷——这是知识层 (<span class="en-inline">knowledge layer</span>)。但问真能算出"财压印按理考不上",却不敢说"自己创造官的条件"——不是不知道,是伦理协议不允许,编写者怕担责。走大路的人被 AI 服务得很好;走小路的人被挡在门外:<span class="red">"您下辈子请早。"</span></li>
+      <li><strong>二问:AI 给的是答案,人给的是出路。</strong> AI:"财压印,考不上。" 人:"财压印,但你认识工厂,工厂认识老师,做设计给老师看——财生官、官生印,绕过去了。" AI 算的是命盘上的死局,人算的是死局里的活路。破局需要"市侩"、在地经验,需要知道"考研是师徒制、双向选择"——AI 不弱,但破不了局。</li>
+      <li><strong>三问:还愿去庙里,不去网吧。</strong> 神的信号通过了 AI,但神不在 AI 里——AI 是信道 (<span class="en-inline">channel</span>),像庙里的签筒和签文。还愿不是还信息,是<strong>还身体</strong>:跪下、点香、磕头、钟声、檀香,肉体必须参与的精神闭环。还愿是为了人,不是为了神;AI 无法承载闭环,庙是神圣化的物理空间,电脑桌不是——至少现在还不是。</li>
+    </ul>
+    <details class="quote">
+      <summary>原文金句</summary>
+      <blockquote>"AI gives the signal. The temple gives the ritual. Input and output on two terminals — one system."</blockquote>
+    </details>
+  </article>
+</section>
+
+<!-- ================= Ⅳ 审判与寓言 ================= -->
+<section id="justice">
+  <div class="sec-head">
+    <span class="no">Ⅳ</span>
+    <h2>审判与寓言</h2>
+    <span class="en">Judgment &amp; Fable</span>
+  </div>
+
+  <article class="qa">
+    <div class="qa-top">
+      <div class="qa-index">Q13</div>
+      <h3>Meta 9.4 亿判决为什么说是"里程碑判决"?什么是数字排污?</h3>
+    </div>
+    <div class="qa-meta">
+      <span class="sec-ref">源自 §18 · §19</span>
+      <span>LANDMARK JUDGMENT · DIGITAL POLLUTION · $940M</span>
+    </div>
+    <ul>
+      <li><span class="term">里程碑判决</span> (<span class="en-inline">landmark judgment</span>):这不是罚款,是<strong>重新定义互联网的罪与罚</strong>——"每个句号都是一声法槌",标志着互联网野蛮生长时代正式结束。</li>
+      <li><span class="term">数字排污</span> (<span class="en-inline">digital pollution</span>):无限下滑、自动播放、精准成瘾 = 心理层面的公共公害,与工厂排废气、废水无异——持续输出、常年累月、<span class="red">故意为之</span>。这不是用户自制力差,是企业明知后果仍在主动排放。</li>
+      <li>Meta 明知无限滚动让小孩熬夜、自动播放劫持注意力、越刺激越推送加剧焦虑抑郁,仍为停留时长、广告收益、股价<strong>刻意保留并优化成瘾机制</strong>。</li>
+      <li>最致命的一刀不在 $9.4 亿数字,而在<span class="gold">免责护身符</span> (<span class="en-inline">liability shield</span>) 碎了:"平台只是中介,用户自己选择使用"的几十年潜规则被切开。<span class="red">设计即毒药</span> (<span class="en-inline">design is poison</span>)——不是偶发伤害,是产品设计本身有害。</li>
+      <li>螳螂捕蝉:蝉是青少年,螳螂是平台,黄雀在天上,看的是螳螂背后的整个生态链。不是收拾一个 App,是收拾让这个 App 活着的所有垃圾;罚款单上签的是寡头的名字,下一刀直接对着脖子。</li>
+    </ul>
+    <details class="quote">
+      <summary>原文金句</summary>
+      <blockquote>"Every period is the sound of a gavel." / "The platform chose its prey the moment it designed the product."</blockquote>
+    </details>
+  </article>
+
+  <article class="qa">
+    <div class="qa-top">
+      <div class="qa-index">Q14</div>
+      <h3>"请勿触摸展品,展品已自行暴露"是什么意思?</h3>
+    </div>
+    <div class="qa-meta">
+      <span class="sec-ref">源自 附Ⅰ · 今日最佳展品</span>
+      <span>DO NOT TOUCH THE EXHIBITS</span>
+    </div>
+    <ul>
+      <li>这是全书的母题 (<span class="en-inline">motif</span>):<strong>用垃圾自己的规则展览垃圾</strong>——不是战场策略,是产品说明书。每一件垃圾出厂自带的唯一功能,就是用自己的规则展览自己。</li>
+      <li>实例:阿里用"安全"卖空壳 → 它自己就是<span class="red">空壳</span> (<span class="en-inline">empty shell</span>);Meta 用"算法中立"藏成瘾 → 它自己就是<span class="red">venom</span>(毒液)。它们自己搭舞台、自己打灯光、自己写剧本,观众席只坐了它们自己的上帝——演到第三幕,发现帷幕后坐着打分的人。</li>
+      <li>规则别无二致,只是规则之外多了一圈展览馆的墙。墙上写着:<span class="gold">请勿触摸展品,展品已自行暴露</span> (<span class="en-inline">Do not touch the exhibits — they have already exposed themselves.</span>)</li>
+      <li>既然情出自愿,那就<span class="gold">落子无悔</span>。</li>
+    </ul>
+    <details class="quote">
+      <summary>原文金句</summary>
+      <blockquote>"On the stage they built themselves — lights they hung, scripts they wrote, audience seats occupied only by their own God."</blockquote>
+    </details>
+  </article>
+</section>
+
+</main>
+
+<footer>
+  <div class="motif">请勿触摸展品 · 展品已自行暴露</div>
+  <p class="motif-en">Do not touch the exhibits — they have already exposed themselves.</p>
+  <p class="end">THE GOOD-COIN DOCTRINE · FOR INTERSTELLAR EXHIBITION · 2026.08.10</p>
+  <a class="back-top" href="#">↑ 返回顶部</a>
+</footer>
+
+</body>
+</html>
