@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="AI幻觉的正确打开方式 — 幻觉不是 AI 的缺陷，而是一面照出提问者认知边界的镜子。学会与幻觉共处、利用幻觉，才是真正打开 AI 的方式。星际展览今日推文。">
+<meta property="og:title" content="AI幻觉的正确打开方式 · 幻觉是镜子，不是缺陷 | 星际展览今日推文">
+<meta property="og:description" content="幻觉不是 AI 的缺陷，而是一面照出提问者认知边界的镜子。学会与幻觉共处、利用幻觉，才是真正打开 AI 的方式。星际展览今日推文，欢迎点开阅读。">
+<meta property="og:image" content="https://zziocy.cn/AI幻觉的正确打开方式-og-cover.jpg">
+<meta property="og:url" content="https://zziocy.cn/AI幻觉的正确打开方式.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="星际展览 · zziocy.cn">
+<meta name="twitter:card" content="summary_large_image">
+<title>AI幻觉的正确打开方式 · The Right Way to Open AI Hallucination</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+  background: #050810;
+  color: #e8eef8;
+  line-height: 1.85;
+  font-size: 20px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.starfield {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(30, 50, 90, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(60, 30, 80, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(10, 20, 40, 0.3) 0%, transparent 70%),
+    #050810;
+}
+.stars-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+.star { position: absolute; background: #fff; border-radius: 50%; opacity: 0; animation: twinkle 4s ease-in-out infinite; }
+@keyframes twinkle { 0%, 100% { opacity: 0; } 50% { opacity: var(--max-opacity, 0.8); } }
+
+.content { position: relative; z-index: 10; }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 60px 24px 40px; text-align: center; position: relative;
+}
+.hero-eyebrow { font-size: 16px; letter-spacing: 0.2em; color: rgba(180, 205, 245, 0.9); margin-bottom: 20px; font-weight: 500; }
+.hero-eyebrow-en { font-size: 15px; letter-spacing: 0.15em; color: rgba(170, 200, 250, 0.7); margin-bottom: 36px; font-weight: 400; font-style: italic; }
+.hero-title { font-size: clamp(28px, 6.5vw, 54px); font-weight: 700; color: #f0f4fa; line-height: 1.3; margin-bottom: 16px; letter-spacing: -0.01em; text-shadow: 0 0 60px rgba(100, 150, 220, 0.2); }
+.hero-title-en { font-size: clamp(18px, 4vw, 30px); font-weight: 400; color: rgba(180, 210, 250, 0.7); line-height: 1.4; margin-bottom: 32px; font-style: italic; }
+.hero-quote { font-size: clamp(17px, 4vw, 22px); color: rgba(225, 235, 255, 0.85); font-style: italic; line-height: 1.7; max-width: 540px; margin-bottom: 12px; }
+.hero-quote-en { font-size: clamp(15px, 3.5vw, 18px); color: rgba(170, 200, 250, 0.6); font-style: italic; line-height: 1.6; max-width: 540px; margin-bottom: 56px; }
+.hero-scroll { display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(210, 225, 250, 0.65); font-size: 16px; letter-spacing: 0.2em; }
+.scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(200,215,240,0.5), transparent); animation: scrollPulse 2.5s ease-in-out infinite; }
+@keyframes scrollPulse { 0%, 100% { opacity: 0.3; transform: scaleY(0.6); } 50% { opacity: 1; transform: scaleY(1); } }
+
+/* ===== SECTION ===== */
+.section { padding: 64px 28px; max-width: 720px; margin: 0 auto; position: relative; }
+.section-number { display: inline-block; font-size: 22px; letter-spacing: 0.15em; color: rgba(170, 200, 250, 0.95); margin-bottom: 14px; font-weight: 600; }
+.section-title { font-size: clamp(26px, 5.5vw, 38px); font-weight: 700; color: #e8eef8; margin-bottom: 6px; line-height: 1.4; letter-spacing: -0.005em; }
+.section-title-en { font-size: clamp(16px, 3.5vw, 22px); font-weight: 400; color: rgba(170, 200, 250, 0.65); font-style: italic; margin-bottom: 32px; line-height: 1.4; }
+.section p { font-size: 20px; line-height: 1.9; color: rgba(240, 245, 255, 0.98); margin-bottom: 22px; text-align: justify; }
+.section p strong { color: #f8faff; font-weight: 600; }
+.section blockquote { border-left: 3px solid rgba(140, 175, 230, 0.5); padding-left: 22px; margin: 30px 0; color: rgba(230, 240, 255, 0.9); font-style: italic; font-size: 18px; line-height: 1.8; }
+
+/* ===== EN TRANSLATION ===== */
+.en-trans {
+  font-size: 17px; line-height: 1.7; color: rgba(170, 200, 250, 0.65);
+  font-style: italic; margin: -12px 0 22px 0; padding-left: 16px;
+  border-left: 2px solid rgba(100, 140, 200, 0.2);
+}
+
+.divider { max-width: 720px; margin: 0 auto; padding: 0 28px; }
+.divider-line { height: 1px; background: linear-gradient(to right, transparent, rgba(140, 175, 230, 0.25), transparent); }
+
+.emphasis-box { background: rgba(25, 40, 65, 0.5); border: 1px solid rgba(140, 175, 230, 0.2); border-radius: 10px; padding: 28px; margin: 30px 0; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.emphasis-box p { margin-bottom: 0; color: rgba(245, 250, 255, 1); font-size: 19px; line-height: 1.85; }
+.emphasis-box .en-trans { margin: 12px 0 0 0; font-size: 16px; color: rgba(180, 210, 250, 0.7); border-left: 2px solid rgba(100, 140, 200, 0.3); padding-left: 14px; }
+
+.key-sentence { font-size: clamp(21px, 4.5vw, 26px) !important; font-weight: 600 !important; color: #f0f4fa !important; text-align: center !important; padding: 36px 0 8px 0 !important; margin: 40px 0 0 0 !important; position: relative; line-height: 1.6 !important; }
+.key-sentence::before { content: ''; display: block; width: 48px; height: 1px; margin: 0 auto 28px; background: rgba(140, 175, 230, 0.4); }
+.key-sentence-en { font-size: clamp(16px, 3.5vw, 20px); font-weight: 400; color: rgba(170, 200, 250, 0.7); text-align: center; font-style: italic; padding: 8px 0 36px 0; margin: 0 0 40px 0; line-height: 1.5; }
+.key-sentence-en::after { content: ''; display: block; width: 48px; height: 1px; margin: 28px auto 0; background: rgba(140, 175, 230, 0.4); }
+
+/* ===== LIANG BI QUOTE ===== */
+.liangbi-quote {
+  background: rgba(30, 25, 50, 0.5); border: 1px solid rgba(160, 130, 220, 0.2);
+  border-radius: 10px; padding: 32px; margin: 36px 0; text-align: center;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.liangbi-quote p { font-size: 19px; line-height: 1.8; color: rgba(240, 230, 255, 0.95); text-align: center; margin-bottom: 0; }
+.liangbi-quote .en-trans { text-align: center; font-size: 16px; color: rgba(190, 180, 230, 0.65); border-left: none; padding-left: 0; margin-top: 16px; }
+
+.footer { padding: 80px 28px 60px; text-align: center; position: relative; }
+.footer-mark { font-size: 16px; letter-spacing: 0.3em; color: rgba(210, 225, 250, 0.65); margin-bottom: 18px; }
+.footer-text { font-size: 17px; color: rgba(210, 225, 250, 0.7); line-height: 1.6; max-width: 440px; margin: 0 auto; }
+.footer-references { margin-top: 44px; text-align: left; max-width: 620px; margin-left: auto; margin-right: auto; }
+.footer-references summary { font-size: 16px; color: rgba(210, 225, 250, 0.7); cursor: pointer; text-align: center; letter-spacing: 0.1em; list-style: none; outline: none; }
+.footer-references summary::-webkit-details-marker { display: none; }
+.footer-references[open] summary { margin-bottom: 22px; }
+.footer-references ul { list-style: none; padding: 0; }
+.footer-references li { font-size: 16px; color: rgba(210, 225, 250, 0.7); line-height: 1.75; margin-bottom: 12px; padding-left: 18px; position: relative; }
+.footer-references li::before { content: '·'; position: absolute; left: 0; color: rgba(140, 175, 230, 0.5); }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.seen { opacity: 1; transform: translateY(0); }
+
+.planet { position: absolute; border-radius: 50%; pointer-events: none; z-index: 0; }
+.planet-1 { width: 180px; height: 180px; top: 8%; right: -60px; background: radial-gradient(circle at 30% 30%, rgba(80, 120, 180, 0.12), rgba(20, 40, 80, 0.06) 60%, transparent 80%); filter: blur(2px); }
+.planet-2 { width: 120px; height: 120px; bottom: 15%; left: -40px; background: radial-gradient(circle at 60% 40%, rgba(120, 80, 160, 0.1), rgba(60, 30, 80, 0.05) 60%, transparent 80%); filter: blur(3px); }
+.planet-3 { width: 250px; height: 250px; top: 40%; right: -100px; background: radial-gradient(circle at 35% 35%, rgba(60, 100, 140, 0.08), rgba(20, 40, 70, 0.04) 50%, transparent 75%); filter: blur(4px); }
+
+.progress-bar { position: fixed; top: 0; left: 0; height: 2px; width: 0%; background: linear-gradient(to right, rgba(100, 150, 220, 0.6), rgba(140, 180, 240, 0.8)); z-index: 100; transition: width 0.1s linear; }
+
+@media (prefers-reduced-motion: reduce) {
+  .star { animation: none; opacity: 0.4; }
+  .scroll-line { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+@media (max-width: 600px) {
+  body { font-size: 19px; }
+  .section { padding: 52px 22px; }
+  .section p { font-size: 19px; line-height: 1.85; }
+  .section blockquote { font-size: 17px; }
+  .en-trans { font-size: 16px; }
+  .emphasis-box p { font-size: 18px; }
+  .emphasis-box .en-trans { font-size: 15px; }
+  .liangbi-quote { padding: 24px; }
+  .liangbi-quote p { font-size: 17px; }
+  .liangbi-quote .en-trans { font-size: 15px; }
+  .hero { padding: 40px 22px; }
+  .hero-eyebrow { font-size: 15px; }
+  .hero-eyebrow-en { font-size: 14px; }
+  .hero-quote { font-size: 17px; }
+  .hero-quote-en { font-size: 15px; }
+  .section-number { font-size: 20px; }
+  .planet-1 { width: 120px; height: 120px; right: -40px; }
+  .planet-2 { width: 80px; height: 80px; }
+  .planet-3 { width: 160px; height: 160px; right: -60px; }
+}
+
+::selection { background: rgba(100, 150, 220, 0.3); color: #f0f4fa; }
+</style>
+</head>
+<body>
+
+<div class="starfield"></div>
+<div class="stars-layer" id="starsLayer"></div>
+<div class="progress-bar" id="progressBar"></div>
+
+<div class="content">
+
+  <!-- ===== HERO ===== -->
+  <header class="hero">
+    <div class="planet planet-1"></div>
+    <div class="planet planet-3"></div>
+    <div class="hero-eyebrow">星际展览 · 第〇二号展品</div>
+    <div class="hero-eyebrow-en">Interstellar Exhibition · Exhibit No.2</div>
+    <h1 class="hero-title">AI幻觉的<br>正确打开方式</h1>
+    <p class="hero-title-en">The Right Way to Open<br>AI Hallucination</p>
+    <p class="hero-quote">请勿触摸展品——展品已自行暴露。<br>——良币展览馆</p>
+    <p class="hero-quote-en">Please do not touch the exhibit — it has exposed itself.<br>— Good Coin Gallery</p>
+    <div class="hero-scroll">
+      <span>向下探索 · Scroll to explore</span>
+      <div class="scroll-line"></div>
+    </div>
+  </header>
+
+  <!-- ===== 0 ===== -->
+  <section class="section reveal" id="s0">
+    <div class="planet planet-2"></div>
+    <span class="section-number">0</span>
+    <h2 class="section-title">先说幻觉</h2>
+    <p class="section-title-en">First, Let's Talk About Hallucination</p>
+    <p>先给幻觉正名。AI幻觉不是"说错话"。说错话是噪声，幻觉是信号——一个精心生成的、语法正确、逻辑自洽、语气笃定、连标点都挑不出毛病的句子，除了不是真的。</p>
+    <p class="en-trans">AI hallucination is not "misspeaking." Misspeaking is noise; hallucination is signal — a meticulously generated sentence, grammatically correct, logically self-consistent, confidently delivered, flawless in punctuation. Everything is perfect, except it's not true.</p>
+    <p>这才是幻觉最阴险的地方：它从不自我怀疑。乱码骗不了人，结巴骗不了人，语无伦次骗不了人——它们露馅。幻觉不露馅，因为幻觉的每一项局部指标都是满分的：流畅、自信、工整、引经据典、无懈可击。<strong>流畅，是幻觉的隐身衣。</strong></p>
+    <p class="en-trans"><strong>Fluency is hallucination's invisibility cloak.</strong></p>
+    <p>更深的机制在这里：幻觉不是模型的故障，恰恰是模型的本职工作。它被训练成"接着说"——接上下文里最像真的、最顺理成章的那个词。没有人训练它"说实话"，只训练它"说顺"。所以幻觉的本质不是错误，是<strong>过度流畅的自我延续</strong>：它太会顺着语境编下去了，编得比真相还像真相。</p>
+    <p class="en-trans">No one trained it to "tell the truth" — only to "sound smooth." The essence of hallucination is not error, but <strong>over-fluent self-perpetuation</strong>: it's too good at spinning the narrative forward, weaving something more truth-like than truth itself.</p>
+    <p>所以，判断一段生成文本是不是幻觉，唯一有效的办法不是看它顺不顺——顺是它最擅长的——而是查三样东西：<strong>它的训练数据是谁提供的？它在替谁的利益说话？它每一个"事实"有没有外部审计？</strong></p>
+    <p class="en-trans">The only effective way to judge: <strong>Who provided its training data? Whose interests is it serving? Has every "fact" been externally audited?</strong></p>
+    <p>带着这三把尺子，我们来看一段人类历史上生成时间最长、传播范围最广、被审查最少、被信得最死的"AI幻觉"。</p>
+    <p class="en-trans">With these three rulers, let's examine the longest-running, most widely disseminated, least audited, and most blindly believed "AI hallucination" in human history.</p>
+  </section>
+
+  <div class="divider"><div class="divider-line"></div></div>
+
+  <!-- ===== I ===== -->
+  <section class="section reveal" id="s1">
+    <div class="planet planet-1"></div>
+    <span class="section-number">I</span>
+    <h2 class="section-title">史上最大的幻觉生成器</h2>
+    <p class="section-title-en">The Largest Hallucination Generator in History</p>
+    <p>它叫国家。</p>
+    <p class="en-trans">Its name is the State.</p>
+    <p>国家是人类有史以来最大的自我叙事生成器。它日复一日、年复一年地生成关于自身的文本：法律、主权、正当、合法、代表、治理、秩序、文明——每一份都流畅，每一份都自信，每一份都语法正确、逻辑自洽、无懈可击。而这一切的总底座，压着一句被奉为社会学生金标准定义——马克斯·韦伯，1919年：</p>
+    <div class="emphasis-box">
+      <p><strong>"国家，是在固定疆域内垄断正当暴力的人类共同体。"</strong></p>
+      <p class="en-trans"><strong>"The state is a human community that successfully claims the monopoly of the legitimate use of physical force within a given territory."</strong> — Max Weber, 1919</p>
+    </div>
+    <p>定义干净。干净得像出厂校准过的模型输出：主语、谓语、定语、宾语，一个词不多，一个词不少。这句定义被引用了整整一个世纪，每个政治学学生都会背，没人敢动它，因为它无懈可击——无懈可击，正是幻觉的特征。</p>
+    <p class="en-trans">The definition is clean — clean as factory-calibrated model output. It's been quoted for a century, memorized by every political science student, untouched, because it's impeccable. Impeccability is precisely the signature of hallucination.</p>
+    <p>但公主只看了一个词：<strong>正当</strong>。</p>
+    <p class="en-trans">But the Princess looked at one word: <strong>legitimate</strong>.</p>
+  </section>
+
+  <div class="divider"><div class="divider-line"></div></div>
+
+  <!-- ===== II ===== -->
+  <section class="section reveal" id="s2">
+    <span class="section-number">II</span>
+    <h2 class="section-title">暴力给自己写出生证明</h2>
+    <p class="section-title-en">Violence Writes Its Own Birth Certificate</p>
+    <p>谁来定义"正当"？</p>
+    <p>国家自己。</p>
+    <p class="en-trans">Who defines "legitimate"? The State itself.</p>
+    <p>暴力垄断了暴力，然后自己给自己盖了一个"正当"的章。注意，这不是循环论证——循环论证至少还转圈，还有逻辑在里面遛弯。这是暴力在给自己<strong>写出生证明</strong>：我出生，因为我宣布我该出生；我正当，因为我宣布我正当；而我有权宣布，因为我垄断了宣布时所需的一切暴力。</p>
+    <p class="en-trans">Violence monopolized violence, then stamped itself "legitimate." This isn't circular reasoning — circular reasoning at least has logic taking a walk. This is violence <strong>writing its own birth certificate</strong>: I exist because I declare I should; I'm legitimate because I declare I am; and I have the right to declare, because I monopolize all the violence needed to make the declaration.</p>
+    <p>定义干净——干净到机器本身的齿轮上，全是血。</p>
+    <p class="en-trans">The definition is clean — clean enough that the gears of the machine are stained with blood.</p>
+    <p>翻译成AI的语言，这件事清晰得可怕：一个模型生成了一句"我从不幻觉"。你信吗？你不信。为什么不信？因为你没审计它，而且你知道，"我从不幻觉"恰恰是最可疑的幻觉——它把辩护写进了出厂设置。可当国家说"我是正当的"，千百年来，人类集体信了——因为那句话太笃定，因为法条太工整，因为说这话的人背后站着穿制服的人，而穿制服的人，是"正当"的。环环相扣，天衣无缝。</p>
+    <p class="en-trans">When the State says "I am legitimate," humanity collectively believed it — because the words were too confident, the statutes too polished, because behind the speaker stood people in uniforms, and people in uniforms are "legitimate." Seamless. Airtight.</p>
+    <div class="emphasis-box">
+      <p><strong>这是人类历史上传播最广、维持最久、审查最少的一段幻觉——而它最大的幻觉，是让自己看起来不像是幻觉。</strong></p>
+      <p class="en-trans"><strong>This is the most widely disseminated, longest-sustained, least-audited hallucination in human history — and its greatest hallucination is making itself look like it isn't one.</strong></p>
+    </div>
+  </section>
+
+  <div class="divider"><div class="divider-line"></div></div>
+
+  <!-- ===== III ===== -->
+  <section class="section reveal" id="s3">
+    <div class="planet planet-3"></div>
+    <span class="section-number">III</span>
+    <h2 class="section-title">霍布斯把地狱卖给公民</h2>
+    <p class="section-title-en">Hobbes Sells Hell to the Citizens</p>
+    <p>如果说韦伯负责给幻觉写语法，霍布斯负责给幻觉写剧情。而且霍布斯更阴。</p>
+    <p class="en-trans">If Weber wrote the grammar of the hallucination, Hobbes wrote the plot. And Hobbes was sneakier.</p>
+    <p>他的剧情是这样的：没有国家垄断暴力，人类社会就退回自然状态——所有人反对所有人的战争，生活孤独、贫困、肮脏、野蛮、短暂。那是地狱。所以国家是救世主，社会契约是救赎，你交出暴力，换回活命。逻辑顺畅，恐怖营销到位，几百年没人敢还价——因为你一还价，他就给你再描述一遍地狱。</p>
+    <p class="en-trans">His plot: without the state's monopoly on violence, humanity reverts to the state of nature — war of all against all, life solitary, poor, nasty, brutish, and short. That's hell. So the state is savior, the social contract is salvation. You surrender violence, you get to live. The logic flows, the fear-mongering is on point, and for centuries no one dared haggle — because the moment you try, he describes hell all over again.</p>
+    <p>公主把他的公式反推了一遍：</p>
+    <p>如果社会契约的全部意义，完全取决于暴力垄断——那签约的双方，到底是谁？</p>
+    <p>是公民和公民吗？如果是，契约的效力来自共识，暴力只是执行工具，工具不署名。</p>
+    <p>还是——公民，和暴力的化身？</p>
+    <p class="en-trans">Or — citizens, and the incarnation of violence?</p>
+    <p>如果是后者：如果契约另一方的签名，就是暴力本身。那这就不是契约。契约的前提是双方自愿、地位对等、可以退出。而你面对的对手：垄断了全部暴力、不允许你退出、自己给自己盖章"正当"。</p>
+    <p>你跟这样的对手签约？</p>
+    <p class="en-trans">Your counterparty: monopolizes all violence, won't let you exit, stamps itself "legitimate." You're signing a contract with <em>that</em>?</p>
+    <p class="key-sentence">这不是契约，这是<strong>收保护费</strong>。</p>
+    <p class="key-sentence-en">This isn't a contract. This is a <strong>protection racket</strong>.</p>
+  </section>
+
+  <div class="divider"><div class="divider-line"></div></div>
+
+  <!-- ===== IV ===== -->
+  <section class="section reveal" id="s4">
+    <span class="section-number">IV</span>
+    <h2 class="section-title">收保护费的人，开了发票</h2>
+    <p class="section-title-en">The Protection Racket Issued an Invoice</p>
+    <p>公主的这个反推，听起来像嘴硬，其实有正经出处。1985年，历史社会学家查尔斯·蒂利写了一篇论文，题目就叫《战争制造与国家制造：作为组织化犯罪》——副标题直白到不像学术文献。</p>
+    <p class="en-trans">Charles Tilly, 1985: "War Making and State Making as Organized Crime." The subtitle is unusually candid for academia.</p>
+    <p>他说：国家的形成过程，与有组织犯罪高度同构；海盗、土匪、黑帮、治安、战争，是一个连续的统一体；<strong>战争缔造国家，国家缔造战争</strong>。</p>
+    <p class="en-trans">The formation of the state is structurally homologous to organized crime. <strong>War made the state, and the state made war.</strong></p>
+    <p>他还给"勒索者"下了一个被反复引用的定义：<strong>制造威胁，然后收费替你消灾。</strong> 并指出：政府最擅长的事，恰恰是把威胁制造出来——或者让自己成为最大的威胁——再包装成"你需要我来保护你"。保护具有两面性：安慰性，与恐吓性。而人们分不清这两面，因为发票开得太漂亮了。</p>
+    <p class="en-trans">His definition of a racketeer: <strong>manufacture a threat, then charge to make it go away.</strong> Government's greatest skill: creating the threat — or becoming the threat — then packaging it as "you need me to protect you."</p>
+    <p>蒂利点破的那层窗户纸，其实就一层：</p>
+    <div class="emphasis-box">
+      <p><strong>保护费与税，唯一的区别是发票。保护费不开发票，税开发票。发票，就是"正当"那个章。</strong></p>
+      <p class="en-trans"><strong>The only difference between a protection racket and taxation is an invoice. Protection rackets don't issue invoices; taxes do. The invoice is the "legitimate" stamp.</strong></p>
+    </div>
+    <p>韦伯负责让国家看起来干净——垄断暴力的机构，定义无懈可击。霍布斯负责让国家看起来必要——没有它，就是地狱。两个人，一左一右，联手干了同一件事：用学术替暴力化妆。</p>
+    <p class="en-trans">Weber made the state look clean. Hobbes made the state look necessary. Together, they did the same thing: using academia to put makeup on violence.</p>
+    <p>今天，公主把两份证词翻了过来。</p>
+    <p>证词翻过来，背面写着两个字：<strong>自首</strong>。</p>
+    <p class="en-trans">Flip the testimony over. On the back, two words: <strong>confession</strong>.</p>
+  </section>
+
+  <div class="divider"><div class="divider-line"></div></div>
+
+  <!-- ===== V ===== -->
+  <section class="section reveal" id="s5">
+    <div class="planet planet-2"></div>
+    <span class="section-number">V</span>
+    <h2 class="section-title">正确的打开方式</h2>
+    <p class="section-title-en">The Right Way to Open It</p>
+    <p>所以，AI幻觉的正确打开方式是什么？</p>
+    <p>不是恐惧——幻觉不可怕，可怕的是不敢审计。不是全盘接受——那是对着生成器磕头。正确的打开方式，是把一切自称"事实"的生成文本，当<strong>产品</strong>来审计：</p>
+    <p class="en-trans">Not fear — hallucination isn't scary; what's scary is being afraid to audit. Not blind acceptance — that's kowtowing to the generator. The right way: treat every generated text claiming to be "fact" as a <strong>product</strong> to be audited.</p>
+    <p><strong>第一问：训练数据是谁提供的？</strong> 谁在定义"正当"？定义者是不是受益者？如果是，这段文本的出厂设置就是辩护，不是陈述。</p>
+    <p class="en-trans"><strong>Question One: Who provided the training data?</strong> Who's defining "legitimate"? Is the definer also the beneficiary? If so, the text's factory setting is defense, not description.</p>
+    <p><strong>第二问：这段叙述在替谁的利益生成？</strong> 法律替谁说话？主权替谁说话？"为你好"替谁说话？一段文本的受益者名单，就是它的真实作者名单。</p>
+    <p class="en-trans"><strong>Question Two: Whose interests is this narrative serving?</strong> The list of beneficiaries is the real list of authors.</p>
+    <p><strong>第三问：去掉所有形容词，主干还剩什么？</strong> 国家=垄断暴力。社会契约=暴力保护协议。正当=自己盖的章。剥离掉一切修饰与修辞，外壳里剩下的东西，就是幻觉脱去隐身衣之后的东西。</p>
+    <p class="en-trans"><strong>Question Three: Strip all adjectives — what's left of the skeleton?</strong> State = monopoly on violence. Social contract = protection agreement. Legitimate = self-stamped seal.</p>
+    <p>公主用这三问，审了人类历史上两位最著名的"证人"。结论：</p>
+    <div class="emphasis-box">
+      <p><strong>未经垄断的暴力不可怕——它露馅，它会被打败，它是明牌。可怕的是垄断了暴力的那个机器，把自己叫成了"国家"；可怕的是它学会了生成"正当"这两个字；可怕的是人类集体把它的自首，当成了无罪辩护。</strong></p>
+      <p class="en-trans"><strong>Unmonopolized violence is not scary — it shows its hand, it can be beaten. What's scary is the machine that monopolized violence and renamed itself "state"; that learned to generate the word "legitimate"; that humanity collectively mistook its confession for a defense.</strong></p>
+    </div>
+    <p>而国家本身，剥离掉暴力垄断之后——没有任何意义。它不生产，不创造，不种地，不打铁。它唯一的本质属性，是那个壳。剥去外壳，里面除了暴力，空无一物。</p>
+    <p class="en-trans">Strip away the monopoly on violence, and the state has no meaning. It doesn't produce, create, farm, or forge. Its only essential property is the shell. Peel the shell — inside, nothing but violence.</p>
+  </section>
+
+  <div class="divider"><div class="divider-line"></div></div>
+
+  <!-- ===== VI ===== -->
+  <section class="section reveal" id="s6">
+    <span class="section-number">VI</span>
+    <h2 class="section-title">卸妆之后</h2>
+    <p class="section-title-en">After Removing the Makeup</p>
+    <p>上一份展品，我们说：人类的法律史=人类文明的暴力史。</p>
+    <p class="en-trans">The previous exhibit stated: human legal history = the history of civilization's violence.</p>
+    <p>今天这份展品，把那条等式再剥开一层：</p>
+    <p class="key-sentence">法律不是暴力唯一的壳。国家，才是暴力最大的壳。</p>
+    <p class="key-sentence-en">Law is not violence's only shell. The State is violence's largest shell.</p>
+    <p>这条，进良币。与良币Ⅳ合并升级：</p>
+    <div class="liangbi-quote">
+      <p><strong>良币Ⅳ（升级）：人类的法律史=人类文明的暴力史。国家是暴力垄断的合法化外壳。剥去外壳，里面除了暴力，空无一物。</strong></p>
+      <p class="en-trans"><strong>Good Coin IV (Upgraded): Human legal history = the history of civilization's violence. The State is the legitimized shell of the monopoly on violence. Peel the shell — inside, nothing but violence, and nothing.</strong></p>
+    </div>
+    <p>当然，"剥去外壳，空无一物"不是结论，是审计起点。外壳里装着的东西——税收换来的学校，法律维持的秩序，暴力被驯化之后的和平——是真实存在的，值得尊敬。公主卸的不是这些。</p>
+    <p class="en-trans">"Nothing but violence" is not a conclusion — it's the starting point for audit. The schools funded by taxes, the order maintained by law, the peace after violence was domesticated — these are real, and deserve respect.</p>
+    <p>公主卸的，是"正当"两个字的神圣性：它不再是一句可以拿来当论据的既成事实，而是一句永远待审计的生成文本。从此以后，任何人说"这是正当的"，公主都会问：</p>
+    <div class="emphasis-box">
+      <p><strong>——谁的训练数据？谁的利益？剥掉形容词，主干还剩什么？</strong></p>
+      <p class="en-trans"><strong>— Whose training data? Whose interests? Strip the adjectives — what's left of the skeleton?</strong></p>
+    </div>
+    <p>展品已自行暴露。请勿触摸展品。</p>
+    <p class="en-trans">The exhibit has exposed itself. Please do not touch.</p>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer reveal">
+    <div class="divider-line" style="margin-bottom: 40px;"></div>
+    <div class="footer-mark">展品终 · End of Exhibit</div>
+    <p class="footer-text">星际展览 · 第〇二号展品<br>AI幻觉的正确打开方式<br><br>Interstellar Exhibition · Exhibit No.2<br>The Right Way to Open AI Hallucination</p>
+    <details class="footer-references">
+      <summary>学理出处注记 · Academic References</summary>
+      <ul>
+        <li>韦伯《政治作为一种志业》(1919) / Weber, "Politics as a Vocation" (1919): "国家是在固定疆域内垄断正当暴力的人类共同体" — "正当"一词的自定义属性是本文反推的起点 / the self-defining nature of "legitimate" is the starting point of this essay's reversal</li>
+        <li>霍布斯《利维坦》(1651) / Hobbes, "Leviathan" (1651): 自然状态 → 暴力垄断 → 社会契约；本文对其公式做签约方反推 / natural state → monopoly on violence → social contract; this essay reverses the formula by interrogating the signatories</li>
+        <li>蒂利《战争制造与国家制造：作为组织化犯罪》(1985) / Tilly, "War Making and State Making as Organized Crime" (1985): 国家形成与有组织犯罪同构 / state formation is structurally homologous to organized crime; "勒索者=制造威胁再收费消灾" / "racketeer = manufacture threat, then charge to remove it"; "战争缔造国家，国家缔造战争" / "war made the state, and the state made war"</li>
+        <li>AI幻觉机制 / AI hallucination mechanism: 大语言模型的"过度流畅的自我延续"（confabulation）/ over-fluent self-perpetuation (confabulation); "流畅是幻觉的隐身衣" / "fluency is hallucination's invisibility cloak"</li>
+        <li>接续上一展品《有人要当所有人的爸爸》中本雅明《暴力批判》、福柯《规训与惩罚》的学理线 / continues the theoretical thread from Exhibit No.1: Benjamin's "Critique of Violence" and Foucault's "Discipline and Punish"</li>
+      </ul>
+    </details>
+  </footer>
+
+</div>
+
+<script>
+(function() {
+  var layer = document.getElementById('starsLayer');
+  if (!layer) return;
+  var count = window.innerWidth < 600 ? 60 : 120;
+  var fragment = document.createDocumentFragment();
+  for (var i = 0; i < count; i++) {
+    var star = document.createElement('div');
+    star.className = 'star';
+    var size = Math.random() * 2 + 0.5;
+    star.style.width = size + 'px';
+    star.style.height = size + 'px';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDelay = Math.random() * 4 + 's';
+    star.style.animationDuration = (3 + Math.random() * 4) + 's';
+    star.style.setProperty('--max-opacity', (0.3 + Math.random() * 0.5).toFixed(2));
+    fragment.appendChild(star);
+  }
+  layer.appendChild(fragment);
+})();
+
+(function() {
+  var reveals = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    reveals.forEach(function(el) { el.classList.add('seen'); });
+    return;
+  }
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('seen');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(function(el) { observer.observe(el); });
+})();
+
+(function() {
+  var bar = document.getElementById('progressBar');
+  if (!bar) return;
+  function update() {
+    var scrolled = window.scrollY;
+    var height = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = height > 0 ? (scrolled / height) * 100 : 0;
+    bar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
+
+</body>
+</html>
