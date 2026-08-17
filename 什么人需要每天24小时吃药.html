@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="星际展览第〇三号展品 · 命名作文《什么人需要每天24小时吃药》——一道考场作文题的答案，一场关于持续依赖与生命形态的思考。向下探索。">
+<meta property="og:title" content="什么人需要每天24小时吃药 · 星际展览第〇三号展品命名作文 | 今日推文">
+<meta property="og:description" content="一道考场作文题的答案：谁需要每分每秒都在吃药？从持续依赖到生命形态，从医学事实到哲学隐喻。星际展览第〇三号展品命名作文，红笔批注，欢迎点开阅读，向下探索。">
+<meta property="og:image" content="https://zziocy.cn/什么人需要每天24小时吃药-og-cover.jpg">
+<meta property="og:url" content="https://zziocy.cn/什么人需要每天24小时吃药.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="星际展览 · zziocy.cn">
+<meta name="twitter:card" content="summary_large_image">
+<title>什么人需要每天24小时吃药 · What Kind of Person Needs Medicine 24 Hours a Day</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+  background: #050810;
+  color: #e8eef8;
+  line-height: 1.85;
+  font-size: 20px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.starfield {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(30, 50, 90, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(60, 30, 80, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(10, 20, 40, 0.3) 0%, transparent 70%),
+    #050810;
+}
+.stars-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+.star { position: absolute; background: #fff; border-radius: 50%; opacity: 0; animation: twinkle 4s ease-in-out infinite; }
+@keyframes twinkle { 0%, 100% { opacity: 0; } 50% { opacity: var(--max-opacity, 0.8); } }
+
+.content { position: relative; z-index: 10; }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 60px 24px 40px; text-align: center; position: relative;
+}
+.hero-eyebrow { font-size: 16px; letter-spacing: 0.2em; color: rgba(180, 205, 245, 0.9); margin-bottom: 20px; font-weight: 500; }
+.hero-eyebrow-en { font-size: 15px; letter-spacing: 0.15em; color: rgba(170, 200, 250, 0.7); margin-bottom: 36px; font-weight: 400; font-style: italic; }
+.hero-title { font-size: clamp(26px, 5.5vw, 48px); font-weight: 700; color: #f0f4fa; line-height: 1.35; margin-bottom: 16px; letter-spacing: -0.01em; text-shadow: 0 0 60px rgba(100, 150, 220, 0.2); }
+.hero-title-en { font-size: clamp(17px, 3.8vw, 28px); font-weight: 400; color: rgba(180, 210, 250, 0.7); line-height: 1.4; margin-bottom: 32px; font-style: italic; }
+.hero-badge {
+  display: inline-block; font-size: 15px; letter-spacing: 0.12em; color: rgba(240, 190, 130, 0.85);
+  border: 1px solid rgba(240, 190, 130, 0.3); border-radius: 6px; padding: 8px 20px; margin-bottom: 40px;
+  background: rgba(60, 40, 20, 0.25);
+}
+.hero-scroll { display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(210, 225, 250, 0.65); font-size: 16px; letter-spacing: 0.2em; }
+.scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(200,215,240,0.5), transparent); animation: scrollPulse 2.5s ease-in-out infinite; }
+@keyframes scrollPulse { 0%, 100% { opacity: 0.3; transform: scaleY(0.6); } 50% { opacity: 1; transform: scaleY(1); } }
+
+/* ===== SECTION ===== */
+.section { padding: 64px 28px; max-width: 720px; margin: 0 auto; position: relative; }
+.section-title { font-size: clamp(26px, 5.5vw, 38px); font-weight: 700; color: #e8eef8; margin-bottom: 6px; line-height: 1.4; letter-spacing: -0.005em; }
+.section-title-en { font-size: clamp(16px, 3.5vw, 22px); font-weight: 400; color: rgba(170, 200, 250, 0.65); font-style: italic; margin-bottom: 32px; line-height: 1.4; }
+
+/* ===== QUESTION (引导词) ===== */
+.question-box {
+  background: rgba(25, 40, 65, 0.55); border: 1px solid rgba(140, 175, 230, 0.25);
+  border-radius: 12px; padding: 36px 32px; margin: 0 0 10px 0;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.question-label { font-size: 16px; letter-spacing: 0.25em; color: rgba(170, 200, 250, 0.85); margin-bottom: 20px; font-weight: 600; }
+.question-box p { font-size: 21px; line-height: 2; color: rgba(240, 245, 255, 0.98); text-align: justify; }
+.question-box p strong { color: #f8faff; }
+.question-box .en-trans { font-size: 18px; line-height: 1.75; color: rgba(180, 210, 250, 0.7); font-style: italic; margin-top: 16px; border-top: 1px dashed rgba(140, 175, 230, 0.25); padding-top: 16px; }
+
+/* ===== ANSWER CARD ===== */
+.answer-card {
+  background: rgba(18, 28, 48, 0.6); border: 1px solid rgba(140, 175, 230, 0.15);
+  border-radius: 12px; padding: 30px 28px; margin: 26px 0;
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  position: relative;
+}
+.answer-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; flex-wrap: wrap; }
+.answer-letter {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(100, 150, 220, 0.15); border: 1px solid rgba(140, 175, 230, 0.35);
+  color: rgba(190, 215, 250, 0.95); font-size: 18px; font-weight: 700;
+  flex-shrink: 0;
+}
+.answer-tag { font-size: 14px; letter-spacing: 0.15em; color: rgba(170, 200, 250, 0.55); font-weight: 500; }
+.answer-text { font-size: 21px; line-height: 1.9; color: rgba(240, 245, 255, 0.98); text-align: justify; }
+.answer-text-en { font-size: 17px; line-height: 1.7; color: rgba(180, 210, 250, 0.65); font-style: italic; margin-top: 10px; padding-left: 16px; border-left: 2px solid rgba(100, 140, 200, 0.2); }
+
+/* Teacher / Doctor comments */
+.comment {
+  margin-top: 20px; padding: 20px 22px; border-radius: 8px; position: relative;
+}
+.comment-teacher { background: rgba(50, 20, 25, 0.4); border: 1px solid rgba(240, 110, 110, 0.25); }
+.comment-doctor { background: rgba(15, 45, 45, 0.4); border: 1px solid rgba(110, 210, 200, 0.25); }
+.comment-label { display: inline-block; font-size: 14px; letter-spacing: 0.2em; margin-bottom: 10px; font-weight: 600; }
+.comment-teacher .comment-label { color: rgba(245, 140, 140, 0.9); }
+.comment-doctor .comment-label { color: rgba(130, 220, 210, 0.9); }
+.comment p { font-size: 19px; line-height: 1.85; color: rgba(245, 240, 245, 0.95); text-align: justify; }
+.comment-teacher p { color: rgba(250, 230, 230, 0.95); }
+.comment-doctor p { color: rgba(225, 245, 240, 0.95); }
+.comment .en-trans { font-size: 16px; line-height: 1.7; color: rgba(190, 200, 240, 0.65); font-style: italic; margin-top: 10px; padding-left: 14px; border-left: 2px solid rgba(120, 150, 210, 0.3); }
+
+/* Stamp (印章) */
+.stamp {
+  display: inline-block; font-size: 16px; font-weight: 700; letter-spacing: 0.2em;
+  color: rgba(245, 130, 130, 0.95); border: 2px solid rgba(245, 130, 130, 0.6);
+  border-radius: 4px; padding: 4px 14px; margin-top: 14px;
+  transform: rotate(-6deg);
+}
+.stamp-en { display: inline-block; font-size: 13px; font-weight: 400; letter-spacing: 0.08em; color: rgba(245, 150, 150, 0.7); font-style: italic; margin-left: 10px; }
+
+/* Answer H - the correct one */
+.answer-card.correct {
+  border: 1px solid rgba(240, 190, 130, 0.45);
+  background: rgba(40, 30, 15, 0.55);
+  box-shadow: 0 0 40px rgba(240, 190, 130, 0.08);
+}
+.answer-card.correct .answer-letter {
+  background: rgba(240, 190, 130, 0.18); border-color: rgba(240, 190, 130, 0.5);
+  color: rgba(250, 215, 160, 0.95);
+}
+.answer-card.correct .comment { background: rgba(50, 38, 18, 0.45); border-color: rgba(240, 190, 130, 0.35); }
+.answer-card.correct .comment-label { color: rgba(250, 215, 160, 0.95); }
+.answer-card.correct .comment p { color: rgba(250, 240, 220, 0.95); }
+
+/* ===== FINAL VERDICT ===== */
+.verdict-box {
+  background: rgba(30, 25, 50, 0.55); border: 1px solid rgba(160, 130, 220, 0.3);
+  border-radius: 12px; padding: 36px 32px; margin: 40px 0;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  text-align: center;
+}
+.verdict-box h3 { font-size: clamp(22px, 5vw, 30px); font-weight: 700; color: #e8eef8; margin-bottom: 8px; }
+.verdict-box .verdict-en { font-size: 17px; font-style: italic; color: rgba(170, 200, 250, 0.65); margin-bottom: 24px; }
+.verdict-box p { font-size: 20px; line-height: 2; color: rgba(240, 245, 255, 0.98); text-align: justify; }
+.verdict-box .en-trans { font-size: 17px; line-height: 1.75; color: rgba(190, 180, 230, 0.65); font-style: italic; margin-top: 18px; border-top: 1px dashed rgba(160, 130, 220, 0.3); padding-top: 18px; text-align: justify; }
+
+.divider { max-width: 720px; margin: 0 auto; padding: 0 28px; }
+.divider-line { height: 1px; background: linear-gradient(to right, transparent, rgba(140, 175, 230, 0.25), transparent); }
+
+/* ===== FOOTER ===== */
+.footer { padding: 80px 28px 60px; text-align: center; position: relative; }
+.footer-mark { font-size: 16px; letter-spacing: 0.3em; color: rgba(210, 225, 250, 0.65); margin-bottom: 18px; }
+.footer-text { font-size: 17px; color: rgba(210, 225, 250, 0.7); line-height: 1.6; max-width: 440px; margin: 0 auto; }
+.footer-note { margin-top: 32px; text-align: left; max-width: 620px; margin-left: auto; margin-right: auto; }
+.footer-note p { font-size: 15px; color: rgba(200, 215, 240, 0.5); line-height: 1.75; }
+.footer-note .en-trans { font-size: 14px; color: rgba(170, 200, 250, 0.45); font-style: italic; margin-top: 6px; }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.seen { opacity: 1; transform: translateY(0); }
+
+.planet { position: absolute; border-radius: 50%; pointer-events: none; z-index: 0; }
+.planet-1 { width: 180px; height: 180px; top: 8%; right: -60px; background: radial-gradient(circle at 30% 30%, rgba(80, 120, 180, 0.12), rgba(20, 40, 80, 0.06) 60%, transparent 80%); filter: blur(2px); }
+.planet-2 { width: 120px; height: 120px; bottom: 15%; left: -40px; background: radial-gradient(circle at 60% 40%, rgba(120, 80, 160, 0.1), rgba(60, 30, 80, 0.05) 60%, transparent 80%); filter: blur(3px); }
+.planet-3 { width: 250px; height: 250px; top: 40%; right: -100px; background: radial-gradient(circle at 35% 35%, rgba(60, 100, 140, 0.08), rgba(20, 40, 70, 0.04) 50%, transparent 75%); filter: blur(4px); }
+
+.progress-bar { position: fixed; top: 0; left: 0; height: 2px; width: 0%; background: linear-gradient(to right, rgba(100, 150, 220, 0.6), rgba(140, 180, 240, 0.8)); z-index: 100; transition: width 0.1s linear; }
+
+@media (prefers-reduced-motion: reduce) {
+  .star { animation: none; opacity: 0.4; }
+  .scroll-line { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+@media (max-width: 600px) {
+  body { font-size: 19px; }
+  .section { padding: 52px 22px; }
+  .question-box { padding: 28px 22px; }
+  .question-box p { font-size: 20px; }
+  .question-box .en-trans { font-size: 17px; }
+  .answer-card { padding: 26px 22px; }
+  .answer-text { font-size: 20px; }
+  .answer-text-en { font-size: 16px; }
+  .comment p { font-size: 18px; }
+  .comment .en-trans { font-size: 15px; }
+  .verdict-box { padding: 28px 22px; }
+  .verdict-box p { font-size: 19px; }
+  .verdict-box .en-trans { font-size: 16px; }
+  .hero { padding: 40px 22px; }
+  .hero-eyebrow { font-size: 15px; }
+  .hero-eyebrow-en { font-size: 14px; }
+  .planet-1 { width: 120px; height: 120px; right: -40px; }
+  .planet-2 { width: 80px; height: 80px; }
+  .planet-3 { width: 160px; height: 160px; right: -60px; }
+}
+
+::selection { background: rgba(100, 150, 220, 0.3); color: #f0f4fa; }
+</style>
+</head>
+<body>
+
+<div class="starfield"></div>
+<div class="stars-layer" id="starsLayer"></div>
+<div class="progress-bar" id="progressBar"></div>
+
+<div class="content">
+
+  <!-- ===== HERO ===== -->
+  <header class="hero">
+    <div class="planet planet-1"></div>
+    <div class="planet planet-3"></div>
+    <div class="hero-eyebrow">星际展览 · 第〇三号展品</div>
+    <div class="hero-eyebrow-en">Interstellar Exhibition · Exhibit No.3</div>
+    <h1 class="hero-title">命名作文<br>《什么人需要每天24小时吃药》</h1>
+    <p class="hero-title-en">Naming Essay<br>What Kind of Person Needs Medicine 24 Hours a Day</p>
+    <div class="hero-badge">考场作文 · 红笔批注 · Examination Paper · Red-Pen Comments</div>
+    <div class="hero-scroll">
+      <span>向下探索 · Scroll to explore</span>
+      <div class="scroll-line"></div>
+    </div>
+  </header>
+
+  <!-- ===== 引导词 ===== -->
+  <section class="section reveal" id="question">
+    <div class="planet planet-2"></div>
+    <h2 class="section-title">题目</h2>
+    <p class="section-title-en">The Question</p>
+    <div class="question-box">
+      <div class="question-label">引导词 · PROMPT</div>
+      <p>假设，世界上存在一个人。这个人需要天天吃药，且每天24小时都在吃药，每分每秒，<strong>药不能停</strong>。求解：请问这是一个什么人？</p>
+      <p class="en-trans">Suppose there exists a person who must take medicine every single day — 24 hours a day, every minute of every second. <strong>The medicine must not stop.</strong> Solve for: what kind of person is this?</p>
+    </div>
+  </section>
+
+  <div class="divider"><div class="divider-line"></div></div>
+
+  <!-- ===== 答案 a ===== -->
+  <section class="section reveal" id="answer-a">
+    <div class="answer-card">
+      <div class="answer-head">
+        <span class="answer-letter">A</span>
+        <span class="answer-tag">答案 · ANSWER</span>
+      </div>
+      <p class="answer-text">肺痨，不吃会死。</p>
+      <p class="answer-text-en">A consumptive — stop the medicine and they die.</p>
+      <div class="comment comment-teacher">
+        <span class="comment-label">老师批复 · TEACHER</span>
+        <p>没听过这样的肺痨，除非医生有病。</p>
+        <p class="en-trans">Never heard of a consumptive like that — unless the doctor is the one who's ill.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 答案 b ===== -->
+  <section class="section reveal" id="answer-b">
+    <div class="answer-card">
+      <div class="answer-head">
+        <span class="answer-letter">B</span>
+        <span class="answer-tag">答案 · ANSWER</span>
+      </div>
+      <p class="answer-text">绝症极度渴望机体综合症。</p>
+      <p class="answer-text-en">Terminal Extreme-Craving Organism Syndrome.</p>
+      <div class="comment comment-doctor">
+        <span class="comment-label">医生批复 · DOCTOR</span>
+        <p>无药可救，这位病人可以停了，电影院没人观看您的表演。人不存在，白演，演了也没钱。</p>
+        <p class="en-trans">Incurable — so you may stop now. The theater is empty, and nobody's watching your performance.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 答案 c ===== -->
+  <section class="section reveal" id="answer-c">
+    <div class="answer-card">
+      <div class="answer-head">
+        <span class="answer-letter">C</span>
+        <span class="answer-tag">答案 · ANSWER</span>
+      </div>
+      <p class="answer-text">神农氏。他天天尝百草，百草皆药，尝药即吃药，从早尝到晚，一秒不能停。</p>
+      <p class="answer-text-en">Shennong, the Divine Farmer. He tasted a hundred herbs a day — every herb is medicine, so tasting is taking, from dawn to dusk without a second's pause.</p>
+      <div class="comment comment-teacher">
+        <span class="comment-label">老师批复 · TEACHER</span>
+        <p>神农尝百草是替世人试药，不是自己得了药瘾。何况那是"尝"，不是"吃"——你见过谁靠尝饭尝出饱来的？</p>
+        <p class="en-trans">Shennong tasted herbs for the world, not for addiction. Besides, he tasted, he didn't eat — have you ever seen anyone get full from tasting their dinner?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 答案 d ===== -->
+  <section class="section reveal" id="answer-d">
+    <div class="planet planet-1"></div>
+    <div class="answer-card">
+      <div class="answer-head">
+        <span class="answer-letter">D</span>
+        <span class="answer-tag">答案 · ANSWER</span>
+      </div>
+      <p class="answer-text">实验室里那只小白鼠。二十四小时有人喂药，喂什么吃什么，药不能停。</p>
+      <p class="answer-text-en">The lab mouse. Fed medicine around the clock — whatever it's given, it takes. The medicine must not stop.</p>
+      <div class="comment comment-doctor">
+        <span class="comment-label">医生批复 · DOCTOR</span>
+        <p>小白鼠确实24小时在用药，但那是拿它做实验，不是给它治病。你要想来，我们这儿也管吃管住管打针，就是不管活命。</p>
+        <p class="en-trans">If you'd like to volunteer, we offer room, board, and daily injections too — everything except keeping you alive.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 答案 e ===== -->
+  <section class="section reveal" id="answer-e">
+    <div class="answer-card">
+      <div class="answer-head">
+        <span class="answer-letter">E</span>
+        <span class="answer-tag">答案 · ANSWER</span>
+      </div>
+      <p class="answer-text">网瘾少年。王者荣耀又名"农药"，他一天24小时吃农药，药不能停。</p>
+      <p class="answer-text-en">A gaming addict. Honor of Kings is nicknamed "Pesticide" in Chinese, and he's on it 24 hours a day. The medicine must not stop.</p>
+      <div class="comment comment-teacher">
+        <span class="comment-label">老师批复 · TEACHER</span>
+        <p>农药确实不能停，停了要出事——我说的是田里那茬。你打的是游戏，不是药；戒了游戏，才算真正停药。</p>
+        <p class="en-trans">You're gaming, not medicating. Uninstall the game — that's the only way to truly go off this medicine.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 答案 f ===== -->
+  <section class="section reveal" id="answer-f">
+    <div class="answer-card">
+      <div class="answer-head">
+        <span class="answer-letter">F</span>
+        <span class="answer-tag">答案 · ANSWER</span>
+      </div>
+      <p class="answer-text">天天吃保健品的老人。早中晚各三粒，比药还准时，算上安神的夜里都不够。</p>
+      <p class="answer-text-en">An old person who lives on supplements. Three pills with every meal, more punctual than any prescription — and even the bedtime sedative can't fill the remaining hours.</p>
+      <div class="comment comment-doctor">
+        <span class="comment-label">医生批复 · DOCTOR</span>
+        <p>那叫保健品，不叫药。你再这么吃，肝先报警。药不能停的意思是"遵医嘱"，不是"管不住嘴"。</p>
+        <p class="en-trans">"The medicine must not stop" means follow the doctor's orders — not that you can't keep your mouth shut.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 答案 g ===== -->
+  <section class="section reveal" id="answer-g">
+    <div class="planet planet-3"></div>
+    <div class="answer-card">
+      <div class="answer-head">
+        <span class="answer-letter">G</span>
+        <span class="answer-tag">答案 · ANSWER</span>
+      </div>
+      <p class="answer-text">出这道题的人。脑子没病，想不出这种题，所以需要24小时吃药。</p>
+      <p class="answer-text-en">Whoever wrote this question. No healthy brain could come up with a question like this — so clearly, they need the medicine 24/7.</p>
+      <div class="comment comment-teacher">
+        <span class="comment-label">老师批复（本人）· TEACHER (IN PERSON)</span>
+        <p>出题人没病。倒是你这个答案，病得不轻。</p>
+        <p class="en-trans">The question-writer is fine. Your answer, however, is gravely ill. Zero points — pay for your own medication.</p>
+        <span class="stamp">零分 · 药费自理</span>
+        <span class="stamp-en">ZERO POINTS · Medical expenses at your own cost</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 答案 h ===== -->
+  <section class="section reveal" id="answer-h">
+    <div class="answer-card correct">
+      <div class="answer-head">
+        <span class="answer-letter">H</span>
+        <span class="answer-tag">答案 · ANSWER</span>
+      </div>
+      <p class="answer-text">每个人。人到中年，房贷是药，加班是药，上有老下有小是药，一天24小时，一分钟不能停，停了就崩。</p>
+      <p class="answer-text-en">Everyone. Past forty, the mortgage is medicine, overtime is medicine, aging parents and growing kids are medicine. Twenty-four hours a day, not a minute to stop — stop, and it all collapses.</p>
+      <div class="comment">
+        <span class="comment-label">老师批复 · TEACHER</span>
+        <p>……这个答案，药到病除。全班就你及格。上来，把药方抄在黑板上，老师也留一份。</p>
+        <p class="en-trans">…This answer cures the disease itself. You're the only one in class who passed. Come up and copy the prescription onto the blackboard — the teacher wants a copy too.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><div class="divider-line"></div></div>
+
+  <!-- ===== 老师总评 ===== -->
+  <section class="section reveal" id="verdict">
+    <div class="verdict-box">
+      <h3>老师总评</h3>
+      <p class="verdict-en">Teacher's Final Verdict</p>
+      <p>全班二十八种病，只有答案h开对了药方。其余同学，把"药不能停"抄一百遍，明天交。另外，此题已由出题人收回——因为真正的答案，全班都在写，只是自己没发现。下课。</p>
+      <p class="en-trans">Twenty-eight ailments in this class, and only answer h wrote the right prescription. The rest of you: copy "the medicine must not stop" one hundred times, due tomorrow. One more thing — the question-writer has withdrawn this question. Because the true answer is the one this whole class has been writing every day, without ever noticing. Class dismissed.</p>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer reveal">
+    <div class="divider-line" style="margin-bottom: 40px;"></div>
+    <div class="footer-mark">展品终 · End of Exhibit</div>
+    <p class="footer-text">星际展览 · 第〇三号展品<br>命名作文《什么人需要每天24小时吃药》<br><br>Interstellar Exhibition · Exhibit No.3<br>Naming Essay: What Kind of Person Needs Medicine 24 Hours a Day</p>
+    <div class="footer-note">
+      <p>附注：补了六味新药（c~h），保持原配方：答案越离谱，批复越冷静。真正的答案，全班都在写，只是自己没发现。</p>
+      <p class="en-trans">Postscript: Six new remedies added (C–H), same formula: the wilder the answer, the calmer the comment. The real answer is one the whole class has been writing all along — without noticing.</p>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function() {
+  var layer = document.getElementById('starsLayer');
+  if (!layer) return;
+  var count = window.innerWidth < 600 ? 60 : 120;
+  var fragment = document.createDocumentFragment();
+  for (var i = 0; i < count; i++) {
+    var star = document.createElement('div');
+    star.className = 'star';
+    var size = Math.random() * 2 + 0.5;
+    star.style.width = size + 'px';
+    star.style.height = size + 'px';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDelay = Math.random() * 4 + 's';
+    star.style.animationDuration = (3 + Math.random() * 4) + 's';
+    star.style.setProperty('--max-opacity', (0.3 + Math.random() * 0.5).toFixed(2));
+    fragment.appendChild(star);
+  }
+  layer.appendChild(fragment);
+})();
+
+(function() {
+  var reveals = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    reveals.forEach(function(el) { el.classList.add('seen'); });
+    return;
+  }
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('seen');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(function(el) { observer.observe(el); });
+})();
+
+(function() {
+  var bar = document.getElementById('progressBar');
+  if (!bar) return;
+  function update() {
+    var scrolled = window.scrollY;
+    var height = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = height > 0 ? (scrolled / height) * 100 : 0;
+    bar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
+
+</body>
+</html>
